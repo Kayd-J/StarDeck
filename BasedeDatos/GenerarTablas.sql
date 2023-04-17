@@ -1,5 +1,5 @@
 CREATE TABLE JUGADOR(
-	idusuario int not null,
+	idjugador int not null,
 	usuario VARCHAR(20) not null,
 	pass VARCHAR(20) not null,
 	nombre VARCHAR(20) not null,
@@ -17,5 +17,25 @@ CREATE TABLE CARTA(
 	tipo VARCHAR(20) not null,
 	disponibilidad bit not null,
 );
+
+CREATE TABLE CARTA_JUGADOR(
+	idcarta int not null,
+	idjugador int not null,
+	cantidad int not null
+);
+
+ALTER TABLE JUGADOR
+ADD PRIMARY KEY(idjugador);
+
+ALTER TABLE CARTA
+ADD PRIMARY KEY(idcarta);
+
+ALTER TABLE CARTA_JUGADOR
+ADD FOREIGN KEY (idcarta) REFERENCES CARTA(idcarta);
+
+ALTER TABLE CARTA_JUGADOR
+ADD FOREIGN KEY (idjugador) REFERENCES JUGADOR(idjugador);
+
+
 
 
