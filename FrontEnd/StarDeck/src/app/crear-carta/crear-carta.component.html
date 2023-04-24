@@ -1,1 +1,90 @@
-<p>crear-carta works!</p>
+
+<div class="row" >
+  <form [formGroup]="cartaForm" (ngSubmit)="submit()" (ngSubmit)="preview()" class="col-sm">
+      <div class="row" style="text-align: center;display: block;">
+          <h2>Crear carta</h2>
+      </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label for="txtcode">Nombre de la carta</label>
+                  <input type="text" id="txtcode" class="form-control" formControlName = "nombrecarta"/>
+          </div>
+      </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label>Costo</label>
+                  <input type="text" class="form-control" formControlName = "costo"/>
+              </div>
+          </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label>Energia</label>
+                  <input type="text" class="form-control" formControlName = "energia"/>
+              </div>
+          </div>
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+                <label>Raza</label>
+                <select class="form-control" formControlName = "raza">
+                    <option>Select</option>
+                </select>
+            </div>
+        </div>     
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+                <label>Rareza </label>
+                
+                <select class="form-control" formControlName = "tipo">
+                    <option>Select</option>
+     
+                </select>
+            </div>
+        </div>     
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+              
+                <label>Habilitar carta  </label>
+                <input type="checkbox" class="form-check-input" formControlName = "disponibilidad">
+            </div>
+        </div>
+      <div class="col-md-3 offset-lg-1">
+          <div class="form-group">
+              <label>Imagen </label>
+
+              <input type="file" (change)="onselectImage($event)">
+          </div>
+      </div>
+      <div class="col-md-3 offset-lg-1">
+              <br>
+              <div class="form-group">
+                  <button type="preview" class="btn btn-primary btn-lg btn-block">Preview</button>
+              </div>
+          </div>
+        <div class="col-md-3 offset-lg-1">
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+            </div>
+        </div>
+  </form>
+
+  <div class="col-sm" >
+      <div class = "row">
+        <label class = "row-sm">{{costo}}</label>
+        <label>{{nombrecarta}}</label>
+        <label>{{energia}}</label>
+        <label>{{raza}}</label>
+        <label>{{rareza}}</label>
+        <label>{{estado}}</label>
+      </div>
+      <img [src]="imageUrl" class="col">
+    </div>
+</div>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
