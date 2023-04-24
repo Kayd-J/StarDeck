@@ -8,18 +8,18 @@ namespace StarDeckAPI.Controllers
     public class CartaController : Controller
     {
         private static List<Carta> Cartas= new List<Carta>
+        {
+            new Carta
             {
-                new Carta
-                {
-                    ID = 0,
-                    Nombre = "",
-                    Tipo = "",
-                    Raza = "",
-                    Energia = 0,
-                    Costo = 0,
-                    Disponibilidad = true,
-                }
-            };
+                ID = 0,
+                Nombre = "",
+                Tipo = "",
+                Raza = "",
+                Energia = 0,
+                Costo = 0,
+                Disponibilidad = true,
+            }
+        };
 
 
         [HttpGet("Get")]
