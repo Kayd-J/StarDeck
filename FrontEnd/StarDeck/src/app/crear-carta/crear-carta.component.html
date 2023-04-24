@@ -7,7 +7,7 @@
           <div class="col-md-3 offset-lg-1">
               <div class="form-group">
                   <label for="txtcode">Nombre de la carta</label>
-                  <input type="text" id="txtcode" class="form-control" formControlName = "nombre"/>
+                  <input type="text" id="txtcode" class="form-control" formControlName = "nombrecarta"/>
           </div>
       </div>
           <div class="col-md-3 offset-lg-1">
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label>Rareza </label>
                 
-                <select class="form-control" formControlName = "rareza">
+                <select class="form-control" formControlName = "tipo">
                     <option>Select</option>
      
                 </select>
@@ -44,7 +44,7 @@
             <div class="form-group">
               
                 <label>Habilitar carta  </label>
-                <input type="checkbox" class="form-check-input" formControlName = "estado">
+                <input type="checkbox" class="form-check-input" formControlName = "disponibilidad">
             </div>
         </div>
       <div class="col-md-3 offset-lg-1">
@@ -71,7 +71,7 @@
   <div class="col-sm" >
       <div class = "row">
         <label class = "row-sm">{{costo}}</label>
-        <label>{{nombre}}</label>
+        <label>{{nombrecarta}}</label>
         <label>{{energia}}</label>
         <label>{{raza}}</label>
         <label>{{rareza}}</label>
@@ -79,9 +79,6 @@
       </div>
       <img [src]="imageUrl" class="col">
     </div>
-
-    
-
 </div>
 
 

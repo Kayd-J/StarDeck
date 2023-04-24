@@ -18,15 +18,16 @@ export class CrearCartaComponent implements OnInit {
   }
 
   cartaForm=new FormGroup({
-    nombre:new FormControl(),
-    costo:new FormControl(),
+    idcarta:new FormControl(),
     energia:new FormControl(),
     raza:new FormControl(),
-    rareza:new FormControl(),
-    estado:new FormControl(),
+    costo:new FormControl(),
+    nombrecarta:new FormControl(),
+    tipo:new FormControl(),
+    disponibilidad:new FormControl(),
   })
 
-  nombre = "Null"
+  nombrecarta = "Null"
   costo = "0"
   energia = "0"
   raza = "Humano"
@@ -46,10 +47,10 @@ export class CrearCartaComponent implements OnInit {
   preview(){
     this.costo = this.cartaForm.value.costo
     this.energia = this.cartaForm.value.energia
-    this.nombre = this.cartaForm.value.nombre
+    this.nombrecarta = this.cartaForm.value.nombrecarta
     this.raza = this.cartaForm.value.raza
-    this.rareza = this.cartaForm.value.rareza
-    this.estado = this.cartaForm.value.estado
+    this.rareza = this.cartaForm.value.tipo
+    this.estado = this.cartaForm.value.disponibilidad
   }
   submit(){
     console.log(this.cartaForm.value)
