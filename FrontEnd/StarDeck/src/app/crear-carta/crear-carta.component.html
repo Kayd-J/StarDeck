@@ -1,33 +1,93 @@
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre de carta</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Costo de carta</label>
-      <input type="text" class="form-control" id="costo">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Valor de energia</label>
-      <input type="text" class="form-control" id="energia">
-    </div>
-    <select class="form-control" id="raza">
-      <option>Humano</option>
-      <option>Elfo</option>
-      <option>Enano</option>
-    </select >
-    <select class="form-control" id="rareza">
-      <option>Raro</option>
-      <option>Basico</option>
-      <option>Legendario</option>
-    </select>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="habilitarCarta">
-      <label class="form-check-label" for="exampleCheck1">Habilitar carta</label>
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Preview</button>
-    <button type="submit" class="btn btn-primary">Crear carta</button>
+
+<div class="row" >
+  <form [formGroup]="cartaForm" (ngSubmit)="submit()" (ngSubmit)="preview()" class="col-sm">
+      <div class="row" style="text-align: center;display: block;">
+          <h2>Crear carta</h2>
+      </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label for="txtcode">Nombre de la carta</label>
+                  <input type="text" id="txtcode" class="form-control" formControlName = "nombre"/>
+          </div>
+      </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label>Costo</label>
+                  <input type="text" class="form-control" formControlName = "costo"/>
+              </div>
+          </div>
+          <div class="col-md-3 offset-lg-1">
+              <div class="form-group">
+                  <label>Energia</label>
+                  <input type="text" class="form-control" formControlName = "energia"/>
+              </div>
+          </div>
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+                <label>Raza</label>
+                <select class="form-control" formControlName = "raza">
+                    <option>Select</option>
+                </select>
+            </div>
+        </div>     
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+                <label>Rareza </label>
+                
+                <select class="form-control" formControlName = "rareza">
+                    <option>Select</option>
+     
+                </select>
+            </div>
+        </div>     
+        <div class="col-md-3 offset-lg-1">
+            <div class="form-group">
+              
+                <label>Habilitar carta  </label>
+                <input type="checkbox" class="form-check-input" formControlName = "estado">
+            </div>
+        </div>
+      <div class="col-md-3 offset-lg-1">
+          <div class="form-group">
+              <label>Imagen </label>
+
+              <input type="file" (change)="onselectImage($event)">
+          </div>
+      </div>
+      <div class="col-md-3 offset-lg-1">
+              <br>
+              <div class="form-group">
+                  <button type="preview" class="btn btn-primary btn-lg btn-block">Preview</button>
+              </div>
+          </div>
+        <div class="col-md-3 offset-lg-1">
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+            </div>
+        </div>
   </form>
-  
-  <router-outlet></router-outlet>
+
+  <div class="col-sm" >
+      <div class = "row">
+        <label class = "row-sm">{{costo}}</label>
+        <label>{{nombre}}</label>
+        <label>{{energia}}</label>
+        <label>{{raza}}</label>
+        <label>{{rareza}}</label>
+        <label>{{estado}}</label>
+      </div>
+      <img [src]="imageUrl" class="col">
+    </div>
+
+    
+
+</div>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
