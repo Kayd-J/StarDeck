@@ -9,20 +9,20 @@ namespace StarDeckAPI.Controllers
     public class JugadorController : ControllerBase
     {
         private static List<Jugador> Jugadores = new List<Jugador>
+        {
+            new Jugador
             {
-                new Jugador
-                {
-                    ID = 0,
-                    Nombre = "",
-                    Apellido = "",
-                    Usuario = "",
-                    País = 0,
-                    Avatar = "",
-                    Correo = "",
-                    Contraseña = "",
-                    Estado = 0,
-                }
-            };
+                ID = 0,
+                Nombre = "",
+                Apellido = "",
+                Usuario = "",
+                País = 0,
+                Avatar = "",
+                Correo = "",
+                Contraseña = "",
+                Estado = 0,
+            }
+        };
 
 
         [HttpGet("Get")]
