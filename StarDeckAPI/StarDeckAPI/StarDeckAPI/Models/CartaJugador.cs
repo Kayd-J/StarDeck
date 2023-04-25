@@ -5,9 +5,9 @@ namespace StarDeckAPI.Models;
 
 public partial class CartaJugador
 {
-    public int Idcarta { get; set; }
+    public string Idcarta { get; set; }
 
-    public int Idjugador { get; set; }
+    public string Idjugador { get; set; }
 
     public int Cantidad { get; set; }
 

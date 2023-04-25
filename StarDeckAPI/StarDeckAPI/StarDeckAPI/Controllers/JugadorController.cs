@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DetailTEC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using StarDeckAPI.Models;
 
 namespace StarDeckAPI.Controllers
@@ -8,74 +11,151 @@ namespace StarDeckAPI.Controllers
     [ApiController]
     public class JugadorController : ControllerBase
     {
-        private static List<Jugador> Jugadores = new List<Jugador>
+        private readonly StarDeckContext _context;
+
+        public JugadorController(StarDeckContext context)
         {
-            new Jugador
+            _context = context;
+        }
+
+
+        /// <summary>
+        /// GET: api/Clientes
+        /// </summary>
+        /// <returns>Datos de clientes</returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Jugador>>> GetJugadores()
+        {
+            return await _context.Jugadors.ToListAsync();
+        }
+
+        /// <summary>
+        /// GET: api/Clientes/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Datos de cliente especifico</returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Jugador>> GetJugador(int id)
+        {
+            var jugador = await _context.Jugadors.FindAsync(id);
+
+            if (jugador == null)
             {
-                Idjugador = 0,
-                Nombre = "",
-                Apellidos = "",
-                Usuario = "",
-                Idpais = 0,
-                Avatar = 0,
-                Correo = "",
-                Pass = "",
-                Estadodecuenta = true
+                return NotFound();
             }
-        };
 
-
-        [HttpGet("Get")]
-        public async Task<ActionResult<List<Jugador>>> GetJugadores()
-        {
-            return Ok(Jugadores);
+            return jugador;
         }
 
-        [HttpGet("ID")]
-        public async Task<ActionResult<Jugador>> GetJugador(int ID)
+        /// <summary>
+        /// PUT: api/Clientes/5
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>Cambia datos de un cliente</returns>
+        [HttpPut]
+        public async Task<IActionResult> PutJugador(Jugador jugador)
         {
-            var jugador = Jugadores.Find(x => x.Idjugador == ID);
+
+            _context.Entry(jugador).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!JugadorExists(jugador.Idjugador))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        /// <summary>
+        /// POST: api/Jugador
+        /// </summary>
+        /// <param name="jugador"></param>
+        /// <returns>Creacion de Jugador</returns>
+        [HttpPost]
+        public async Task<ActionResult<Jugador>> PostJugador(Jugador jugador)
+        {
+            _context.Jugadors.Add(jugador);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (JugadorExists(jugador.Idjugador))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtAction("GetJugador", new { id = jugador.Idjugador }, jugador);
+        }
+        /// <summary>
+        /// Revision de login de jugador
+        /// </summary>
+        /// <param name="auth"></param>
+        /// <returns>Confirmacion de login</returns>
+        [HttpPost]
+        [Route("Login/")]
+
+        public async Task<ActionResult<Login>> PostLogin(Auth auth)
+        {
+            var result = _context.Jugadors.Any(e => e.Correo == auth.Usuario && e.Pass == auth.Password);
+
+            var status = new Login { Status = "Ok" };
+
+            var error = new Login { Status = "Error" };
+
+            if (!result)
+            {
+                return error;
+            }
+
+            return Ok(status);
+
+        }
+
+        /// <summary>
+        /// DELETE: api/Clientes/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Borra un cliente</returns>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteJugador(string id)
+        {
+            var jugador = await _context.Jugadors.FindAsync(id);
             if (jugador == null)
-                return NotFound("Lo sentimos, el jugador no existe");
-            return Ok(jugador);
+            {
+                return NotFound();
+            }
+
+            _context.Jugadors.Remove(jugador);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
-
-        [HttpPost("Agregar")]
-        public async Task<ActionResult<List<Jugador>>> AddJugador(Jugador jugador)
+        /// <summary>
+        /// Revisa si existe un cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>existencia de un cliente</returns>
+        private bool JugadorExists(string id)
         {
-            Jugadores.Add(jugador);
-            return Ok(Jugadores);
-        }
-
-        [HttpPut("Editar")]
-        public async Task<ActionResult<List<Jugador>>> UpdateJugador(int ID, Jugador request)
-        {
-            var jugador = Jugadores.Find(x => x.Idjugador == request.Idjugador);
-            if (jugador == null)
-                return NotFound("Lo sentimos, el jugador no existe");
-            
-            jugador.Nombre = request.Nombre;
-            jugador.Apellidos = request.Apellidos;
-            jugador.Usuario = request.Usuario;
-            jugador.Idpais = request.Idpais; 
-            jugador.Avatar = request.Avatar;
-            jugador.Correo = request.Correo;
-            jugador.Pass = request.Pass;
-            jugador.Estadodecuenta = request.Estadodecuenta;
-
-            return Ok(Jugadores);
-        }
-
-        [HttpDelete("Borrar")]
-        public async Task<ActionResult<List<Jugador>>> DeleteJugador(int ID)
-        {
-            var jugador = Jugadores.Find(x => x.Idjugador == ID);
-            if (jugador == null)
-                return NotFound("Lo sentimos, el jugador no existe");
-
-            Jugadores.Remove(jugador);
-
-            return Ok(Jugadores);
+            return _context.Jugadors.Any(e => e.Idjugador == id);
         }
     }
 }

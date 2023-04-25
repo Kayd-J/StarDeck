@@ -1,4 +1,5 @@
-//global using StarDeckAPI.Models;
+global using StarDeckAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddDbContext<StarDeckContext>();
-//builder.Services.AddCors(options => options.AddPolicy(name: " StarDeckOrigins",
- //   policy =>
-//    {
-  //      policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
- //   }));
+builder.Services.AddDbContext<StarDeckContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+builder.Services.AddCors(options => options.AddPolicy(name: " StarDeckOrigins",
+    policy =>
+   {
+        policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    }));
 
 var app = builder.Build();
 
@@ -24,7 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseCors("StarDeckOrigins");
+app.UseCors("StarDeckOrigins");
 
 app.UseHttpsRedirection();
 

@@ -5,7 +5,7 @@ namespace StarDeckAPI.Models;
 
 public partial class Carta
 {
-    public int Idcarta { get; set; }
+    public string Idcarta { get; set; }
 
     public int Energia { get; set; }
 
@@ -16,6 +16,8 @@ public partial class Carta
     public string Nombre { get; set; } = null!;
 
     public string Tipo { get; set; } = null!;
+
+    public string Descripcion { get; set; } = null!;
 
     public bool Disponibilidad { get; set; }
 

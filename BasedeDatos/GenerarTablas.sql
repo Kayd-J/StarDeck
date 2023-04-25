@@ -1,5 +1,5 @@
 CREATE TABLE JUGADOR(
-	idjugador int not null,
+	idjugador VARCHAR(14) not null,
 	usuario VARCHAR(20) not null,
 	pass VARCHAR(20) not null,
 	nombre VARCHAR(20) not null,
@@ -10,13 +10,15 @@ CREATE TABLE JUGADOR(
 	avatar int not null,
 	idpais int not null
 );
+
 CREATE TABLE CARTA(
-	idcarta int not null,
+	idcarta VARCHAR(14) not null,
 	energia int not null,
 	raza VARCHAR(20) not null,
 	costo int not null,
 	nombre VARCHAR(40) not null,
 	tipo VARCHAR(20) not null,
+	descripcion VARCHAR(1000) not null,
 	disponibilidad bit not null,
 	idadmin int not null,
 	imagen VARCHAR(1000) not null
@@ -31,8 +33,8 @@ CREATE TABLE ADMINISTRADOR(
 
 
 CREATE TABLE CARTA_JUGADOR(
-	idcarta int not null,
-	idjugador int not null,
+	idcarta VARCHAR(14) not null,
+	idjugador VARCHAR(14) not null,
 	cantidad int not null
 );
 
