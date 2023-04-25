@@ -7,6 +7,7 @@ CREATE TABLE JUGADOR(
 	nacionalidad VARCHAR(20) not null,
 	correo VARCHAR(40) NOT NULL,
 	estadodecuenta bit not null,
+	avatar VARCHAR(1000) not null,
 	idpais int not null
 );
 CREATE TABLE CARTA(
@@ -46,7 +47,7 @@ ADD PRIMARY KEY(idjugador);
 ALTER TABLE CARTA
 ADD PRIMARY KEY(idcarta);
 
-ALTER TABLE JUGADOR
+ALTER TABLE ADMINISTRADOR
 ADD PRIMARY KEY(idadmin);
 
 ALTER TABLE PAISES
