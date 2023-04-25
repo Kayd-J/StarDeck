@@ -33,7 +33,7 @@ public partial class StarDeckContext : DbContext
     {
         modelBuilder.Entity<Administrador>(entity =>
         {
-            entity.HasKey(e => e.Idadmin).HasName("PK__ADMINIST__5B93BD6E4587BB60");
+            entity.HasKey(e => e.Idadmin).HasName("PK__ADMINIST__5B93BD6E8EF354AD");
 
             entity.ToTable("ADMINISTRADOR");
 
@@ -71,17 +71,17 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.IdcartaNavigation).WithMany()
                 .HasForeignKey(d => d.Idcarta)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTA_JUG__idcar__2180FB33");
+                .HasConstraintName("FK__CARTA_JUG__idcar__6166761E");
 
             entity.HasOne(d => d.IdjugadorNavigation).WithMany()
                 .HasForeignKey(d => d.Idjugador)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTA_JUG__idjug__22751F6C");
+                .HasConstraintName("FK__CARTA_JUG__idjug__625A9A57");
         });
 
         modelBuilder.Entity<Carta>(entity =>
         {
-            entity.HasKey(e => e.Idcarta).HasName("PK__CARTA__0515CC3321596C4C");
+            entity.HasKey(e => e.Idcarta).HasName("PK__CARTA__0515CC33A145FFE0");
 
             entity.ToTable("CARTA");
 
@@ -92,6 +92,10 @@ public partial class StarDeckContext : DbContext
             entity.Property(e => e.Disponibilidad).HasColumnName("disponibilidad");
             entity.Property(e => e.Energia).HasColumnName("energia");
             entity.Property(e => e.Idadmin).HasColumnName("idadmin");
+            entity.Property(e => e.Imagen)
+                .HasMaxLength(1000)
+                .IsUnicode(false)
+                .HasColumnName("imagen");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(40)
                 .IsUnicode(false)
@@ -108,12 +112,12 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.IdadminNavigation).WithMany(p => p.Carta)
                 .HasForeignKey(d => d.Idadmin)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTA__idadmin__208CD6FA");
+                .HasConstraintName("FK__CARTA__idadmin__607251E5");
         });
 
         modelBuilder.Entity<Jugador>(entity =>
         {
-            entity.HasKey(e => e.Idjugador).HasName("PK__JUGADOR__1D4F670F4396022A");
+            entity.HasKey(e => e.Idjugador).HasName("PK__JUGADOR__1D4F670FC13A2182");
 
             entity.ToTable("JUGADOR");
 
@@ -124,10 +128,7 @@ public partial class StarDeckContext : DbContext
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("apellidos");
-            entity.Property(e => e.Avatar)
-                .HasMaxLength(1000)
-                .IsUnicode(false)
-                .HasColumnName("avatar");
+            entity.Property(e => e.Avatar).HasColumnName("avatar");
             entity.Property(e => e.Correo)
                 .HasMaxLength(40)
                 .IsUnicode(false)
@@ -154,12 +155,12 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.IdpaisNavigation).WithMany(p => p.Jugadors)
                 .HasForeignKey(d => d.Idpais)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__JUGADOR__idpais__1F98B2C1");
+                .HasConstraintName("FK__JUGADOR__idpais__5F7E2DAC");
         });
 
         modelBuilder.Entity<Paises>(entity =>
         {
-            entity.HasKey(e => e.Idpais).HasName("PK__PAISES__55A005155B972B62");
+            entity.HasKey(e => e.Idpais).HasName("PK__PAISES__55A005150FEE0F4D");
 
             entity.ToTable("PAISES");
 

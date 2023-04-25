@@ -17,7 +17,7 @@ namespace StarDeckAPI.Controllers
                 Apellidos = "",
                 Usuario = "",
                 Idpais = 0,
-                Avatar = "",
+                Avatar = 0,
                 Correo = "",
                 Pass = "",
                 Estadodecuenta = true

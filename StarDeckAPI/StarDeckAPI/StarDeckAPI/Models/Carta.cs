@@ -21,5 +21,7 @@ public partial class Carta
 
     public int Idadmin { get; set; }
 
+    public string Imagen { get; set; } = null!;
+
     public virtual Administrador IdadminNavigation { get; set; } = null!;
 }

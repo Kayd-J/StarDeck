@@ -7,7 +7,7 @@ CREATE TABLE JUGADOR(
 	nacionalidad VARCHAR(20) not null,
 	correo VARCHAR(40) NOT NULL,
 	estadodecuenta bit not null,
-	avatar VARCHAR(1000) not null,
+	avatar int not null,
 	idpais int not null
 );
 CREATE TABLE CARTA(
@@ -18,7 +18,8 @@ CREATE TABLE CARTA(
 	nombre VARCHAR(40) not null,
 	tipo VARCHAR(20) not null,
 	disponibilidad bit not null,
-	idadmin int not null
+	idadmin int not null,
+	imagen VARCHAR(1000) not null
 );
 CREATE TABLE ADMINISTRADOR(
 	idadmin int not null,

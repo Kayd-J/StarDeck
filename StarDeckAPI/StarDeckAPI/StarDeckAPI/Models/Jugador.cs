@@ -21,7 +21,7 @@ public partial class Jugador
 
     public bool Estadodecuenta { get; set; }
 
-    public string Avatar { get; set; } = null!;
+    public int Avatar { get; set; }
 
     public int Idpais { get; set; }
 
