@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { CrearCartaComponent } from './crear-carta/crear-carta.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CrearCartaComponent,
-    RegistroComponent
+    RegistroComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
