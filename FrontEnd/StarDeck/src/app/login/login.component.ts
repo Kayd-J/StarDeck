@@ -38,19 +38,24 @@ export class LoginComponent implements OnInit {
   onLogin(form:any){
     this.api.loginByEmailCliente(form).subscribe(data =>{
       let dataResponse:StatusI = data;
+      console.log(data);
       if(dataResponse.status == "Ok"){
-        this.router.navigate(["menuCliente"]);
+        console.log("test");
+        this.router.navigate(["/crearCarta"]);
       }
-      if(dataResponse.status == "Error"){
+      if(dataResponse.status == "Error"){/*
         this.api.loginByEmailAdmin(form).subscribe(data =>{
+          console.log(data);
           let dataResponse:StatusI = data;
+          // detectar si es un Admin 
           if(dataResponse.status == "Ok"){
             this.router.navigate(["menuAdmin"]);
           }
           if(dataResponse.status == "Error"){
             alert("Usuario o contraseña incorrectos");
           }
-        })
+        })*/
+        alert("Usuario o contraseña incorrectos")
       }
     })
   }

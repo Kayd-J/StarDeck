@@ -1,17 +1,16 @@
 
 <div class="myform bg-dark">
   <h1 class="text-center">Login to StarDeck!</h1>
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
       <div class="mb-3 mt-4">
           <label for="inputEmail" class="form-label">Username</label>
           <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"required autofocus formControlName="usuario">
       </div>
       <div class="mb-3">
           <label for="inputPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="inputPassword" required #passwordInput>
+          <input type="password" class="form-control" id="inputPassword" required formControlName="password">
       </div>
-      <button type="submit" class="btn btn-light mt-3"
-      (click)="">Login</button>
+      <button type="submit" class="btn btn-light mt-3">Login</button>
   </form>
 </div>
 

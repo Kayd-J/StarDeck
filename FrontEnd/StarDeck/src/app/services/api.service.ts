@@ -9,7 +9,7 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string="https://localhost:5031/api";
+  url:string="http://localhost:5031/api";
 
   constructor(private http:HttpClient) { }
 
@@ -20,7 +20,9 @@ export class ApiService {
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
   loginByEmailCliente(form:Login):Observable<StatusI>{
-    let direccion = this.url + "/Jugadores/Login";
+    let direccion = "/api/Jugadores/Login";
+     console.log(form);
+     console.log(direccion)
     return this.http.post<StatusI>(direccion, form);
   }
   /**

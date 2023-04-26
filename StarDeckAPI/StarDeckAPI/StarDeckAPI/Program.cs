@@ -19,6 +19,20 @@ builder.Services.AddCors(options => options.AddPolicy(name: " StarDeckOrigins",
         policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
     }));
 
+
+/* Idea de Mario
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+    builder =>
+    {
+        builder.AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(_ => true)
+               .AllowCredentials();
+    });
+});*/
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

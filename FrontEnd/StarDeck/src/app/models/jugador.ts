@@ -1,12 +1,12 @@
 export class Jugador {
-  idjugador!: number;
-  nombre!: string;
+  id!: number;
   usuario!: string;
   pass!: string;
-  correo!: string;
+  nombre!: string;
+  apellidos!: string;
   nacionalidad!: string;
+  correo!: string;
   estadodecuenta!: boolean;
-  avatar!: number;
-  idpais!: number;
-
+  avatar!: 0;
+  paisesId!: string;
 }
