@@ -37,19 +37,36 @@
                 <a data-bs-toggle="modal" data-bs-target="#ModalForm">Register</a>
               </a>
             <li>
-              <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalForm" >Forgot your password</a>
+              <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalForm2" >Forgot your password</a>
             </li>
           </ul>
           </div> 
         </div>
-  
-      <!-- modal -->
+      
+      <!--Modal Registro -->
       <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <app-registro></app-registro>
-        </div>
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+                  <app-registro></app-registro>
+              </div>
+            </div>
+          </div>
       </div>
-  
+      <!-- Modal Forgot Password -->
+      <div class="modal fade" id="ModalForm2" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+                <a>Comming Soon</a>
+            </div>
+          </div>
+        </div>
+    </div>
+      
+
+
+
    <footer class="container py-5">
     <div class="row">
     <div class="col-12 col-md">
@@ -74,5 +91,5 @@
   </div>
    </footer>
   </body>
-  <router-outlet></router-outlet>
+  
   
