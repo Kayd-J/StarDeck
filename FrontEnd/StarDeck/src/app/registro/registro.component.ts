@@ -22,7 +22,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   loginForm = new FormGroup({
     usuario : new FormControl('', [Validators.required]),
     password : new FormControl('', Validators.required)
@@ -49,7 +49,7 @@ export class RegistroComponent implements OnInit {
   name = "Nombre"
   correo = "ejemplo@gmail.com"
   estado = false
-  
+
   onselectImage(e: any){
     if(e.target.files){
       var reader = new FileReader();
@@ -60,11 +60,11 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  
+
   jugadorExiste = false;
 
   submit(form:any){
-    form.id =  Math.floor(Math.random() * (900000000 - 3 + 1) + 3).toString(); //asignar un ID random
+    form.id =  ("U-" + Math.floor(Math.random() * (900000000000 - 3 + 1) + 3)).toString(); //asignar un ID random
     form.estadodecuenta = true;
     form.avatar=0;
     form.paisesId= "1";
