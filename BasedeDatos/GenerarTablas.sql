@@ -1,26 +1,26 @@
 CREATE TABLE JUGADOR(
 	idjugador VARCHAR(14) not null,
-	usuario VARCHAR(20) not null,
-	pass VARCHAR(20) not null,
-	nombre VARCHAR(20) not null,
-	apellidos VARCHAR(30) not null,
-	nacionalidad VARCHAR(20) not null,
-	correo VARCHAR(40) NOT NULL,
-	estadodecuenta bit not null,
-	avatar int not null,
-	idpais int not null
+	usuario VARCHAR(20),
+	pass VARCHAR(20) ,
+	nombre VARCHAR(20) ,
+	apellidos VARCHAR(30) ,
+	nacionalidad VARCHAR(20) ,
+	correo VARCHAR(40) ,
+	estadodecuenta bit,
+	avatar int,
+	idpais int
 );
 
 CREATE TABLE CARTA(
 	idcarta VARCHAR(14) not null,
-	energia int not null,
+	energia int not null ,
 	raza VARCHAR(20) not null,
 	costo int not null,
 	nombre VARCHAR(40) not null,
 	tipo VARCHAR(20) not null,
 	descripcion VARCHAR(1000) not null,
 	disponibilidad bit not null,
-	idadmin int not null,
+	idadmin int,
 	imagen VARCHAR(1000) not null
 );
 CREATE TABLE ADMINISTRADOR(
@@ -33,9 +33,9 @@ CREATE TABLE ADMINISTRADOR(
 
 
 CREATE TABLE CARTA_JUGADOR(
-	idcarta VARCHAR(14) not null,
-	idjugador VARCHAR(14) not null,
-	cantidad int not null
+	idcarta VARCHAR(14) ,
+	idjugador VARCHAR(14) ,
+	cantidad int 
 );
 
 CREATE TABLE PAISES(
