@@ -18,5 +18,5 @@ public class Administrador
 
     public string Pass { get; set; } = null!;
 
-    public List<Carta> Cartas { get; set; }
+    // public List<Carta> Cartas { get; set; }
 }

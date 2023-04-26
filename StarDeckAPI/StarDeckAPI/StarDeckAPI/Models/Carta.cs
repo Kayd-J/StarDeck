@@ -24,7 +24,7 @@ public class Carta
 
     public string Imagen { get; set; } = null!;
 
-    public Admin Administradores { get; set; } = null!;
+    // public Admin Administradores { get; set; } = null!;
 
-    public List<Jugador> Jugadores { get; set; } = null!;
+   // public List<Jugador> Jugadores { get; set; } = null!;
 }
