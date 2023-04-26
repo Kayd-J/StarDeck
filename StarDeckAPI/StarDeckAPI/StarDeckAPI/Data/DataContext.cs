@@ -8,7 +8,7 @@ namespace StarDeckAPI.Data
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Admin> Administradores { get; set; } = null!;
+        public DbSet<Administrador> Administradores { get; set; }
 
         public DbSet<Carta> Cartas { get; set; }
 
