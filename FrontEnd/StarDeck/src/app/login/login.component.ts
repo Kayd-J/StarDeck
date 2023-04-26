@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       let dataResponse:StatusI = data;
       console.log(data);
       if(dataResponse.status == "Ok"){
-        console.log("test");
         this.router.navigate(["/crearCarta"]);
       }
       if(dataResponse.status == "Error"){/*

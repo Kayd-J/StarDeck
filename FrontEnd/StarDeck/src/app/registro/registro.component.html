@@ -1,7 +1,7 @@
 
-<div class="myform bg-dark">
+<div class="myform bg-dark" >
     <h1 class="text-center">Welcome to StarDeck!</h1>
-    <form id="registerForm"[formGroup]="registerForm" (ngSubmit)="submit()" (ngSubmit)="preview()"  >
+    <form id="registerForm"[formGroup]="registerForm"  (ngSubmit)="submit(registerForm.value)"  >
         <!-- Foto de perfil -->
         <div class="text-center">
             
@@ -17,17 +17,17 @@
         <div >
                 <div class="form-group">
                     <label for="txtcode">Username</label>
-                    <input type="text" id="txtcode" class="form-control" formControlName = "nombrecarta"/>
+                    <input type="text" id="txtcode" class="form-control" formControlName = "usuario"/>
             </div>
         </div>
         <!-- Nacionalidad -->
         <div >
             <div class="form-group">
                 <label>Nationality</label>
-                <select class="form-control" formControlName = "raza">
-                    <option>Pais 1</option>
-                    <option>Pais 2</option>
-                    <option>Pais 3</option>
+                <select class="form-control" formControlName = "nacionalidad">
+                    <option>Costa Rica</option>
+                    <option>Estados Unidos</option>
+                    <option>Mexico</option>
                 </select>
             </div>
         </div> 
@@ -35,14 +35,14 @@
         <div >
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" formControlName = "costo"/>
+                    <input type="text" class="form-control" formControlName = "nombre"/>
                 </div>
         </div>
         <!-- Last Name -->
         <div >
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" formControlName = "energia"/>
+                    <input type="text" class="form-control" formControlName = "apellidos"/>
                 </div>
         </div>
         <!-- Password -->
@@ -50,21 +50,21 @@
         <div >
             <div class="form-group">
                 <label>Password</label>
-                <input type="text" class="form-control" formControlName = "energia"/>
+                <input type="text" class="form-control" formControlName = "pass" />
             </div>
         </div>
         <!-- Confirm Password -->
         <div >
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="text" class="form-control" formControlName = "energia"/>
+                <input type="text" class="form-control" />
             </div>
         </div>
         <!-- Correo -->
         <div >
             <div class="form-group">
                 <label>Correo</label>
-                <input type="text" class="form-control" formControlName = "energia"/>
+                <input type="text" class="form-control" formControlName = "correo"/>
             </div>
         </div>
         <div class="row" >

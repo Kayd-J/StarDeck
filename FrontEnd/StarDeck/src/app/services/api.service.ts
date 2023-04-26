@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Login } from '../models/login'
+import { IdForm } from '../models/id-form'
+import { Jugador } from '../models/jugador'
 import { StatusI } from '../models/status-i'
 
 @Injectable({
@@ -35,5 +37,7 @@ export class ApiService {
     let direccion = this.url + "/Admin/Login";
     return this.http.post<StatusI>(direccion, form);
   }
+
+  
 }
 

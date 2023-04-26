@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegistroService } from '../services/registro.service';
+import { StatusI } from '../models/status-i';
+import { from } from 'rxjs';
+import { Jugador } from '../models/jugador';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro',
@@ -8,21 +13,35 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  @Input() nuevoJugador?: Jugador;
+
+  constructor(private api:RegistroService,private http : HttpClient) { }
 
   imageUrl = ""
 
   ngOnInit(): void {
   }
+  
+  loginForm = new FormGroup({
+    usuario : new FormControl('', [Validators.required]),
+    password : new FormControl('', Validators.required)
+  })
 
   registerForm=new FormGroup({
-    userName:new FormControl(),
+    id:new FormControl(),
+    usuario:new FormControl(),
+    pass:new FormControl(),
+    nombre:new FormControl(),
+    apellidos:new FormControl(),
     nacionalidad:new FormControl(),
-    name:new FormControl(),
-    lastName:new FormControl(),
-    password:new FormControl(),
     correo:new FormControl(),
-    disponibilidad:new FormControl(),
+    estadodecuenta:new FormControl(),
+    avatar:new FormControl(),
+    paisesId:new FormControl(),
+  });
+
+  idForm=new FormGroup({
+    id:new FormControl(),
   })
 
   password = "password"
@@ -42,16 +61,54 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  preview(){
-    this.lastName = this.registerForm.value.lastName
-    this.nacionalidad = this.registerForm.value.nacionalidad
-    this.password = this.registerForm.value.password
-    this.name = this.registerForm.value.name
-    this.correo = this.registerForm.value.correo
-    this.estado = this.registerForm.value.disponibilidad
+  generateJugador(form:any){
+    //Convierte del Form al Jugador class
+    this.nuevoJugador = new Jugador();
+    this.nuevoJugador.id = form.id;
+    this.nuevoJugador.usuario = form.usuario;
+    this.nuevoJugador.pass = form.pass;
+    this.nuevoJugador.nombre = form.nombre;
+    this.nuevoJugador.apellidos = form.apellidos;
+    this.nuevoJugador.nacionalidad = form.nacionalidad;
+    this.nuevoJugador.correo = form.correo;
+    this.nuevoJugador.avatar = form.avatar;
+    this.nuevoJugador.paisesId = form.paisesId;
+
+    return this.nuevoJugador;
   }
-  submit(){
+  
+  jugadorExiste = false;
+
+  submit(form:any){
+    form.id =  Math.floor(Math.random() * (900000000 - 3 + 1) + 3); //asignar un ID random
+    form.estadodecuenta = true;
+    form.avatar=0;
+    form.paisesId= 1;
+
+    
+
     console.log(this.registerForm.value)
+    try{
+      this.api.getUserbyID(form.id).subscribe(data =>{
+        let jugador:Jugador[] = data;
+        if (jugador.length >0){//verifica que no hayan jugadores con el mismo ID
+          this.jugadorExiste = true;
+          this.submit(form)//Llamada recursiva que genera otro ID
+        }
+      })
+
+    }catch(Error){
+      this.jugadorExiste = false;
+      console.log("no habia otro id asi")
+    }
+
+    if(this.jugadorExiste == false){
+      this.generateJugador(form);
+          return this.http.post<Jugador[]>(`api/Jugadores/PostJugador`,this.nuevoJugador);
+    }
+    else{return}
+
+
   }
 
 }
