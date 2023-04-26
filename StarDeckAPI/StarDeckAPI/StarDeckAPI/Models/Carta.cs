@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace StarDeckAPI.Models;
 
-public partial class Carta
+public class Carta
 {
-    public string Idcarta { get; set; }
+    public string Id { get; set; }
 
     public int Energia { get; set; }
 
@@ -22,10 +22,7 @@ public partial class Carta
 
     public bool Disponibilidad { get; set; }
 
-    public int Idadmin { get; set; }
-
     public string Imagen { get; set; } = null!;
 
-    [JsonIgnore]
-    public virtual Administrador IdadminNavigation { get; set; } = null!;
+    public Administrador Administradores { get; set; }
 }

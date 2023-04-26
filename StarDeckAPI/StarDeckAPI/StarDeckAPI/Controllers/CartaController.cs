@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StarDeckAPI.Data;
 using StarDeckAPI.Models;
 
 namespace StarDeckAPI.Controllers
@@ -8,9 +9,9 @@ namespace StarDeckAPI.Controllers
     [ApiController]
     public class CartaController : Controller
     {
-        private readonly StarDeckContext _context;
+        private readonly DataContext _context;
 
-        public CartaController(StarDeckContext context)
+        public CartaController(DataContext context)
         {
             _context = context;
         }
@@ -46,7 +47,7 @@ namespace StarDeckAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CartaExists(carta.Idcarta))
+                if (!CartaExists(carta.Id))
                 {
                     return NotFound();
                 }
@@ -74,7 +75,7 @@ namespace StarDeckAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CartaExists(carta.Idcarta))
+                if (CartaExists(carta.Id))
                 {
                     return Conflict();
                 }
@@ -84,7 +85,7 @@ namespace StarDeckAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCarta", new { id = carta.Idcarta }, carta);
+            return CreatedAtAction("GetCarta", new { id = carta.Id }, carta);
         }
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace StarDeckAPI.Controllers
         /// <returns>si carta existe o no</returns>
         private bool CartaExists(string ID)
         {
-            return _context.Cartas.Any(e => e.Idcarta == ID);
+            return _context.Cartas.Any(e => e.Id == ID);
         }
     }
 

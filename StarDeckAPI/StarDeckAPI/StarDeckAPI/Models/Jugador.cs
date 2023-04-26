@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 
 namespace StarDeckAPI.Models;
 
-public partial class Jugador
+public class Jugador
 {
-    public string Idjugador { get; set; }
+    public string Id { get; set; }
 
     public string Usuario { get; set; } = null!;
 
@@ -25,7 +25,5 @@ public partial class Jugador
 
     public int Avatar { get; set; }
 
-    public int Idpais { get; set; }
-  
-    public virtual Paises IdpaisNavigation { get; set; } = null!;
+    public List<Paises> Paises { get; set;}
 }

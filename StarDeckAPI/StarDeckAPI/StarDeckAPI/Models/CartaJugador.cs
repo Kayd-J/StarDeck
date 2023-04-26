@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StarDeckAPI.Models;
 
-public partial class CartaJugador
+public class CartaJugador
 {
     public string Idcarta { get; set; }
 
@@ -12,9 +12,7 @@ public partial class CartaJugador
 
     public int Cantidad { get; set; }
 
-    [JsonIgnore]
     public virtual Carta IdcartaNavigation { get; set; } = null!;
 
-    [JsonIgnore]
     public virtual Jugador IdjugadorNavigation { get; set; } = null!;
 }

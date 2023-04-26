@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace StarDeckAPI.Models;
 
-public partial class Administrador
+public class Administrador
 {
-    public int Idadmin { get; set; }
+    public string Id { get; set; }
 
     public string Nombre { get; set; } = null!;
 
@@ -16,6 +18,5 @@ public partial class Administrador
 
     public string Pass { get; set; } = null!;
 
-    [JsonIgnore]
-    public virtual ICollection<Carta> Cartas { get; set; } = new List<Carta>();
+    public List<Carta> Cartas { get; set; }
 }

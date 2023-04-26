@@ -6,10 +6,7 @@ namespace StarDeckAPI.Models;
 
 public partial class Paises
 {
-    public int Idpais { get; set; }
-
-    public string Pais { get; set; } = null!;
-
-    [JsonIgnore]
-    public virtual ICollection<Jugador> Jugadores { get; set; } = new List<Jugador>();
+    public string Id { get; set; }
+    public string pais { get; set; }
+    public Jugador Jugadores { get; set; }
 }

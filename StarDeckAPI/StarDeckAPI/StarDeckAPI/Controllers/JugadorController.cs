@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
+using StarDeckAPI.Data;
 using StarDeckAPI.Models;
 
 namespace StarDeckAPI.Controllers
@@ -11,9 +12,9 @@ namespace StarDeckAPI.Controllers
     [ApiController]
     public class JugadorController : ControllerBase
     {
-        private readonly StarDeckContext _context;
+        private readonly DataContext _context;
 
-        public JugadorController(StarDeckContext context)
+        public JugadorController(DataContext context)
         {
             _context = context;
         }
@@ -64,7 +65,7 @@ namespace StarDeckAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!JugadorExists(jugador.Idjugador))
+                if (!JugadorExists(jugador.Id))
                 {
                     return NotFound();
                 }
@@ -92,7 +93,7 @@ namespace StarDeckAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (JugadorExists(jugador.Idjugador))
+                if (JugadorExists(jugador.Id))
                 {
                     return Conflict();
                 }
@@ -102,7 +103,7 @@ namespace StarDeckAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetJugador", new { id = jugador.Idjugador }, jugador);
+            return CreatedAtAction("GetJugador", new { id = jugador.Id }, jugador);
         }
         /// <summary>
         /// Revision de login de jugador
@@ -114,7 +115,7 @@ namespace StarDeckAPI.Controllers
 
         public async Task<ActionResult<Login>> PostLogin(Auth auth)
         {
-            var result = _context.Jugadores.Any(e => e.Correo == auth.Usuario && e.Pass == auth.Password);
+            var result = _context.Jugadores.Any(e => e.Usuario == auth.Usuario && e.Pass == auth.Password);
 
             var status = new Login { Status = "Ok" };
 
@@ -155,7 +156,7 @@ namespace StarDeckAPI.Controllers
         /// <returns>existencia de un cliente</returns>
         private bool JugadorExists(string id)
         {
-            return _context.Jugadores.Any(e => e.Idjugador == id);
+            return _context.Jugadores.Any(e => e.Id == id);
         }
     }
 }
