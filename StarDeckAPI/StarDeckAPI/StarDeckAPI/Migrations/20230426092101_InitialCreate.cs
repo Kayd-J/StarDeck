@@ -37,25 +37,6 @@ namespace StarDeckAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Jugadores",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pass = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nacionalidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Estadodecuenta = table.Column<bool>(type: "bit", nullable: false),
-                    Avatar = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Jugadores", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Login",
                 columns: table => new
                 {
@@ -63,6 +44,18 @@ namespace StarDeckAPI.Migrations
                 },
                 constraints: table =>
                 {
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Paises",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    pais = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Paises", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,22 +85,28 @@ namespace StarDeckAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Paises",
+                name: "Jugadores",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    pais = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    JugadoresId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pass = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nacionalidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estadodecuenta = table.Column<bool>(type: "bit", nullable: false),
+                    Avatar = table.Column<int>(type: "int", nullable: false),
+                    paisesId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Paises", x => x.Id);
+                    table.PrimaryKey("PK_Jugadores", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Paises_Jugadores_JugadoresId",
-                        column: x => x.JugadoresId,
-                        principalTable: "Jugadores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Jugadores_Paises_paisesId",
+                        column: x => x.paisesId,
+                        principalTable: "Paises",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -145,9 +144,9 @@ namespace StarDeckAPI.Migrations
                 column: "AdministradoresId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Paises_JugadoresId",
-                table: "Paises",
-                column: "JugadoresId");
+                name: "IX_Jugadores_paisesId",
+                table: "Jugadores",
+                column: "paisesId");
         }
 
         /// <inheritdoc />
@@ -163,9 +162,6 @@ namespace StarDeckAPI.Migrations
                 name: "Login");
 
             migrationBuilder.DropTable(
-                name: "Paises");
-
-            migrationBuilder.DropTable(
                 name: "Cartas");
 
             migrationBuilder.DropTable(
@@ -173,6 +169,9 @@ namespace StarDeckAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "Administradores");
+
+            migrationBuilder.DropTable(
+                name: "Paises");
         }
     }
 }

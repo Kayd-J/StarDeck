@@ -14,7 +14,7 @@ namespace StarDeckAPI.Data
 
         public DbSet<Jugador> Jugadores { get; set; }
 
-        public DbSet<Pais> Paises { get; set; }
+        public DbSet<Paises> Paises { get; set; }
 
         public DbSet<Auth> Auth { get; set; }
 

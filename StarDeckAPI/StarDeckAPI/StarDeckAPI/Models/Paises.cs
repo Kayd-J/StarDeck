@@ -8,5 +8,5 @@ public partial class Paises
 {
     public string Id { get; set; }
     public string pais { get; set; }
-    public Jugador Jugadores { get; set; }
+    public List<Jugador> Jugadores { get; set; } = null!;
 }

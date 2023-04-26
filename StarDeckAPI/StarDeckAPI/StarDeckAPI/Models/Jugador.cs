@@ -25,7 +25,7 @@ public class Jugador
 
     public int Avatar { get; set; }
 
-    public List<Pais> Paises { get; set; } = null!;
+    public Paises paises { get; set; } = null!;
 
     public List<Carta> cartas { get; set; } = null!;
 }

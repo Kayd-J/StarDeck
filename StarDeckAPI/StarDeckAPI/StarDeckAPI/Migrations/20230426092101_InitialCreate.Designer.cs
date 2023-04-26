@@ -11,7 +11,7 @@ using StarDeckAPI.Data;
 namespace StarDeckAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230426090913_InitialCreate")]
+    [Migration("20230426092101_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -167,18 +167,19 @@ namespace StarDeckAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("paisesId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("paisesId");
 
                     b.ToTable("Jugadores");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Pais", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Paises", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("JugadoresId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("pais")
@@ -186,8 +187,6 @@ namespace StarDeckAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("JugadoresId");
 
                     b.ToTable("Paises");
                 });
@@ -218,15 +217,13 @@ namespace StarDeckAPI.Migrations
                     b.Navigation("Administradores");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Pais", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Jugador", b =>
                 {
-                    b.HasOne("StarDeckAPI.Models.Jugador", "Jugadores")
-                        .WithMany("Paises")
-                        .HasForeignKey("JugadoresId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("StarDeckAPI.Models.Paises", "paises")
+                        .WithMany("Jugadores")
+                        .HasForeignKey("paisesId");
 
-                    b.Navigation("Jugadores");
+                    b.Navigation("paises");
                 });
 
             modelBuilder.Entity("StarDeckAPI.Models.Admin", b =>
@@ -234,9 +231,9 @@ namespace StarDeckAPI.Migrations
                     b.Navigation("Cartas");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Jugador", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Paises", b =>
                 {
-                    b.Navigation("Paises");
+                    b.Navigation("Jugadores");
                 });
 #pragma warning restore 612, 618
         }
