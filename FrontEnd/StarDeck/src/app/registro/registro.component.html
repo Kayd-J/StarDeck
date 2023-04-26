@@ -1,34 +1,81 @@
+
 <div class="myform bg-dark">
     <h1 class="text-center">Welcome to StarDeck!</h1>
-    <form>
-        <div class="mb-3 mt-4">
-            <label for="inputNameTag" class="form-label">Nickname</label>
-            <input type="email" class="form-control" id="inputNameTag" aria-describedby="emailHelp">
+    <form id="registerForm"[formGroup]="registerForm" (ngSubmit)="submit()" (ngSubmit)="preview()"  >
+        <!-- Foto de perfil -->
+        <div class="text-center">
+            
+            <img [src]="imageUrl" width="200" height="200"  class="col">
         </div>
-        <div class="mb-3 mt-4">
-            <label for="inputNationality" class="form-label">Nationality</label>
-            <input type="email" class="form-control" id="inputNationality" aria-describedby="emailHelp">
+        <div >
+            <label>Profile Pic </label>
+            <div class="form-group">
+                <input type="file" (change)="onselectImage($event)">
+            </div>
         </div>
-        <div class="mb-3 mt-4">
-            <label for="inputFName" class="form-label">First Name</label>
-            <input type="email" class="form-control" id="inputFName" aria-describedby="emailHelp">
+        <!-- Username -->
+        <div >
+                <div class="form-group">
+                    <label for="txtcode">Username</label>
+                    <input type="text" id="txtcode" class="form-control" formControlName = "nombrecarta"/>
+            </div>
         </div>
-        <div class="mb-3 mt-4">
-            <label for="inputLName" class="form-label">Last Name</label>
-            <input type="email" class="form-control" id="inputLName" aria-describedby="emailHelp">
+        <!-- Nacionalidad -->
+        <div >
+            <div class="form-group">
+                <label>Nationality</label>
+                <select class="form-control" formControlName = "raza">
+                    <option>Pais 1</option>
+                    <option>Pais 2</option>
+                    <option>Pais 3</option>
+                </select>
+            </div>
+        </div> 
+        <!-- Name -->
+        <div >
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName = "costo"/>
+                </div>
         </div>
-        <div class="mb-3 mt-4">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <!-- Last Name -->
+        <div >
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" formControlName = "energia"/>
+                </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+        <!-- Password -->
+
+        <div >
+            <div class="form-group">
+                <label>Password</label>
+                <input type="text" class="form-control" formControlName = "energia"/>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="inputPassword1" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="inputPassword1">
+        <!-- Confirm Password -->
+        <div >
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="text" class="form-control" formControlName = "energia"/>
+            </div>
         </div>
-        <button type="submit" class="btn btn-light mt-3">Register</button>
+        <!-- Correo -->
+        <div >
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="text" class="form-control" formControlName = "energia"/>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col">
+                <button type="preview">Clear</button>
+            </div>
+            <div class="col">
+                <button type="submit" >Register</button>
+            </div>
+          </div>
+       
     </form>
-</div>
+  </div>
+  <router-outlet></router-outlet>
