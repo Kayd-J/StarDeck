@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Carta } from '../models/carta';
 
 
@@ -15,7 +15,8 @@ export class CartaService {
 
   public addCarta(carta: Carta): Observable<Carta[]>{
     return this.http.post<Carta[]>(
-      `${environment.apiURL}/${this.url}`, carta
+      `${environment.apiURL}/${this.url}`,
+       carta
     );
   }
 

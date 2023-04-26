@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, EventEmitter, Output  } from '@angular/core';
 import { CartaService } from '../services/carta.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Carta } from '../models/carta';
 
 @Component({
   selector: 'app-crear-carta',
@@ -9,30 +9,26 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./crear-carta.component.css']
 })
 export class CrearCartaComponent implements OnInit {
+  @Input() carta? : Carta;
+  @Output() cartaActualizadas = new EventEmitter<Carta[]>();
 
-  constructor() { }
+ 
+
+  constructor(private cartaService: CartaService) { }
+
 
   imageUrl = ""
 
   ngOnInit(): void {
   }
 
-  cartaForm=new FormGroup({
-    idcarta:new FormControl(),
-    energia:new FormControl(),
-    raza:new FormControl(),
-    costo:new FormControl(),
-    nombrecarta:new FormControl(),
-    tipo:new FormControl(),
-    disponibilidad:new FormControl(),
-  })
-
-  nombrecarta = "Null"
-  costo = "0"
-  energia = "0"
-  raza = "Humano"
-  rareza = "basico"
-  estado = false
+  nombrecarta: string = "Vulkan"
+  costo: number = 0
+  energia: number = 0
+  raza: string = "Humano"
+  rareza: string = "basico"
+  descripcion: string = "Esto es una carta"
+  estado: boolean = false
   
   onselectImage(e: any){
     if(e.target.files){
@@ -44,16 +40,11 @@ export class CrearCartaComponent implements OnInit {
     }
   }
 
-  preview(){
-    this.costo = this.cartaForm.value.costo
-    this.energia = this.cartaForm.value.energia
-    this.nombrecarta = this.cartaForm.value.nombrecarta
-    this.raza = this.cartaForm.value.raza
-    this.rareza = this.cartaForm.value.tipo
-    this.estado = this.cartaForm.value.disponibilidad
-  }
-  submit(){
-    console.log(this.cartaForm.value)
+
+  submit(carta: Carta){
+    this.cartaService
+    .addCarta(carta)
+    .subscribe((carta: Carta[]) => this.cartaActualizadas.emit(carta));
   }
 
 }
