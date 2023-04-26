@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace StarDeckAPI.Models;
@@ -25,5 +26,6 @@ public partial class Carta
 
     public string Imagen { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual Administrador IdadminNavigation { get; set; } = null!;
 }

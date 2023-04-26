@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace StarDeckAPI.Models;
 
@@ -24,6 +26,6 @@ public partial class Jugador
     public int Avatar { get; set; }
 
     public int Idpais { get; set; }
-
+  
     public virtual Paises IdpaisNavigation { get; set; } = null!;
 }

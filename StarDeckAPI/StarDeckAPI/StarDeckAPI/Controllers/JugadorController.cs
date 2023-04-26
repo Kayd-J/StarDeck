@@ -26,7 +26,7 @@ namespace StarDeckAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Jugador>>> GetJugadores()
         {
-            return await _context.Jugadors.ToListAsync();
+            return await _context.Jugadores.ToListAsync();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace StarDeckAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Jugador>> GetJugador(int id)
         {
-            var jugador = await _context.Jugadors.FindAsync(id);
+            var jugador = await _context.Jugadores.FindAsync(id);
 
             if (jugador == null)
             {
@@ -85,7 +85,7 @@ namespace StarDeckAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Jugador>> PostJugador(Jugador jugador)
         {
-            _context.Jugadors.Add(jugador);
+            _context.Jugadores.Add(jugador);
             try
             {
                 await _context.SaveChangesAsync();
@@ -114,7 +114,7 @@ namespace StarDeckAPI.Controllers
 
         public async Task<ActionResult<Login>> PostLogin(Auth auth)
         {
-            var result = _context.Jugadors.Any(e => e.Correo == auth.Usuario && e.Pass == auth.Password);
+            var result = _context.Jugadores.Any(e => e.Correo == auth.Usuario && e.Pass == auth.Password);
 
             var status = new Login { Status = "Ok" };
 
@@ -137,13 +137,13 @@ namespace StarDeckAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJugador(string id)
         {
-            var jugador = await _context.Jugadors.FindAsync(id);
+            var jugador = await _context.Jugadores.FindAsync(id);
             if (jugador == null)
             {
                 return NotFound();
             }
 
-            _context.Jugadors.Remove(jugador);
+            _context.Jugadores.Remove(jugador);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -155,7 +155,7 @@ namespace StarDeckAPI.Controllers
         /// <returns>existencia de un cliente</returns>
         private bool JugadorExists(string id)
         {
-            return _context.Jugadors.Any(e => e.Idjugador == id);
+            return _context.Jugadores.Any(e => e.Idjugador == id);
         }
     }
 }

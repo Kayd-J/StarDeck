@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace StarDeckAPI.Models;
@@ -15,5 +16,6 @@ public partial class Administrador
 
     public string Pass { get; set; } = null!;
 
-    public virtual ICollection<Carta> Carta { get; set; } = new List<Carta>();
+    [JsonIgnore]
+    public virtual ICollection<Carta> Cartas { get; set; } = new List<Carta>();
 }

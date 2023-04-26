@@ -18,13 +18,13 @@ namespace StarDeckAPI.Controllers
         [HttpGet("Get")]
         public async Task<ActionResult<List<Carta>>> GetCartas()
         {
-            return Ok(await _context.Carta.ToListAsync());
+            return Ok(await _context.Cartas.ToListAsync());
         }
 
         [HttpGet("ID")]
         public async Task<ActionResult<Carta>> GetCarta(string ID)
         {
-            var carta = await _context.Carta.FindAsync(ID);
+            var carta = await _context.Cartas.FindAsync(ID);
             if (carta == null)
                 return NotFound("Lo sentimos, la carta no existe");
             return Ok(carta);
@@ -67,7 +67,7 @@ namespace StarDeckAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Carta>> PostCarta(Carta carta)
         {
-            _context.Carta.Add(carta);
+            _context.Cartas.Add(carta);
             try
             {
                 await _context.SaveChangesAsync();
@@ -95,13 +95,13 @@ namespace StarDeckAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCarta(string id)
         {
-            var carta = await _context.Carta.FindAsync(id);
+            var carta = await _context.Cartas.FindAsync(id);
             if (carta == null)
             {
                 return NotFound();
             }
 
-            _context.Carta.Remove(carta);
+            _context.Cartas.Remove(carta);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -113,7 +113,7 @@ namespace StarDeckAPI.Controllers
         /// <returns>si carta existe o no</returns>
         private bool CartaExists(string ID)
         {
-            return _context.Carta.Any(e => e.Idcarta == ID);
+            return _context.Cartas.Any(e => e.Idcarta == ID);
         }
     }
 

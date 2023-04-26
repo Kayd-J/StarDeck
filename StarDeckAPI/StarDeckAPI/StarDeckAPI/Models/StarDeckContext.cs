@@ -6,22 +6,18 @@ namespace StarDeckAPI.Models;
 
 public partial class StarDeckContext : DbContext
 {
-    public StarDeckContext()
-    {
-    }
+    public StarDeckContext(){ }
 
     public StarDeckContext(DbContextOptions<StarDeckContext> options)
-        : base(options)
-    {
-    }
+        : base(options){ }
 
-    public virtual DbSet<Administrador> Administradors { get; set; }
+    public virtual DbSet<Administrador> Administradores { get; set; }
 
-    public virtual DbSet<CartaJugador> CartaJugadors { get; set; }
+    public virtual DbSet<CartaJugador> CartaJugadores { get; set; }
 
-    public virtual DbSet<Carta> Carta { get; set; }
+    public virtual DbSet<Carta> Cartas { get; set; }
 
-    public virtual DbSet<Jugador> Jugadors { get; set; }
+    public virtual DbSet<Jugador> Jugadores { get; set; }
 
     public virtual DbSet<Paises> Paises { get; set; }
 
@@ -113,7 +109,7 @@ public partial class StarDeckContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("tipo");
 
-            entity.HasOne(d => d.IdadminNavigation).WithMany(p => p.Carta)
+            entity.HasOne(d => d.IdadminNavigation).WithMany(p => p.Cartas)
                 .HasForeignKey(d => d.Idadmin)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__CARTA__idadmin__7A3223E8");
@@ -156,7 +152,7 @@ public partial class StarDeckContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("usuario");
 
-            entity.HasOne(d => d.IdpaisNavigation).WithMany(p => p.Jugadors)
+            entity.HasOne(d => d.IdpaisNavigation).WithMany(p => p.Jugadores)
                 .HasForeignKey(d => d.Idpais)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__JUGADOR__idpais__793DFFAF");

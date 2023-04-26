@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace StarDeckAPI.Models;
@@ -9,5 +10,6 @@ public partial class Paises
 
     public string Pais { get; set; } = null!;
 
-    public virtual ICollection<Jugador> Jugadors { get; set; } = new List<Jugador>();
+    [JsonIgnore]
+    public virtual ICollection<Jugador> Jugadores { get; set; } = new List<Jugador>();
 }
