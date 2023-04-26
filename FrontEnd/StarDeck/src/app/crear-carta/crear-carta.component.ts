@@ -22,6 +22,18 @@ export class CrearCartaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cartaForm=new FormGroup({
+    id:new FormControl(),
+    energia:new FormControl(),
+    raza:new FormControl(),
+    costo:new FormControl(),
+    nombre:new FormControl(),
+    tipo:new FormControl(),
+    descripcion:new FormControl(),
+    disponibilidad:new FormControl(),
+    imagen:new FormControl(),
+  });
+
   nombrecarta: string = "Vulkan"
   costo: number = 0
   energia: number = 0

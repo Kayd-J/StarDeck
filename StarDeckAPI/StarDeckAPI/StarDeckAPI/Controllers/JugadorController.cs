@@ -43,6 +43,7 @@ namespace StarDeckAPI.Controllers
             if (jugador == null)
             {
                 return NotFound();
+
             }
 
             return jugador;

@@ -27,6 +27,20 @@ export class ApiService {
      console.log(direccion)
     return this.http.post<StatusI>(direccion, form);
   }
+
+  /**
+   *
+   * @param form Login
+   * @returns StatusI
+   * @description Funcion que se encarga de enviar los datos del formulario al servicio
+   */
+  
+  addJugador(form:Login):Observable<StatusI>{
+    let direccion = "/api/Jugadores/PostJugador";
+     console.log(form);
+     console.log(direccion)
+    return this.http.post<StatusI>(direccion, form);
+  }
   /**
    *
    * @param form LoginI

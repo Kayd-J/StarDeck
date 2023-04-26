@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from '../services/registro.service';
 import { StatusI } from '../models/status-i';
 import { from } from 'rxjs';
+import { ApiService } from '../services/api.service'
 import { Jugador } from '../models/jugador';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,7 +16,7 @@ export class RegistroComponent implements OnInit {
 
   @Input() nuevoJugador?: Jugador;
 
-  constructor(private api:RegistroService,private http : HttpClient) { }
+  constructor(private api:ApiService,private http : HttpClient) { }
 
   imageUrl = ""
 
@@ -40,9 +41,7 @@ export class RegistroComponent implements OnInit {
     paisesId:new FormControl(),
   });
 
-  idForm=new FormGroup({
-    id:new FormControl(),
-  })
+
 
   password = "password"
   lastName = "Apellido"
@@ -61,53 +60,21 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  generateJugador(form:any){
-    //Convierte del Form al Jugador class
-    this.nuevoJugador = new Jugador();
-    this.nuevoJugador.id = form.id;
-    this.nuevoJugador.usuario = form.usuario;
-    this.nuevoJugador.pass = form.pass;
-    this.nuevoJugador.nombre = form.nombre;
-    this.nuevoJugador.apellidos = form.apellidos;
-    this.nuevoJugador.nacionalidad = form.nacionalidad;
-    this.nuevoJugador.correo = form.correo;
-    this.nuevoJugador.avatar = form.avatar;
-    this.nuevoJugador.paisesId = form.paisesId;
-
-    return this.nuevoJugador;
-  }
   
   jugadorExiste = false;
 
   submit(form:any){
-    form.id =  Math.floor(Math.random() * (900000000 - 3 + 1) + 3); //asignar un ID random
+    form.id =  Math.floor(Math.random() * (900000000 - 3 + 1) + 3).toString(); //asignar un ID random
     form.estadodecuenta = true;
     form.avatar=0;
-    form.paisesId= 1;
-
-    
+    form.paisesId= "1";
 
     console.log(this.registerForm.value)
-    try{
-      this.api.getUserbyID(form.id).subscribe(data =>{
-        let jugador:Jugador[] = data;
-        if (jugador.length >0){//verifica que no hayan jugadores con el mismo ID
-          this.jugadorExiste = true;
-          this.submit(form)//Llamada recursiva que genera otro ID
-        }
-      })
 
-    }catch(Error){
-      this.jugadorExiste = false;
-      console.log("no habia otro id asi")
-    }
+    this.api.addJugador(form).subscribe(data=>{
+      let dataResponse:StatusI = data;
 
-    if(this.jugadorExiste == false){
-      this.generateJugador(form);
-          return this.http.post<Jugador[]>(`api/Jugadores/PostJugador`,this.nuevoJugador);
-    }
-    else{return}
-
+    })
 
   }
 
