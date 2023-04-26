@@ -35,7 +35,7 @@ namespace StarDeckAPI.Controllers
         /// </summary>
         /// <param name="Carta"></param>
         /// <returns>cambia datos de Carta</returns>
-        [HttpPut]
+        [HttpPut("PutCarta")]
         public async Task<IActionResult> PutCarta(Carta carta)
         {
 
@@ -65,7 +65,7 @@ namespace StarDeckAPI.Controllers
         /// </summary>
         /// <param name="Carta"></param>
         /// <returns>crea una carta <returns>
-        [HttpPost]
+        [HttpPost("PutCarta")]
         public async Task<ActionResult<Carta>> PostCarta(Carta carta)
         {
             _context.Cartas.Add(carta);

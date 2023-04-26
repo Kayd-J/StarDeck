@@ -24,7 +24,7 @@ namespace StarDeckAPI.Controllers
         /// GET: api/Clientes
         /// </summary>
         /// <returns>Datos de clientes</returns>
-        [HttpGet]
+        [HttpGet("GetJugador")]
         public async Task<ActionResult<IEnumerable<Jugador>>> GetJugadores()
         {
             return await _context.Jugadores.ToListAsync();
@@ -53,7 +53,7 @@ namespace StarDeckAPI.Controllers
         /// </summary>
         /// <param name="cliente"></param>
         /// <returns>Cambia datos de un cliente</returns>
-        [HttpPut]
+        [HttpPut("PutJugador")]
         public async Task<IActionResult> PutJugador(Jugador jugador)
         {
 
@@ -83,7 +83,7 @@ namespace StarDeckAPI.Controllers
         /// </summary>
         /// <param name="jugador"></param>
         /// <returns>Creacion de Jugador</returns>
-        [HttpPost]
+        [HttpPost("PostJugador")]
         public async Task<ActionResult<Jugador>> PostJugador(Jugador jugador)
         {
             _context.Jugadores.Add(jugador);
