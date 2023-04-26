@@ -11,7 +11,7 @@ using StarDeckAPI.Data;
 namespace StarDeckAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230426064850_InitialCreate")]
+    [Migration("20230426090913_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,7 +24,44 @@ namespace StarDeckAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("StarDeckAPI.Models.Administrador", b =>
+            modelBuilder.Entity("CartaJugador", b =>
+                {
+                    b.Property<string>("JugadoresId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("cartasId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("JugadoresId", "cartasId");
+
+                    b.HasIndex("cartasId");
+
+                    b.ToTable("CartaJugador");
+                });
+
+            modelBuilder.Entity("DetailTEC.Models.Auth", b =>
+                {
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Auth");
+                });
+
+            modelBuilder.Entity("DetailTEC.Models.Login", b =>
+                {
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Login");
+                });
+
+            modelBuilder.Entity("StarDeckAPI.Models.Admin", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -135,7 +172,7 @@ namespace StarDeckAPI.Migrations
                     b.ToTable("Jugadores");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Paises", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Pais", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -155,9 +192,24 @@ namespace StarDeckAPI.Migrations
                     b.ToTable("Paises");
                 });
 
+            modelBuilder.Entity("CartaJugador", b =>
+                {
+                    b.HasOne("StarDeckAPI.Models.Jugador", null)
+                        .WithMany()
+                        .HasForeignKey("JugadoresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StarDeckAPI.Models.Carta", null)
+                        .WithMany()
+                        .HasForeignKey("cartasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StarDeckAPI.Models.Carta", b =>
                 {
-                    b.HasOne("StarDeckAPI.Models.Administrador", "Administradores")
+                    b.HasOne("StarDeckAPI.Models.Admin", "Administradores")
                         .WithMany("Cartas")
                         .HasForeignKey("AdministradoresId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -166,7 +218,7 @@ namespace StarDeckAPI.Migrations
                     b.Navigation("Administradores");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Paises", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Pais", b =>
                 {
                     b.HasOne("StarDeckAPI.Models.Jugador", "Jugadores")
                         .WithMany("Paises")
@@ -177,7 +229,7 @@ namespace StarDeckAPI.Migrations
                     b.Navigation("Jugadores");
                 });
 
-            modelBuilder.Entity("StarDeckAPI.Models.Administrador", b =>
+            modelBuilder.Entity("StarDeckAPI.Models.Admin", b =>
                 {
                     b.Navigation("Cartas");
                 });

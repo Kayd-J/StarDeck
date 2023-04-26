@@ -6,8 +6,9 @@ namespace StarDeckAPI.Models;
 
 public class CartaJugador
 {
+    public int Cantidad { get; set; }
     public string CartaId { get; set; }
     public string JugadorId { get; set; }
-    public int Cantidad { get; set; }
+    
 
 }
