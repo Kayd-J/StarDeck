@@ -41,6 +41,13 @@ export class ApiService {
      console.log(direccion)
     return this.http.post<StatusI>(direccion, form);
   }
+
+  addCarta(form:Login):Observable<StatusI>{
+    let direccion = "/api/Cartas/PostCarta";
+     console.log(form);
+     console.log(direccion)
+    return this.http.post<StatusI>(direccion, form);
+  }
   /**
    *
    * @param form LoginI

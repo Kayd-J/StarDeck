@@ -3,51 +3,55 @@
     
     <div class="col-sm offset-lg-1">
         <h2>Herramienta para crear cartas</h2> 
-        <div >
+        <form [formGroup]="cartaForm" (ngSubmit)="submit(cartaForm.value)">
             <div>
              <div class="col-md-3 offset-lg-1">
                   <label for="txtcode">Nombre de la carta</label>
-                  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="nombrecarta" >
+                  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="nombre" formControlName="nombre" >
              </div>
           </div>
          <div>
               <div class="col-md-3 offset-lg-1">
                     <label for="txtcode">Costo</label>
-                  <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="0" max="100"[(ngModel)]="costo">
+                  <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="0" max="100"[(ngModel)]="costo" formControlName="costo">
               </div>
            </div>
          <div>
              <div class="col-md-3 offset-lg-1">
                  <label for="txtcode">Energia</label>
-                  <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="-100" max="100"[(ngModel)]="energia">
+                  <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="-100" max="100"[(ngModel)]="energia" formControlName="energia">
               </div>
            </div>
           <div>
              <div class="col-md-3 offset-lg-1">
                   <label>Raza</label>
-                    <select class="form-control" [(ngModel)]="raza">
-                        <option>Select</option>
+                    <select class="form-control" [(ngModel)]="raza" formControlName="raza">
+                        <option>raza 1</option>
+                        <option>raza 2</option>
+                        <option>raza 3</option>
                   </select>
              </div>
          </div>
             <div>
              <div class="col-md-3 offset-lg-1">
                     <label>Tipo</label>
-                 <select class="form-control" [(ngModel)]="rareza">
-                        <option>Select</option>
+                 <select class="form-control" [(ngModel)]="tipo" formControlName="tipo">
+                        <option>Tipo 1</option>
+                        <option>Tipo 2</option>
+                        <option>Tipo 3</option>
                  </select>
              </div>
          </div>
          <div>
              <div class="col-md-3 offset-lg-1">
                    <label for="txtcode">Descripcion</label>
-                   <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="descripcion">
+                   <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="descripcion" formControlName="descripcion">
               </div>
          </div>
             <div>
                 <div class="col-md-3 offset-lg-1">
                     <label for="txtcode">Habilitar carta</label>
-                 <input type="checkbox" class="form-check-input" [(ngModel)]="estado">
+                 <input type="checkbox" class="form-check-input" [(ngModel)]="disponibilidad" formControlName="disponibilidad">
                 </div>
          </div>
             <div>
@@ -61,12 +65,12 @@
                     <button  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
   <div class="col-sm">
       <div class = "row">
-        <label>{{estado}}</label>        
+        <label>{{disponibilidad}}</label>        
       </div>
       <div class="card" style="width: 18rem;">
         <img [src]="imageUrl" width="100%" height="180">
@@ -76,9 +80,9 @@
                     <h3><span class="badge bg-secondary">{{raza}}</span></h3>
                 </div>
                 <div class="col-sm">
-                    <h3><span class="badge bg-secondary">{{rareza}}</span></h3>
+                    <h3><span class="badge bg-secondary">{{tipo}}</span></h3>
                 </div>  
-          <h5 class="card-title">{{nombrecarta}}</h5>
+          <h5 class="card-title">{{nombre}}</h5>
           <p class="card-text">{{descripcion}}</p>
           <div class="row">
             <div class="col-sm">

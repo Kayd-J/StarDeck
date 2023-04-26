@@ -2,6 +2,8 @@ import { Component, Input, OnInit, EventEmitter, Output  } from '@angular/core';
 import { CartaService } from '../services/carta.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Carta } from '../models/carta';
+import { StatusI } from '../models/status-i';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-crear-carta',
@@ -14,7 +16,7 @@ export class CrearCartaComponent implements OnInit {
 
  
 
-  constructor(private cartaService: CartaService) { }
+  constructor(private api:ApiService) { }
 
 
   imageUrl = ""
@@ -32,15 +34,16 @@ export class CrearCartaComponent implements OnInit {
     descripcion:new FormControl(),
     disponibilidad:new FormControl(),
     imagen:new FormControl(),
+    administradoresId:new FormControl(),
   });
 
-  nombrecarta: string = "Vulkan"
+  nombre: string = "Vulkan"
   costo: number = 0
   energia: number = 0
   raza: string = "Humano"
-  rareza: string = "basico"
+  tipo: string = "basico"
   descripcion: string = "Esto es una carta"
-  estado: boolean = false
+  disponibilidad: boolean = false
   
   onselectImage(e: any){
     if(e.target.files){
@@ -53,10 +56,19 @@ export class CrearCartaComponent implements OnInit {
   }
 
 
-  submit(carta: Carta){
-    this.cartaService
-    .addCarta(carta)
-    .subscribe((carta: Carta[]) => this.cartaActualizadas.emit(carta));
+
+  submit(form:any){
+    form.id =  ("C-" + Math.floor(Math.random() * (900000000000 - 3 + 1) + 3)).toString(); //asignar un ID random
+    form.imagen = this.imageUrl
+    form.administradoresId = "1";
+
+    console.log(this.cartaForm.value)
+
+    this.api.addCarta(form).subscribe(data=>{
+      let dataResponse:StatusI = data;
+
+    })
+
   }
 
 }
