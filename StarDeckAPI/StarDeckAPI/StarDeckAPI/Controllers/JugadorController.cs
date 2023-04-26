@@ -36,7 +36,7 @@ namespace StarDeckAPI.Controllers
         /// <param name="id"></param>
         /// <returns>Datos de cliente especifico</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Jugador>> GetJugador(int id)
+        public async Task<ActionResult<Jugador>> GetJugador(string id)
         {
             var jugador = await _context.Jugadores.FindAsync(id);
 

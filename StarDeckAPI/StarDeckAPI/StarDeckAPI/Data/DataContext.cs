@@ -1,37 +1,34 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DetailTEC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace StarDeckAPI.Data
 {
     public class DataContext : DbContext
     {
 
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Administrador> Administradores { get; set; }
-
-
-        //public DbSet<CartaJugador> CartaJugadores { get; set; }
+        public DbSet<Admin> Administradores { get; set; } = null!;
 
         public DbSet<Carta> Cartas { get; set; }
 
         public DbSet<Jugador> Jugadores { get; set; }
 
-        public DbSet<Paises> Paises { get; set; }
+        public DbSet<Pais> Paises { get; set; }
 
-       // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Administrador>()
-        //        .HasKey(a => a.Id);
+        public DbSet<Auth> Auth { get; set; }
 
-        //    modelBuilder.Entity<Carta>()
-        //        .HasKey(a => a.Id);
+        public DbSet<Login> Login { get; set; }
 
-       //     modelBuilder.Entity<Jugador>()
-        //        .HasKey(a => a.Id);
-       //     modelBuilder.Entity<Paises>()
-        //        .HasKey(a => a.Id);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Auth>()
+                .HasNoKey();
 
-       // }
+            modelBuilder.Entity<Login>()
+                .HasNoKey();
+
+        }
+
     }
-
 }

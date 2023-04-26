@@ -6,13 +6,8 @@ namespace StarDeckAPI.Models;
 
 public class CartaJugador
 {
-    public string Idcarta { get; set; }
-
-    public string Idjugador { get; set; }
-
+    public string CartaId { get; set; }
+    public string JugadorId { get; set; }
     public int Cantidad { get; set; }
 
-    public virtual Carta IdcartaNavigation { get; set; } = null!;
-
-    public virtual Jugador IdjugadorNavigation { get; set; } = null!;
 }
