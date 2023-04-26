@@ -4,14 +4,14 @@
   <form>
       <div class="mb-3 mt-4">
           <label for="inputEmail" class="form-label">Username</label>
-          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"required autofocus #usernameInput>
+          <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"required autofocus formControlName="usuario">
       </div>
       <div class="mb-3">
           <label for="inputPassword" class="form-label">Password</label>
           <input type="password" class="form-control" id="inputPassword" required #passwordInput>
       </div>
-      <button type="submit" class="btn btn-light mt-3" href="#"
-      (click)="this.getLoginCredentials(usernameInput.value, passwordInput.value)">Login</button>
+      <button type="submit" class="btn btn-light mt-3"
+      (click)="">Login</button>
   </form>
 </div>
 
