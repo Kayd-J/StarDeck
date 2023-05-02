@@ -9,6 +9,9 @@ import { CrearCartaComponent } from './crear-carta/crear-carta.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
+import { CrearPlanetaComponent } from './crear-planeta/crear-planeta.component';
+import { MatchmakingComponent } from './matchmaking/matchmaking.component';
+import { CrearDeckComponent } from './crear-deck/crear-deck.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { MainPageComponent } from './main-page/main-page.component';
     LoginComponent,
     CrearCartaComponent,
     RegistroComponent,
-    MainPageComponent
+    MainPageComponent,
+    CrearPlanetaComponent,
+    MatchmakingComponent,
+    CrearDeckComponent
   ],
   imports: [
     BrowserModule,

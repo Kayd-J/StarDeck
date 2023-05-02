@@ -1,0 +1,68 @@
+
+<div class="row">
+    
+    <div class="col-sm offset-lg-1">
+        <h2>Herramienta para crear planeta</h2> 
+        <form [formGroup]="planetForm" (ngSubmit)="submit(planetForm.value)">
+        <div>
+             <div class="col-md-3 offset-lg-1">
+                  <label for="txtcode">Nombre del planeta</label>
+                  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="nombre" formControlName="nombre" >
+             </div>
+        </div>
+        <div>
+            <div class="col-md-3 offset-lg-1">
+                 <label for="txtcode">Habilidad</label>
+                 <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="habilidad" formControlName="habilidad" >
+            </div>
+       </div>
+            <div>
+             <div class="col-md-3 offset-lg-1">
+                    <label>Tipo</label>
+                 <select class="form-control" [(ngModel)]="tipo" formControlName="tipo">
+                        <option>Tipo 1</option>
+                        <option>Tipo 2</option>
+                        <option>Tipo 3</option>
+                 </select>
+             </div>
+         </div>
+         <div>
+             <div class="col-md-3 offset-lg-1">
+                   <label for="txtcode">Descripcion</label>
+                   <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="descripcion" formControlName="descripcion">
+              </div>
+         </div>
+            <div>
+                <div class="col-md-3 offset-lg-1">
+                    <label for="txtcode">Habilitar planeta</label>
+                 <input type="checkbox" class="form-check-input" [(ngModel)]="disponibilidad" formControlName="disponibilidad">
+                </div>
+         </div>
+            <div>
+             <div class="col-md-3 offset-lg-1">
+                  <label for="txtcode">Imagen</label>
+                 <input type="file" (change)="onselectImage($event)">
+                </div>
+            </div>
+            <div class="col-md-3 offset-lg-1">
+                <div>
+                    <button  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+  <div class="col-sm">
+
+    <img [src]="imageUrl" width="30%" height="300" class="col-sm" >
+    <div class="col-sm">
+    {{tipo}}
+    {{nombre}}
+    {{habilidad}}
+    {{descripcion}}
+    </div>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>
