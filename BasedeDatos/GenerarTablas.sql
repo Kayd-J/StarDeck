@@ -1,59 +1,76 @@
+CREATE TABLE AUTH(
+	Usuario VARCHAR(30) not null,
+	Password VARCHAR(30) not null
+);
+
+CREATE TABLE LOGIN(
+	Status VARCHAR(10) not null
+);
 
 CREATE TABLE JUGADORES(
 	Id int not null,
-	Usuario VARCHAR(20) not null,
-	Pass VARCHAR(20) not null,
-	Nombre VARCHAR(20) not null,
-	Apellidos VARCHAR(30) not null,
-	Nacionalidad VARCHAR(20) not null,
-	Correo VARCHAR(40) NOT NULL,
-	Estadodecuenta bit not null,
-	Avatar VARCHAR(1000) not null,
+	Usuario VARCHAR(20),
+	Pass VARCHAR(20),
+	Nombre VARCHAR(20),
+	Apellidos VARCHAR(30),
+	Nacionalidad VARCHAR(20),
+	Correo VARCHAR(40),
+	Estadodecuenta bit,
+	Avatar VARCHAR(1000),
 	paisesId int not null
 );
+
 CREATE TABLE CARTAS(
 	Id int not null,
-	Energia int not null,
-	Raza VARCHAR(20) not null,
-	Costo int not null,
-	Nombre VARCHAR(40) not null,
-	Tipo VARCHAR(20) not null,
-	Descripcion VARCHAR(1000) not null,
-	Disponibilidad bit not null,
-	Imagen VARCHAR(1000) not null,
+	Energia int,
+	Raza VARCHAR(20),
+	Costo int,
+	Nombre VARCHAR(40),
+	Tipo VARCHAR(20),
+	Descripcion VARCHAR(1000),
+	Disponibilidad bit,
+	Imagen VARCHAR(1000),
 	AdministradoresId int not null
 );
+
 CREATE TABLE ADMINISTRADORES(
 	Id int not null,
-	Nombre VARCHAR(20) not null,
-	Apellido VARCHAR(30) not null,
-	Correo VARCHAR(40) not null,
-	Pass VARCHAR(20) not null
+	Nombre VARCHAR(20),
+	Apellido VARCHAR(30),
+	Correo VARCHAR(40),
+	Pass VARCHAR(20)
 );
 
 CREATE TABLE PLANETAS(
 	Id VARCHAR(14) not null,
-	Nombre VARCHAR(20) not null,
-	Tipo VARCHAR(30) not null,
-	Descripcion VARCHAR(40) not null,
-	Estado int not null,
+	Nombre VARCHAR(20),
+	Tipo VARCHAR(30),
+	Descripcion VARCHAR(40),
+	Estado int,
 	AdministradoresId int not null
 );
 
-CREATE TABLE DECK(
-	Id VARCHAR(14) not null,
-	Nombre VARCHAR(20) not null,
+CREATE TABLE DECKS(
+	Id VARCHAR(14),
+	Nombre VARCHAR(20),
 	JugadoresId VARCHAR(14) not null
 );
 
-CREATE TABLE CARTA_JUGADOR(
+CREATE TABLE CARTAS_JUGADORES(
 	JugadoresId int not null,
-	cartasId int not null
+	cartasId int not null,
+	Cantidad int
 );
 
 CREATE TABLE PAISES(
 	Id int not null,
 	pais VARCHAR(30) not null
+);
+
+CREATE TABLE ATRIBUTOS_CARTAS(
+  attribute_id INT PRIMARY KEY,
+  attribute_name VARCHAR(50),
+  description VARCHAR(255),
 );
 
 /*Se agregan las llaves primarias de cada tabla*/
