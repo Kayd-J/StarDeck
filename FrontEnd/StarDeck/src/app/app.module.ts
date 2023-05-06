@@ -9,6 +9,8 @@ import { CrearCartaComponent } from './crear-carta/crear-carta.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
+import { MainJugadorComponent } from './main-jugador/main-jugador.component';
+import { MatchComponent } from './match/match.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MainPageComponent } from './main-page/main-page.component';
     LoginComponent,
     CrearCartaComponent,
     RegistroComponent,
-    MainPageComponent
+    MainPageComponent,
+    MainJugadorComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,

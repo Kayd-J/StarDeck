@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <!--CONTENEDOR GENERAL-->
+    <div class="row align-items-start">
+        <!--Columna para las estadisticas del juego-->
+        <div class="col-2" style="height: 100%; background-color: inherit;">
+            <!--Para la informacion del enemigo-->
+            <div class="row justify-content-center" style="margin: 5px;">
+                <p style="font-family: cursive; font-size: 20px;  color:blue">{{contrincante}}</p>
+                <div class="text-center">
+                    <img class="img-fluid" [src]="imgEnemy" width="150" height="150"  class="img-fluid" [border]="2">
+                </div>
+            </div>
+
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+
+            <!--Para el turno-->
+            <div class="row justify-content-center" style="margin: 5px;">
+                <p style="font-family: cursive; font-size: 20px;">Es el turno de:</p>
+                <p style="font-family: cursive; text-align: center; font-size: 30px;">{{ turno }}</p>
+
+                <hr style="border: 1px solid black; width: 90%; margin: auto;">
+                <hr style="border: 1px solid black; width: 90%; margin: auto;">
+                <!--Para el temporizador turno-->
+                <p style="font-family: cursive; font-size: 20px;">Fin del turno en:</p>
+                <p style="font-family: cursive; text-align: center; font-size: 30px;">{{ timeLeft }} s</p>
+
+            </div>
+
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+
+            <!--Para la informacion de jugador-->
+            <div class="row justify-content-center" style="margin: 5px;">
+                <p style="font-family: cursive; font-size: 20px; color:blue">{{jugador}}</p>
+                <div class="text-center">
+                    <img class="img-fluid" [src]="imgUser" width="150" height="150"  class="img-fluid" [border]="2">
+                </div>
+            </div>
+        </div>
+
+        <!--Division para el tablero de juegos y el deck de cartas-->
+        <div class="col-10 border" style=" height:635px">
+            <!--Division para el tablero-->
+            <div class="" style="width:100%; height:60%; background-image: url('assets/Images/wallhaven-0qpzjd_1920x1080.png');">
+                <div class="row justify-content-center border" style="width:100%; height:100%">
+                    <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 200px; height: 200px; margin: 100px">
+                        <p  style="font-family: cursive; font-size: 20px;">{{pName1}}</p>
+                    </div>
+                    <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 200px; height: 200px; margin: 100px">
+                        <p  style="font-family: cursive; font-size: 20px;">{{pName2}}</p>
+                    </div>
+                    <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 200px; height: 200px; margin: 100px">
+                        <p  style="font-family: cursive; font-size: 20px;">{{pName3}}</p>
+                    </div>
+                </div>
+                
+            </div>
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+            <hr style="border: 1px solid black; width: 90%; margin: auto;">
+            <!--Division para el deck de cartas-->
+            <div class="row justify-content-center border" style="width:100%; height:40%">
+                <div class="row justify-content-center">
+                    <div class="col-1" style="width: 100px; margin: 5px; background-color:white">
+                        <p  style="font-family: cursive; font-size: 20px;">Dinero: {{dinero}}</p>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl1" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza1}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo1}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre1}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion1}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo1}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia1}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl2" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza2}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo2}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre2}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion2}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo2}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia2}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl3" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza3}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo3}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre3}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion3}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo3}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia3}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl4" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza4}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo4}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre4}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion4}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo4}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia4}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl5" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza5}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo5}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre5}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion5}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo5}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia5}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl6" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza6}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo6}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre6}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion6}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo6}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia6}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 " style="width: 150px; margin: 5px">
+                        <div class="card" style="width: 140px; background-color:rgba(100, 100, 100, 0.103)">
+                            <img [src]="imageUrl7" width="100%" height="70">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{raza7}}</span></h3>
+                                    </div>
+                                    <div class="col-sm">
+                                        <h3><span class="badge bg-secondary" style="font-size: small;">{{tipo7}}</span></h3>
+                                    </div>  
+                                    <h5 class="card-title" style="font-size: small;">{{nombre7}}</h5>
+                                    <p class="card-text" style="font-size: small;">{{descripcion7}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{costo7}}</span></h3>
+                                        </div>
+                                        <div class="col-sm">
+                                            <h3><span class="badge bg-secondary" style="font-size: small;">{{energia7}}</span></h3>
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="node_modues/bootstrap/dist/js/bootstrap.mon.js"></script>
+</body>
+</html>
