@@ -1,54 +1,65 @@
+CREATE TABLE AUTH(
+	Usuario VARCHAR(30) not null,
+	Password VARCHAR(30) not null
+);
+
+CREATE TABLE LOGIN(
+	Status VARCHAR(10) not null
+);
 
 CREATE TABLE JUGADORES(
-	Id int not null,
-	Usuario VARCHAR(20) not null,
-	Pass VARCHAR(20) not null,
-	Nombre VARCHAR(20) not null,
-	Apellidos VARCHAR(30) not null,
-	Nacionalidad VARCHAR(20) not null,
-	Correo VARCHAR(40) NOT NULL,
-	Estadodecuenta bit not null,
-	Avatar VARCHAR(1000) not null,
+	Id VARCHAR(14) not null,
+	Usuario VARCHAR(20),
+	Pass VARCHAR(20),
+	Nombre VARCHAR(20),
+	Apellidos VARCHAR(30),
+	Nacionalidad VARCHAR(20),
+	Correo VARCHAR(40),
+	Estadodecuenta bit,
+	Avatar VARCHAR(1000),
 	paisesId int not null
 );
+
 CREATE TABLE CARTAS(
-	Id int not null,
-	Energia int not null,
-	Raza VARCHAR(20) not null,
-	Costo int not null,
-	Nombre VARCHAR(40) not null,
-	Tipo VARCHAR(20) not null,
-	Descripcion VARCHAR(1000) not null,
-	Disponibilidad bit not null,
-	Imagen VARCHAR(1000) not null,
+	Id VARCHAR(14) not null,
+	Energia int,
+	Raza VARCHAR(20),
+	Costo int,
+	Nombre VARCHAR(40),
+	Tipo VARCHAR(20),
+	Descripcion VARCHAR(1000),
+	Disponibilidad bit,
+	Imagen VARCHAR(1000),
 	AdministradoresId int not null
 );
+
 CREATE TABLE ADMINISTRADORES(
 	Id int not null,
-	Nombre VARCHAR(20) not null,
-	Apellido VARCHAR(30) not null,
-	Correo VARCHAR(40) not null,
-	Pass VARCHAR(20) not null
+	Nombre VARCHAR(20),
+	Apellido VARCHAR(30),
+	Correo VARCHAR(40),
+	Pass VARCHAR(20)
 );
 
 CREATE TABLE PLANETAS(
 	Id VARCHAR(14) not null,
-	Nombre VARCHAR(20) not null,
-	Tipo VARCHAR(30) not null,
-	Descripcion VARCHAR(40) not null,
-	Estado int not null,
+	Nombre VARCHAR(20),
+	Tipo VARCHAR(30),
+	Descripcion VARCHAR(40),
+	Estado int,
 	AdministradoresId int not null
 );
 
-CREATE TABLE DECK(
+CREATE TABLE DECKS(
 	Id VARCHAR(14) not null,
-	Nombre VARCHAR(20) not null,
+	Nombre VARCHAR(20),
 	JugadoresId VARCHAR(14) not null
 );
 
-CREATE TABLE CARTA_JUGADOR(
-	JugadoresId int not null,
-	cartasId int not null
+CREATE TABLE CARTAS_JUGADORES(
+	JugadoresId VARCHAR(14) not null,
+	cartasId VARCHAR(14) not null,
+	Cantidad int
 );
 
 CREATE TABLE PAISES(
@@ -69,7 +80,7 @@ ADD PRIMARY KEY(Id);
 ALTER TABLE PAISES
 ADD PRIMARY KEY(Id);
 
-ALTER TABLE DECK
+ALTER TABLE DECKS
 ADD PRIMARY KEY(Id);
 
 ALTER TABLE PLANETAS
@@ -83,14 +94,14 @@ ADD FOREIGN KEY (paisesId) REFERENCES PAISES(Id);
 ALTER TABLE CARTAS
 ADD FOREIGN KEY (AdministradoresId) REFERENCES ADMINISTRADORES(Id);
 
-ALTER TABLE CARTA_JUGADOR
+ALTER TABLE CARTAS_JUGADORES
 ADD FOREIGN KEY (cartasId) REFERENCES CARTAS(Id);
 
-ALTER TABLE CARTA_JUGADOR
+ALTER TABLE CARTAS_JUGADORES
 ADD FOREIGN KEY (JugadoresId) REFERENCES JUGADORES(Id);
 
-ALTER TABLE DECK
-ADD FOREIGN KEY (JugadoresId) REFERENCES JUGADORES(ID);
+ALTER TABLE DECKS
+ADD FOREIGN KEY (JugadoresId) REFERENCES JUGADORES(Id);
 
 ALTER TABLE PLANETAS
 ADD FOREIGN KEY (AdministradoresId) REFERENCES ADMINISTRADORES(Id);

@@ -1,7 +1,9 @@
-﻿namespace DetailTEC.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace StarDeckAPI.Models;
+
+public partial class Login
 {
-    public class Login
-    {
-        public string Status { get; set; } = null!;
-    }
+    public string Status { get; set; } = null!;
 }
