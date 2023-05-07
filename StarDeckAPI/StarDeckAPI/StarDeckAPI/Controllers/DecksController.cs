@@ -5,41 +5,41 @@ using StarDeckAPI.Models;
 
 namespace StarDeckAPI.Controllers
 {
-    [Route("api/Cartas")]
+    [Route("api/Decks")]
     [ApiController]
-    public class CartaController : Controller
+    public class DeckController : Controller
     {
         private readonly DataContext _context;
 
-        public CartaController(DataContext context)
+        public DeckController(DataContext context)
         {
             _context = context;
         }
 
-        [HttpGet("Get")]
-        public async Task<ActionResult<List<Cartas>>> GetCartas()
+        [HttpGet("GetDecks")]
+        public async Task<ActionResult<List<Decks>>> GetDecks()
         {
-            return Ok(await _context.Cartas.ToListAsync());
+            return Ok(await _context.Decks.ToListAsync());
         }
 
         [HttpGet("ID")]
-        public async Task<ActionResult<Cartas>> GetCarta(string ID)
+        public async Task<ActionResult<Decks>> GetDeck(string ID)
         {
-            var carta = await _context.Cartas.FindAsync(ID);
-            if (carta == null)
-                return NotFound("Lo sentimos, la carta no existe");
-            return Ok(carta);
+            var deck = await _context.Decks.FindAsync(ID);
+            if (deck == null)
+                return NotFound("Lo sentimos, el deck no existe");
+            return Ok(deck);
         }
         /// <summary>
         /// PUT: api/Carta
         /// </summary>
-        /// <param name="Carta"></param>
+        /// <param name="Deck"></param>
         /// <returns>cambia datos de Carta</returns>
-        [HttpPut("PutCarta")]
-        public async Task<IActionResult> PutCarta(Cartas carta)
+        [HttpPut("PutDecks")]
+        public async Task<IActionResult> PutDecks(Decks deck)
         {
 
-            _context.Entry(carta).State = EntityState.Modified;
+            _context.Entry(deck).State = EntityState.Modified;
 
             try
             {
@@ -47,7 +47,7 @@ namespace StarDeckAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CartaExists(carta.Id))
+                if (!DeckExists(deck.Id))
                 {
                     return NotFound();
                 }
@@ -61,21 +61,21 @@ namespace StarDeckAPI.Controllers
         }
 
         /// <summary>
-        /// POST: api/Carta
+        /// POST: api/Decks
         /// </summary>
-        /// <param name="Carta"></param>
-        /// <returns>crea una carta <returns>
-        [HttpPost("PostCarta")]
-        public async Task<ActionResult<Cartas>> PostCarta(Cartas carta)
+        /// <param name="Deck"></param>
+        /// <returns>crea una Deck <returns>
+        [HttpPost("PostDeck")]
+        public async Task<ActionResult<Decks>> PostDeck(Decks deck)
         {
-            _context.Cartas.Add(carta);
+            _context.Decks.Add(deck);
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
-                if (CartaExists(carta.Id))
+                if (DeckExists(deck.Id))
                 {
                     return Conflict();
                 }
@@ -85,36 +85,36 @@ namespace StarDeckAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetCarta", new { id = carta.Id }, carta);
+            return CreatedAtAction("GetDeck", new { id = deck.Id }, deck);
         }
 
         /// <summary>
-        /// DELETE: api/Carta/5
+        /// DELETE: api/Deck/5
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>borra Carta</returns>
+        /// <returns>borra Deck</returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCarta(string id)
+        public async Task<IActionResult> DeleteDeck(string id)
         {
-            var carta = await _context.Cartas.FindAsync(id);
-            if (carta == null)
+            var deck = await _context.Decks.FindAsync(id);
+            if (deck == null)
             {
                 return NotFound();
             }
 
-            _context.Cartas.Remove(carta);
+            _context.Decks.Remove(deck);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
         /// <summary>
-        /// Existencia de una carta
+        /// Existencia de un deck
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>si carta existe o no</returns>
-        private bool CartaExists(string ID)
+        /// <returns>si deck existe o no</returns>
+        private bool DeckExists(string ID)
         {
-            return _context.Cartas.Any(e => e.Id == ID);
+            return _context.Decks.Any(e => e.Id == ID);
         }
     }
 

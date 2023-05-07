@@ -1,4 +1,4 @@
-﻿using DetailTEC.Models;
+﻿using StarDeckAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace StarDeckAPI.Data
@@ -8,11 +8,14 @@ namespace StarDeckAPI.Data
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Administrador> Administradores { get; set; }
+        public DbSet<Administradores> Administradores { get; set; }
 
-        public DbSet<Carta> Cartas { get; set; }
+        public DbSet<Cartas> Cartas { get; set; }
 
-        public DbSet<Jugador> Jugadores { get; set; }
+        public DbSet<Planetas> Planetas { get; set; }
+        public DbSet<Decks> Decks { get; set; }
+
+        public DbSet<Jugadores> Jugadores { get; set; }
 
         public DbSet<Paises> Paises { get; set; }
 

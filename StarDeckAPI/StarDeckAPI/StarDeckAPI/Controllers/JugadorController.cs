@@ -1,4 +1,4 @@
-﻿using DetailTEC.Models;
+﻿using StarDeckAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +25,7 @@ namespace StarDeckAPI.Controllers
         /// </summary>
         /// <returns>Datos de clientes</returns>
         [HttpGet("GetJugador")]
-        public async Task<ActionResult<IEnumerable<Jugador>>> GetJugadores()
+        public async Task<ActionResult<IEnumerable<Jugadores>>> GetJugadores()
         {
             return await _context.Jugadores.ToListAsync();
         }
@@ -36,7 +36,7 @@ namespace StarDeckAPI.Controllers
         /// <param name="id"></param>
         /// <returns>Datos de cliente especifico</returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Jugador>> GetJugador(string id)
+        public async Task<ActionResult<Jugadores>> GetJugador(string id)
         {
             var jugador = await _context.Jugadores.FindAsync(id);
 
@@ -55,7 +55,7 @@ namespace StarDeckAPI.Controllers
         /// <param name="cliente"></param>
         /// <returns>Cambia datos de un cliente</returns>
         [HttpPut("PutJugador")]
-        public async Task<IActionResult> PutJugador(Jugador jugador)
+        public async Task<IActionResult> PutJugador(Jugadores jugador)
         {
 
             _context.Entry(jugador).State = EntityState.Modified;
@@ -85,7 +85,7 @@ namespace StarDeckAPI.Controllers
         /// <param name="jugador"></param>
         /// <returns>Creacion de Jugador</returns>
         [HttpPost("PostJugador")]
-        public async Task<ActionResult<Jugador>> PostJugador(Jugador jugador)
+        public async Task<ActionResult<Jugadores>> PostJugador(Jugadores jugador)
         {
             _context.Jugadores.Add(jugador);
             try
