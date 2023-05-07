@@ -9,5 +9,5 @@ public partial class Paises
 
     public string Pais { get; set; } = null!;
 
-    public virtual ICollection<Jugadores> Jugadores { get; set; } = new List<Jugadores>();
+    //public virtual ICollection<Jugadores> Jugadores { get; set; } = new List<Jugadores>();
 }

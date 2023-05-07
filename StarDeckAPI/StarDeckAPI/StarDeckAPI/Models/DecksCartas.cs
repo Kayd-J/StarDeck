@@ -9,7 +9,7 @@ public partial class DecksCartas
 
     public string CartasId { get; set; } = null!;
 
-    public virtual Cartas Cartas { get; set; } = null!;
+    //public virtual Cartas Cartas { get; set; } = null!;
 
-    public virtual Decks Decks{ get; set; } = null!;
+   // public virtual Decks Decks{ get; set; } = null!;
 }

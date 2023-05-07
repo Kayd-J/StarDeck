@@ -25,7 +25,7 @@ public partial class Jugadores
 
     public int PaisesId { get; set; }
 
-    public virtual ICollection<Decks> Decks { get; set; } = new List<Decks>();
+    //public virtual ICollection<Decks> Decks { get; set; } = new List<Decks>();
 
-    public virtual Paises Paises { get; set; } = null!;
+    //public virtual Paises Paises { get; set; } = null!;
 }

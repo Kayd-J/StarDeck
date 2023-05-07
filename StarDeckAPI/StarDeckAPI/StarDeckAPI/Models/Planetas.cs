@@ -17,5 +17,5 @@ public partial class Planetas
 
     public int AdministradoresId { get; set; }
 
-    public virtual Administradores Administradores { get; set; } = null!;
+    //public virtual Administradores Administradores { get; set; } = null!;
 }

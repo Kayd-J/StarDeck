@@ -15,7 +15,7 @@ public partial class Administradores
 
     public string? Pass { get; set; }
 
-    public virtual ICollection<Cartas> Carta { get; set; } = new List<Cartas>();
+    //public virtual ICollection<Cartas> Carta { get; set; } = new List<Cartas>();
 
-    public virtual ICollection<Planetas> Planeta { get; set; } = new List<Planetas>();
+    //public virtual ICollection<Planetas> Planeta { get; set; } = new List<Planetas>();
 }

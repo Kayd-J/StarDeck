@@ -11,7 +11,7 @@ public partial class CartasJugadores
 
     public int? Cantidad { get; set; }
 
-    public virtual Cartas Cartas { get; set; } = null!;
+    //public virtual Cartas Cartas { get; set; } = null!;
 
-    public virtual Jugadores Jugadores { get; set; } = null!;
+    //public virtual Jugadores Jugadores { get; set; } = null!;
 }

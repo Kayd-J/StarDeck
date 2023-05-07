@@ -11,7 +11,7 @@ public partial class Decks
 
     public string JugadoresId { get; set; } = null!;
 
-    public virtual Jugadores Jugadores { get; set; } = null!;
+    //public virtual Jugadores Jugadores { get; set; } = null!;
 
-    public virtual ICollection<Cartas> Cartas { get; set; } = new List<Cartas>();
+    //public virtual ICollection<Cartas> Cartas { get; set; } = new List<Cartas>();
 }
