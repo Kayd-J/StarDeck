@@ -88,6 +88,13 @@ namespace StarDeckAPI.Controllers
             return CreatedAtAction("GetCarta", new { id = carta.Id }, carta);
         }
 
+        [HttpPost("AddCard")]
+        public void AddCard([FromBody] Cartas carta)
+        {
+            _context.AddCard(carta.Id, carta.Energia, carta.Raza,
+            carta.Costo, carta.Nombre, carta.Tipo, carta.Descripcion, carta.Disponibilidad, carta.Imagen, carta.AdministradoresId);
+        }
+
         /// <summary>
         /// DELETE: api/Carta/5
         /// </summary>

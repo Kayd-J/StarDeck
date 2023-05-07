@@ -7,21 +7,21 @@ public partial class Cartas
 {
     public string Id { get; set; } = null!;
 
-    public int? Energia { get; set; }
+    public int Energia { get; set; }
 
-    public string? Raza { get; set; }
+    public string Raza { get; set; }
 
-    public int? Costo { get; set; }
+    public int Costo { get; set; }
 
-    public string? Nombre { get; set; }
+    public string Nombre { get; set; }
 
-    public string? Tipo { get; set; }
+    public string Tipo { get; set; }
 
-    public string? Descripcion { get; set; }
+    public string Descripcion { get; set; }
 
-    public bool? Disponibilidad { get; set; }
+    public bool Disponibilidad { get; set; }
 
-    public string? Imagen { get; set; }
+    public string Imagen { get; set; }
 
     public int AdministradoresId { get; set; }
 
