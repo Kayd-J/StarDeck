@@ -91,6 +91,9 @@ export class MatchComponent implements OnInit {
 
   constructor() { }
   ngOnInit() { 
+    // primero se hace un get para obtener la informacion de los jugadores
+
+    this.setFirst();
     this.startTimer();
   }
 
@@ -106,6 +109,7 @@ export class MatchComponent implements OnInit {
     }, 1000)
   }
   
+  // funcion para cambiar el turno del los jugadores
   changeTurn(){
     if (this.turno == this.jugador){
       this.turno = this.contrincante;
@@ -114,5 +118,24 @@ export class MatchComponent implements OnInit {
     }
   }
 
+  // funcion para asignar el jugador que empieza aleatoriamente
+  setFirst(){
+    const randomNum = Math.random();
+    if(randomNum < 0.5){
+      this.turno = this.jugador;
+    } else{
+      this.turno = this.contrincante;
+    }
+  }
+
+  // funcion para obtener la informacion de los jugadores
+  obtenerJugadores(){
+
+  }
+
+  // funcion para mezclar o elegir aleatoriamente las cartas del deck de los jugadores
+  mixDeck(){
+    
+  }
 
 }

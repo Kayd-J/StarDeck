@@ -26,4 +26,6 @@ public partial class Cartas
     public int AdministradoresId { get; set; }
 
     public virtual Administradores Administradores { get; set; } = null!;
+
+    public virtual ICollection<Decks> Decks { get; set; } = new List<Decks>();
 }

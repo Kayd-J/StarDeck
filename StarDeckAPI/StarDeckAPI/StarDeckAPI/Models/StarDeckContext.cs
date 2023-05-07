@@ -41,7 +41,7 @@ public partial class StarDeckContext : DbContext
     {
         modelBuilder.Entity<Administradores>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ADMINIST__3214EC07B584995F");
+            entity.HasKey(e => e.Id).HasName("PK__ADMINIST__3214EC0796897B37");
 
             entity.ToTable("ADMINISTRADORES");
 
@@ -76,7 +76,7 @@ public partial class StarDeckContext : DbContext
 
         modelBuilder.Entity<Cartas>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__CARTAS__3214EC07AFC2B29B");
+            entity.HasKey(e => e.Id).HasName("PK__CARTAS__3214EC070F025121");
 
             entity.ToTable("CARTAS");
 
@@ -102,7 +102,7 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.Administradores).WithMany(p => p.Carta)
                 .HasForeignKey(d => d.AdministradoresId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTAS__Administ__45BE5BA9");
+                .HasConstraintName("FK__CARTAS__Administ__656C112C");
         });
 
         modelBuilder.Entity<CartasJugadores>(entity =>
@@ -122,17 +122,17 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.Cartas).WithMany()
                 .HasForeignKey(d => d.CartasId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTAS_JU__carta__46B27FE2");
+                .HasConstraintName("FK__CARTAS_JU__carta__66603565");
 
             entity.HasOne(d => d.Jugadores).WithMany()
                 .HasForeignKey(d => d.JugadoresId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__CARTAS_JU__Jugad__47A6A41B");
+                .HasConstraintName("FK__CARTAS_JU__Jugad__6754599E");
         });
 
         modelBuilder.Entity<Decks>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__DECKS__3214EC07EC0E6979");
+            entity.HasKey(e => e.Id).HasName("PK__DECKS__3214EC0771D08259");
 
             entity.ToTable("DECKS");
 
@@ -149,12 +149,35 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.Jugadores).WithMany(p => p.Decks)
                 .HasForeignKey(d => d.JugadoresId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__DECKS__Jugadores__489AC854");
+                .HasConstraintName("FK__DECKS__Jugadores__68487DD7");
+
+            entity.HasMany(d => d.Cartas).WithMany(p => p.Decks)
+                .UsingEntity<Dictionary<string, object>>(
+                    "DecksCarta",
+                    r => r.HasOne<Cartas>().WithMany()
+                        .HasForeignKey("CartasId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__DECKS_CAR__Carta__6A30C649"),
+                    l => l.HasOne<Decks>().WithMany()
+                        .HasForeignKey("DecksId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK__DECKS_CAR__Decks__6B24EA82"),
+                    j =>
+                    {
+                        j.HasKey("DecksId", "CartasId").HasName("PK__DECKS_CA__E757EAE66C4B749B");
+                        j.ToTable("DECKS_CARTAS");
+                        j.IndexerProperty<string>("DecksId")
+                            .HasMaxLength(14)
+                            .IsUnicode(false);
+                        j.IndexerProperty<string>("CartasId")
+                            .HasMaxLength(14)
+                            .IsUnicode(false);
+                    });
         });
 
         modelBuilder.Entity<Jugadores>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__JUGADORE__3214EC07303125FF");
+            entity.HasKey(e => e.Id).HasName("PK__JUGADORE__3214EC07CBB6E1E5");
 
             entity.ToTable("JUGADORES");
 
@@ -187,7 +210,7 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.Paises).WithMany(p => p.Jugadores)
                 .HasForeignKey(d => d.PaisesId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__JUGADORES__paise__44CA3770");
+                .HasConstraintName("FK__JUGADORES__paise__6477ECF3");
         });
 
         modelBuilder.Entity<Login>(entity =>
@@ -203,7 +226,7 @@ public partial class StarDeckContext : DbContext
 
         modelBuilder.Entity<Paises>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__PAISES__3214EC07B234044F");
+            entity.HasKey(e => e.Id).HasName("PK__PAISES__3214EC07A3B92BAD");
 
             entity.ToTable("PAISES");
 
@@ -216,7 +239,7 @@ public partial class StarDeckContext : DbContext
 
         modelBuilder.Entity<Planetas>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__PLANETAS__3214EC078F6A2BA0");
+            entity.HasKey(e => e.Id).HasName("PK__PLANETAS__3214EC07DD31E807");
 
             entity.ToTable("PLANETAS");
 
@@ -236,7 +259,7 @@ public partial class StarDeckContext : DbContext
             entity.HasOne(d => d.Administradores).WithMany(p => p.Planeta)
                 .HasForeignKey(d => d.AdministradoresId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PLANETAS__Admini__498EEC8D");
+                .HasConstraintName("FK__PLANETAS__Admini__693CA210");
         });
 
         OnModelCreatingPartial(modelBuilder);

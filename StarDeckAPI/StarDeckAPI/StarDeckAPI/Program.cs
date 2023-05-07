@@ -1,6 +1,7 @@
 global using StarDeckAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using StarDeckAPI.Data;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,16 @@ builder.Services.AddCors(options => options.AddPolicy(name: " StarDeckOrigins",
     policy =>
    {
         policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    }));
+
+    builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
     }));
 
 
