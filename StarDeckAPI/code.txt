@@ -1,8 +1,0 @@
-En package manager console:
-Se utiliza para database primero:
-
-Scaffold-DbContext "Server=.\SQLExpress;Database=StarDeck;Trusted_Connection=true;TrustServerCertificate=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
-
-dotnet ef migrations add "Nombre de migration"
-
-dotnet ef database update
