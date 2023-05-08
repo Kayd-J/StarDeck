@@ -15,6 +15,8 @@ public partial class Planetas
 
     public int? Estado { get; set; }
 
+    public string Habilidad { get; set; }
+
     public int AdministradoresId { get; set; }
 
     //public virtual Administradores Administradores { get; set; } = null!;

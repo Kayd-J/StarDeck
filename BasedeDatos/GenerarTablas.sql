@@ -47,6 +47,7 @@ CREATE TABLE PLANETAS(
 	Tipo VARCHAR(30),
 	Descripcion VARCHAR(40),
 	Estado int,
+	Habilidad VARCHAR(40),
 	AdministradoresId int not null
 );
 
@@ -56,16 +57,17 @@ CREATE TABLE DECKS(
 	JugadoresId VARCHAR(14) not null
 );
 
+CREATE TABLE PAISES(
+	Id int not null,
+	pais VARCHAR(30) not null
+);
+
 CREATE TABLE CARTAS_JUGADORES(
 	JugadoresId VARCHAR(14) not null,
 	cartasId VARCHAR(14) not null,
 	Cantidad int
 );
 
-CREATE TABLE PAISES(
-	Id int not null,
-	pais VARCHAR(30) not null
-);
 
 CREATE TABLE DECKS_CARTAS(
 	DecksId VARCHAR(14) not null,

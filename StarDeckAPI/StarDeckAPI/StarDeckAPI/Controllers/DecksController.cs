@@ -30,6 +30,13 @@ namespace StarDeckAPI.Controllers
                 return NotFound("Lo sentimos, el deck no existe");
             return Ok(deck);
         }
+
+        [HttpGet("SP/GetAllCardsFromDeck/{DecksId}")]
+        public async Task<ActionResult<List<Decks>>> GetCardsFromDeckAsync(string DecksId)
+        {
+            var cards = await _context.Cartas.FromSqlRaw($"GetCardsFromDeck '{DecksId}'").ToListAsync();
+            return Ok(cards);
+        }
         /// <summary>
         /// PUT: api/Carta
         /// </summary>

@@ -30,6 +30,12 @@ namespace StarDeckAPI.Controllers
             return await _context.Jugadores.ToListAsync();
         }
 
+        [HttpGet("SP/GetAllDecksFromPlayer/{JugadoresId}")]
+        public async Task<ActionResult<List<Decks>>> GetDecksFromPlayer(string JugadoresId)
+        {
+            var decks = await _context.Decks.FromSqlRaw($"GetDecksFromPlayer '{JugadoresId}'").ToListAsync();
+            return Ok(decks);
+        }
         /// <summary>
         /// GET: api/Clientes/5
         /// </summary>
@@ -150,6 +156,8 @@ namespace StarDeckAPI.Controllers
 
             return NoContent();
         }
+
+
         /// <summary>
         /// Revisa si existe un cliente
         /// </summary>
