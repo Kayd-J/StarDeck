@@ -65,9 +65,9 @@ export class CrearCartaComponent implements OnInit {
     console.log(this.cartaForm.value)
 
     this.api.addCarta(form).subscribe(data=>{
-      let dataResponse:StatusI = data;
-
-    })
+      //let dataResponse:StatusI = data;
+      console.log(data)
+    });
 
   }
 

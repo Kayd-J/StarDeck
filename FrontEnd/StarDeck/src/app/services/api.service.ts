@@ -11,7 +11,7 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string="http://localhost:5031/api";
+  url:string='https://localhost:7257';
 
   constructor(private http:HttpClient) { }
 
@@ -22,7 +22,7 @@ export class ApiService {
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
   loginByEmailCliente(form:Login):Observable<StatusI>{
-    let direccion = "/api/Jugadores/Login";
+    let direccion = '/api/Jugadores/Login';
      console.log(form);
      console.log(direccion)
     return this.http.post<StatusI>(direccion, form);
@@ -34,19 +34,25 @@ export class ApiService {
    * @returns StatusI
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
-  
-  addJugador(form:Login):Observable<StatusI>{
-    let direccion = "/api/Jugadores/PostJugador";
+  addJugador(form:any):Observable<any>{
+    let direccion = '/api/Jugadores/PostJugador';
      console.log(form);
      console.log(direccion)
-    return this.http.post<StatusI>(direccion, form);
+    return this.http.post<any>(direccion, form);
   }
-
-  addCarta(form:Login):Observable<StatusI>{
-    let direccion = "/api/Cartas/PostCarta";
-     console.log(form);
+  getJugadores():Observable<any[]>{
+    return this.http.get<any>(this.url+'/api/Jugadores/GetJugador');
+  }
+  /**
+   * 
+   * @param form Cartas
+   * @returns Funcion que se encarga de enviar los datos del formulario de las cartas
+   */
+  addCarta(form:any):Observable<any>{
+    let direccion = this.url+'/api/Cartas/PostCarta';
+     console.log(JSON.stringify(form));
      console.log(direccion)
-    return this.http.post<StatusI>(direccion, form);
+    return this.http.post<any>(direccion, form);
   }
   /**
    *
@@ -54,9 +60,9 @@ export class ApiService {
    * @returns StatusI
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
-  loginByEmailAdmin(form:Login):Observable<StatusI>{
-    let direccion = this.url + "/Admin/Login";
-    return this.http.post<StatusI>(direccion, form);
+  loginByEmailAdmin(form:any):Observable<any>{
+    let direccion = this.url + '/Admin/Login';
+    return this.http.post<any>(direccion, form);
   }
 
   
