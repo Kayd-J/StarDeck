@@ -46,7 +46,7 @@ CREATE TABLE PLANETAS(
 	Nombre VARCHAR(20),
 	Tipo VARCHAR(30),
 	Descripcion VARCHAR(40),
-	Estado int,
+	Estado bit,
 	Habilidad VARCHAR(40),
 	AdministradoresId int not null
 );
