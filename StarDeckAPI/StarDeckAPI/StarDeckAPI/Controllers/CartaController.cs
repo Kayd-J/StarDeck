@@ -147,8 +147,8 @@ namespace StarDeckAPI.Controllers
         {
             try
             {
-                var deckIdParam = new SqlParameter("@DeckId", DecksId);
-                var cardIdParam = new SqlParameter("@CardId", CartasId);
+                var deckIdParam = new SqlParameter("@DecksId", DecksId);
+                var cardIdParam = new SqlParameter("@CartasId", CartasId);
                 await _context.Database.ExecuteSqlRawAsync("EXECUTE AddCardToDeck @DecksId, @CartasId", deckIdParam, cardIdParam);
                 return Ok();
             }
