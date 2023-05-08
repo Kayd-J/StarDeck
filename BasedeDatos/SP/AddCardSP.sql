@@ -1,21 +1,22 @@
 USE [StarDeck] 
 GO
 
-CREATE PROCEDURE AddCard
-    @Id VARCHAR(14),
-	@Energia int,
-	@Raza VARCHAR(20),
-	@Costo int,
-	@Nombre VARCHAR(40),
-	@Tipo VARCHAR(20),
-	@Descripcion VARCHAR(1000),
-	@Disponibilidad bit,
-	@Imagen VARCHAR(1000),
-	@AdministradoresId int 
+CREATE PROCEDURE AddCardToDeck
+	@DecksId VARCHAR(14),
+    @CartasId VARCHAR(14)
 AS
 BEGIN
-  INSERT INTO CARTAS (Id, Energia,Raza,Costo,Nombre,Tipo,Descripcion,Disponibilidad,Imagen,AdministradoresId)
-  VALUES (@Id, @Energia, @Raza, @Costo, @Nombre,@Tipo,@Descripcion,@Disponibilidad,@Imagen,@AdministradoresId);
-END
+    SET NOCOUNT ON;
 
-GO
+    -- Verificar si la carta ya existe en el mazo
+    IF EXISTS (SELECT 1 FROM DECKS_CARTAS WHERE DecksId = @DecksId AND CartasId = @CartasId)
+    BEGIN
+        -- Si la carta ya está en el mazo, no hacemos nada
+        RETURN;
+    END
+
+    -- Agregar la carta al mazo
+    INSERT INTO DECKS_CARTAS (DecksId, CartasId)
+    VALUES (@DecksId, @CartasId);
+	END
+	GO

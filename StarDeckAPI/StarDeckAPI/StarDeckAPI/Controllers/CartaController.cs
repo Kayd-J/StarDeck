@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using StarDeckAPI.Data;
 using StarDeckAPI.Models;
@@ -123,6 +124,41 @@ namespace StarDeckAPI.Controllers
         {
             return _context.Cartas.Any(e => e.Id == ID);
         }
-    }
 
+        // GET: api/Decks/HasCardInDeck/{deckId}/{cardId}
+        [HttpGet("HasCardInDeck/{decksId}/{cartasId}")]
+        public async Task<ActionResult<bool>> HasCardInDeck(string decksId, string cartasId)
+        {
+            var deck = await _context.Decks.FindAsync(decksId);
+
+            if (deck == null)
+            {
+                return NotFound();
+            }
+
+            bool cardExistsInDeck = await _context.Decks_Cartas
+                .AnyAsync(dc => dc.DecksId == decksId && dc.CartasId == cartasId);
+
+            return Ok(cardExistsInDeck);
+        }
+        // Agregar Carta a deck
+        [HttpPost("AddCardToDeck")]
+        public async Task<IActionResult> AddCardToDeck(string DecksId, string CartasId)
+        {
+            try
+            {
+                var deckIdParam = new SqlParameter("@DeckId", DecksId);
+                var cardIdParam = new SqlParameter("@CardId", CartasId);
+                await _context.Database.ExecuteSqlRawAsync("EXECUTE AddCardToDeck @DecksId, @CartasId", deckIdParam, cardIdParam);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+    }
 }
+
+
