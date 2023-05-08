@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -18,19 +18,32 @@ export class CrearPlanetaComponent implements OnInit {
 
     planetForm=new FormGroup({
       id:new FormControl(),
-      nombre:new FormControl(),
-      tipo:new FormControl(),
-      descripcion:new FormControl(),
+      nombre:new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(30)]),
+      tipo:new FormControl('',[Validators.required]),
+      descripcion:new FormControl('',[Validators.required]),
       estado:new FormControl(),
-      habilidad:new FormControl(),
+      habilidad:new FormControl('',[Validators.required]),
       administradoresId:new FormControl()
   })
 
-  nombre: string = "Mustafar"
+  get nombrev(){
+    return this.planetForm.get('nombre')
+  }
+  get tipov(){
+    return this.planetForm.get('tipo')
+  }
+  get descripcionv(){
+    return this.planetForm.get('descripcion')
+  }
+  get habilidadv(){
+    return this.planetForm.get('habilidad')
+  }
+
+  nombre = ""
   tipo = ""
   descripcion = "Esto es un planeta"
   habilidad = ""
-  estado = 0
+  estado = true
 
     onselectImage(e: any){
     if(e.target.files){

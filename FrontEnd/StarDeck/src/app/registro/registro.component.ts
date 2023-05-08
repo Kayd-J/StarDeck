@@ -30,16 +30,44 @@ export class RegistroComponent implements OnInit {
 
   registerForm=new FormGroup({
     id:new FormControl(),
-    usuario:new FormControl(),
-    pass:new FormControl(),
-    nombre:new FormControl(),
-    apellidos:new FormControl(),
-    nacionalidad:new FormControl(),
-    correo:new FormControl(),
+    usuario:new FormControl('', Validators.required),
+    pass:new FormControl('', Validators.required),
+    nombre:new FormControl('', Validators.required),
+    apellidos:new FormControl('', Validators.required),
+    nacionalidad:new FormControl('', Validators.required),
+    correo:new FormControl('',[Validators.required, Validators.email]),
     estadodecuenta:new FormControl(),
     avatar:new FormControl(),
     paisesId:new FormControl(),
   });
+
+  get usuariov(){
+    return this.registerForm.get('usuario')
+  }
+
+  get passv(){
+    return this.registerForm.get('password')
+  }
+
+  get nombrev(){
+    return this.registerForm.get('nombre')
+  }
+
+  get apellidosv(){
+    return this.registerForm.get('apellidos')
+  }
+
+  get nacionalidadv(){
+    return this.registerForm.get('nacionalidad')
+  }
+
+  get correov(){
+    return this.registerForm.get('correo')
+  }
+
+
+
+  
 
 
 

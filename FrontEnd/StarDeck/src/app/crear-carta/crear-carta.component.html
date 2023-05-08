@@ -8,19 +8,22 @@
              <div class="col-md-3 offset-lg-1">
                   <label for="txtcode">Nombre de la carta</label>
                   <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="nombre" formControlName="nombre" >
+                  <span style="color: red;" *ngIf = "nombrev && nombrev.invalid">Espacio requerido: Min 5 car, max 30 car</span>
              </div>
           </div>
          <div>
               <div class="col-md-3 offset-lg-1">
                     <label for="txtcode">Costo</label>
                   <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="0" max="100"[(ngModel)]="costo" formControlName="costo">
-              </div>
+                  <span style="color: red;" *ngIf = "costov && costov.invalid">Espacio requerido: Min 0, max 100</span>
+            </div>
            </div>
          <div>
              <div class="col-md-3 offset-lg-1">
                  <label for="txtcode">Energia</label>
                   <input type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" min="-100" max="100"[(ngModel)]="energia" formControlName="energia">
-              </div>
+                  <span style="color: red;" *ngIf = "energiav && energiav.invalid">Espacio requerido: Min -100, max 100</span>
+                </div>
            </div>
           <div>
              <div class="col-md-3 offset-lg-1">
@@ -30,7 +33,8 @@
                         <option>raza 2</option>
                         <option>raza 3</option>
                   </select>
-             </div>
+                  <span style="color: red;" *ngIf = "razav && razav.invalid">Espacio requerido</span>
+                </div>
          </div>
             <div>
              <div class="col-md-3 offset-lg-1">
@@ -40,13 +44,15 @@
                         <option>Tipo 2</option>
                         <option>Tipo 3</option>
                  </select>
+                 <span style="color: red;" *ngIf = "tipov && tipov.invalid">Espacio requerido</span>
              </div>
          </div>
          <div>
              <div class="col-md-3 offset-lg-1">
                    <label for="txtcode">Descripcion</label>
                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="descripcion" formControlName="descripcion">
-              </div>
+                   <span style="color: red;" *ngIf = "descripcionv && descripcionv.invalid">Espacio requerido</span>
+                </div>
          </div>
             <div>
                 <div class="col-md-3 offset-lg-1">
@@ -62,7 +68,7 @@
             </div>
             <div class="col-md-3 offset-lg-1">
                 <div>
-                    <button  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+                    <button [disabled]="cartaForm.invalid" type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
                 </div>
             </div>
         </form>

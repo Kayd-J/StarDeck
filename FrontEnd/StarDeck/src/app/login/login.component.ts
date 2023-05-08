@@ -26,6 +26,14 @@ export class LoginComponent implements OnInit {
     password : new FormControl('', Validators.required)
   })
 
+  get usuariov(){
+    return this.loginForm.get('usuario')
+  }
+
+  get passwordv(){
+    return this.loginForm.get('password')
+  }
+
   getLoginCredentials(username: string, password: string): void{
     
   }

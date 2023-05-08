@@ -8,12 +8,14 @@
              <div class="col-md-3 offset-lg-1">
                   <label for="txtcode">Nombre del planeta</label>
                   <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="nombre" formControlName="nombre" >
+                  <span style="color: red;" *ngIf = "nombrev && nombrev.invalid">Espacio requerido: Min 5 car, max 30 car</span>
              </div>
         </div>
         <div>
             <div class="col-md-3 offset-lg-1">
                  <label for="txtcode">Habilidad</label>
                  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" maxlength="30" minlength="5" [(ngModel)]="habilidad" formControlName="habilidad" >
+                 <span style="color: red;" *ngIf = "habilidadv && habilidadv.invalid">Espacio requerido: Min 5 car, max 30 car</span>
             </div>
        </div>
             <div>
@@ -24,12 +26,14 @@
                         <option>Tipo 2</option>
                         <option>Tipo 3</option>
                  </select>
+                 <span style="color: red;" *ngIf = "tipov && tipov.invalid">Espacio requerido</span>
              </div>
          </div>
          <div>
              <div class="col-md-3 offset-lg-1">
                    <label for="txtcode">Descripcion</label>
                    <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="descripcion" formControlName="descripcion">
+                   <span style="color: red;" *ngIf = "descripcionv && descripcionv.invalid">Espacio requerido</span>
               </div>
          </div>
             <div>
@@ -46,7 +50,7 @@
             </div>
             <div class="col-md-3 offset-lg-1">
                 <div>
-                    <button  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+                    <button [disabled]="planetForm.invalid"  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
                 </div>
             </div>
         </form>
