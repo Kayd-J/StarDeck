@@ -12,7 +12,7 @@ export class RegistroService {
 
   @Input() upload: any;
 	extras: any;
-	fileUpload: HTMLInputElement | HTMLElement
+	//fileUpload: HTMLInputElement | HTMLElement
 
   constructor(private http : HttpClient, private el: ElementRef, private renderer: Renderer2,) { }
 
@@ -21,7 +21,7 @@ export class RegistroService {
    * @param form Login
    * @returns StatusI
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
-   
+
   loginByEmailCliente(form:Login):Observable<StatusI>{
     let direccion = "/api/Jugadores/Login";
      console.log(form);
@@ -36,7 +36,7 @@ export class RegistroService {
     let direccion = "/api/Jugadores/" + id;
     return this.http.get<Jugador[]>(`${direccion}`);
   }
-  
+
   //let CLIENT_ID = '326002218372-g9228q1eg5pv01dob9n2knhniglqa3pc.apps.googleusercontent.com';
   @HostListener('click') onClick() {
 
@@ -53,66 +53,66 @@ export class RegistroService {
 			//
 
 			//scope access
-			let http = this.http
-			let ryber = this.ryber
-			let fileUpload = this.fileUpload as HTMLInputElement
-			//
+		// 	let http = this.http
+		// 	let ryber = this.ryber
+		// 	let fileUpload = this.fileUpload as HTMLInputElement
+		// 	//
 
 
-			//load the auth SDK
-			//
-      gapi.load('client:auth2', () => {
-        gapi.client.init({
-            apiKey: API_KEY,
-            clientId: CLIENT_ID,
-            discoveryDocs: DISCOVERY_DOCS,
-            scope: SCOPES
-        })
-        .then(function () {
-    
-            // sign in if needed
-            if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
-                gapi.auth2.getAuthInstance().signIn();
-            }
-            //
-        
-    
-            //create a folder
-            if (environment.folders.create) {
+		// 	//load the auth SDK
+		// 	//
+    //   gapi.load('client:auth2', () => {
+    //     gapi.client.init({
+    //         apiKey: API_KEY,
+    //         clientId: CLIENT_ID,
+    //         discoveryDocs: DISCOVERY_DOCS,
+    //         scope: SCOPES
+    //     })
+    //     .then(function () {
+
+    //         // sign in if needed
+    //         if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
+    //             gapi.auth2.getAuthInstance().signIn();
+    //         }
+    //         //
 
 
-              let headers = new HttpHeaders()
-              headers = headers
-                  .set("Authorization", `Bearer ${gapi.auth.getToken().access_token}`)
-      
-              http.post(
-                  "https://www.googleapis.com/drive/v3/files",
-                  {
-                      name: "My Folder",
-                      //to create a folder this must be included
-                      mimeType: "application/vnd.google-apps.folder"
-                      //
-                  },
-                  { headers, observe: 'response' }
-              )
-              .subscribe((result) => {
-                  console.log(result)
-              })
-      
-      
-          }
-            //
-    
-    
-            //move files around
-            //	
-            
-    
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
-    });
+    //         //create a folder
+    //         if (environment.folders.create) {
+
+
+    //           let headers = new HttpHeaders()
+    //           headers = headers
+    //               .set("Authorization", `Bearer ${gapi.auth.getToken().access_token}`)
+
+    //           http.post(
+    //               "https://www.googleapis.com/drive/v3/files",
+    //               {
+    //                   name: "My Folder",
+    //                   //to create a folder this must be included
+    //                   mimeType: "application/vnd.google-apps.folder"
+    //                   //
+    //               },
+    //               { headers, observe: 'response' }
+    //           )
+    //           .subscribe((result) => {
+    //               console.log(result)
+    //           })
+
+
+    //       }
+    //         //
+
+
+    //         //move files around
+    //         //
+
+
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error)
+    //     })
+    // });
 
 			//
 
@@ -120,6 +120,6 @@ export class RegistroService {
 
 	}
 
-  
+
 
 }

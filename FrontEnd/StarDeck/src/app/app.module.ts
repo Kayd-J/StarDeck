@@ -36,10 +36,9 @@ import { VigilanteGuard } from './vigilante.guard';
     ReactiveFormsModule,
     CarouselModule.forRoot(),
     RouterModule.forRoot([
-      { path: "", component: LoginComponent },
+      { path: "", component: MainPageComponent },
       { path: "login", component: LoginComponent },
       { path: "registro", component: RegistroComponent },
-      { path: "main", component: MainPageComponent, canActivate: [VigilanteGuard] },
       { path: "match", component: MatchComponent, canActivate: [VigilanteGuard] },
       { path: "crear-carta", component: CrearCartaComponent, canActivate: [VigilanteGuard] },
       { path: "crear-planeta", component: CrearPlanetaComponent, canActivate: [VigilanteGuard] },
