@@ -35,13 +35,20 @@ export class ApiService {
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
   addJugador(form:any):Observable<any>{
-    let direccion = '/api/Jugadores/PostJugador';
+    let direccion = this.url+'/api/Jugadores/PostJugador';
      console.log(form);
      console.log(direccion)
     return this.http.post<any>(direccion, form);
   }
+  /**
+   * 
+   * @returns Lista de jugadores registrados
+   */
   getJugadores():Observable<any[]>{
     return this.http.get<any>(this.url+'/api/Jugadores/GetJugador');
+  }
+  getJugador(id:string):Observable<any[]>{
+    return this.http.get<any>(this.url+'/api/Jugadores/Jugadores/'+id);
   }
   /**
    * 

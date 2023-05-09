@@ -68,7 +68,5 @@ export class CrearCartaComponent implements OnInit {
       //let dataResponse:StatusI = data;
       console.log(data)
     });
-
   }
-
 }

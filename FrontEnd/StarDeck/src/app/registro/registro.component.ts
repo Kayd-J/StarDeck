@@ -56,6 +56,7 @@ export class RegistroComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
         this.imageUrl=event.target.result;
+        console.log(this.imageUrl)
       }
     }
   }
@@ -66,14 +67,15 @@ export class RegistroComponent implements OnInit {
   submit(form:any){
     form.id =  ("U-" + Math.floor(Math.random() * (900000000000 - 3 + 1) + 3)).toString(); //asignar un ID random
     form.estadodecuenta = true;
-    form.avatar=0;
+    form.avatar=this.imageUrl;
     form.paisesId= "1";
 
-    console.log(this.registerForm.value)
+    console.log(JSON.stringify(form))
 
+    // se guardan los datos en la base de datos
     this.api.addJugador(form).subscribe(data=>{
       let dataResponse:StatusI = data;
-
+      console.log(JSON.stringify(data));
     })
 
   }

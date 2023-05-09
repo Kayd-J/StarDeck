@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service'
+import { Router } from '@angular/router';
+import { MatchmakingService } from '../services/matchmaking.service';
 
 @Component({
   selector: 'app-match',
@@ -8,20 +11,21 @@ import { Component, OnInit } from '@angular/core';
 export class MatchComponent implements OnInit {
 
   timeLeft = 20;
-  contrincante = 'Enemigo'; // username de enemigo
-  imgUser = 'assets/Images/user.jpg' // imagen de perfil del jugador
-  imgEnemy = 'assets/Images/user.jpg' // imagen de perfil del enemigo
-  jugador = 'Jugador' // username de usuario
+  contrincante = this.match.eName; // username de enemigo
+  imgUser = this.match.jugAvatar // imagen de perfil del jugador
+  // https://drive.google.com/uc?export=download&id=
+  imgEnemy = this.match.eAvatar // imagen de perfil del enemigo
+  jugador = this.match.jugName // username de usuario
   dinero = 500; // numero de monedas del jugador
 
   // turno y temporizador
-  turno = 'Jugador';
+  turno = this.jugador;
   temporizador: any;
 
   // para los planetas
-  pName1 = 'Planeta 1';
+  pName1 = this.match.planetas[0];
   pName2 = 'Planeta 2';
-  pName3 = 'Planeta 3';
+  pName3 = this.match.planetas[3];
 
   // informacion de la carta 1
   imageUrl1 = "assets/Images/R.jpeg"
@@ -89,10 +93,10 @@ export class MatchComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private api:ApiService, private match:MatchmakingService) { }
   ngOnInit() { 
     // primero se hace un get para obtener la informacion de los jugadores
-
+    this.match.ngOnInit();
     this.setFirst();
     this.startTimer();
   }
