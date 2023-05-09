@@ -12,9 +12,10 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string='https://localhost:7257';
+  url:string='https://localhost:44339';
   isAdmin?: Boolean;
   isCliente?: Boolean;
+  usercookie?: string;
 
   constructor(private http:HttpClient) { }
 

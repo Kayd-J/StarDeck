@@ -18,9 +18,8 @@ export class SelecDeckComponent implements OnInit {
 
   listDecks!: deck[];
   deck:any;
-  cookieService: any;
 
-  constructor(private api:ApiService,private deckvar: DeckVariableService) { }
+  constructor(private api:ApiService,private deckvar: DeckVariableService, private cookieService: CookieService ) { }
 
   ngOnInit(): void {
     this.fetchDecks();
