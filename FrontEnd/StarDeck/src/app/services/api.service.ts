@@ -12,6 +12,7 @@ import { StatusI } from '../models/status-i'
 export class ApiService {
 
   url:string='https://localhost:7257';
+  isAdmin?: Boolean;
 
   constructor(private http:HttpClient) { }
 
@@ -76,8 +77,8 @@ export class ApiService {
    * @returns StatusI
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
-  loginByEmailAdmin(form:any):Observable<any>{
-    let direccion = this.url + '/Admin/Login';
+  loginByAdmin(form:any):Observable<any>{
+    let direccion = this.url + '/api/Jugadores/LoginAdmin';
     return this.http.post<any>(direccion, form);
   }
 

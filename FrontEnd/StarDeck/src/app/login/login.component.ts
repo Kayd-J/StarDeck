@@ -68,21 +68,23 @@ export class LoginComponent implements OnInit {
       if(dataResponse.status == "Ok"){
         // Set a cookie
         this.cookieService.set('UserCookie', this.ParseUserId().toString());
+        this.api.isAdmin = false;
         this.router.navigate(["/crearCarta"]);
       }
-      if(dataResponse.status == "Error"){/*
-        this.api.loginByEmailAdmin(form).subscribe(data =>{
+      if(dataResponse.status == "Error"){
+        this.api.loginByAdmin(form).subscribe(data =>{
           console.log(data);
           let dataResponse:StatusI = data;
           // detectar si es un Admin
           if(dataResponse.status == "Ok"){
-            this.router.navigate(["menuAdmin"]);
+            this.api.isAdmin = true;
+            this.router.navigate(["/crearDeck"]);
           }
           if(dataResponse.status == "Error"){
+            this.api.isAdmin = undefined;
             alert("Usuario o contraseña incorrectos");
           }
-        })*/
-        alert("Usuario o contraseña incorrectos")
+        })
       }
     })
   }
