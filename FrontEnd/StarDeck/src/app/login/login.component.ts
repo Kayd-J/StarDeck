@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { StatusI } from '../models/status-i';
 import { CookieService } from 'ngx-cookie-service';
 import { Jugador } from '../models/jugador';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   })
   jugadortemplate = new Jugador();
 
-  constructor(private api:ApiService, private router:Router, private cookieService: CookieService) { }
+  constructor(private api:ApiService, private navbar:AppComponent, private router:Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
  */
   onLogin(form:any){
     this.getUserID(this.loginForm.get('usuario')?.value);
+    
     this.api.loginByEmailCliente(form).subscribe(data =>{
       let dataResponse:StatusI = data;
       console.log(data);
@@ -70,6 +72,8 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.api.isAdmin = false;
         this.router.navigate(["/crearCarta"]);
+        this.navbar.notLogged = false;
+   
       }
       if(dataResponse.status == "Error"){
         this.api.loginByAdmin(form).subscribe(data =>{
@@ -77,8 +81,10 @@ export class LoginComponent implements OnInit {
           let dataResponse:StatusI = data;
           // detectar si es un Admin
           if(dataResponse.status == "Ok"){
-            this.api.isAdmin = true;
+            this.navbar.notLogged = false;
+            this.navbar.isAdmin = true;
             this.router.navigate(["/crearDeck"]);
+
           }
           if(dataResponse.status == "Error"){
             this.api.isAdmin = undefined;

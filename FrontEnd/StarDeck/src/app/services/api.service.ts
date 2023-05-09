@@ -6,6 +6,7 @@ import { IdForm } from '../models/id-form'
 import { Jugador } from '../models/jugador'
 import { StatusI } from '../models/status-i'
 
+
 @Injectable({
   providedIn: 'root'
 })

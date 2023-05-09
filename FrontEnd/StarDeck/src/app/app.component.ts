@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'StarDeck';
+  isAdmin? = false;
+  notLogged?= true;
+
+logOut(){
+  this.isAdmin= false;
+  this.notLogged=true;
+  //window.location.reload();
+}
 }
