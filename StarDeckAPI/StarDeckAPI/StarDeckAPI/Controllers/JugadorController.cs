@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 using StarDeckAPI.Data;
 using StarDeckAPI.Models;
+using System.Numerics;
 
 namespace StarDeckAPI.Controllers
 {
@@ -55,10 +56,10 @@ namespace StarDeckAPI.Controllers
             return jugador;
         }
 
-        [HttpGet("{Usuario}")]
+        [HttpGet("Usuario/{Usuario}")]
         public async Task<ActionResult<Jugadores>> GetJugadorId(string Usuario)
         {
-            var jugador = await _context.Jugadores.FindAsync(Usuario);
+            var jugador = _context.Jugadores.FirstOrDefault(p => p.Usuario == Usuario);
 
             if (jugador == null)
             {
