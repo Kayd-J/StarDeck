@@ -74,6 +74,11 @@ export class ApiService {
     return this.http.post<any>(direccion, form);
   }
 
+  getDecksById(id: string):Observable<any>{
+    //let direccion = this.url + '/api/Jugadores/SP/GetAllDecksFromPlayer/${id}';
+    return this.http.get(`${this.url}/api/Jugadores/SP/GetAllDecksFromPlayer/${id}/`);
+  }
+
   
 }
 

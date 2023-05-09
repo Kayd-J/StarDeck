@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeckVariableService } from '../services/deck-variable.service';
 
 @Component({
   selector: 'app-matchmaking',
@@ -8,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class MatchmakingComponent implements OnInit {
   jugador = "Jugador"
   rango = "Rango"
-
-  constructor() { }
+  deck:any;
+  constructor(private deckvar: DeckVariableService) { }
 
   ngOnInit(): void {
+    this.deckvar.selectedDeck.subscribe(deck => this.deck = deck)
   }
 
 }

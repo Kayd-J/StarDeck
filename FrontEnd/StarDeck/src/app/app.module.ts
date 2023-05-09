@@ -15,6 +15,7 @@ import { MatchComponent } from './match/match.component';
 import { CrearPlanetaComponent } from './crear-planeta/crear-planeta.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CrearDeckComponent } from './crear-deck/crear-deck.component';
+import { SelecDeckComponent } from './selec-deck/selec-deck.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CrearDeckComponent } from './crear-deck/crear-deck.component';
     MatchComponent,
     CrearPlanetaComponent,
     MatchmakingComponent,
-    CrearDeckComponent
+    CrearDeckComponent,
+    SelecDeckComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Deck</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of listDecks">
+        <th scope="row">
+          <div class="media align-items-center">
+            <div class="media-body">
+              <span class="mb-0 text-sm">{{d.nombre}}</span>
+            </div>
+          </div>
+        </th>
+        <td>
+          <button (click)="onSelect(d.nombre)" class="btn btn-primary">Seleccionar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
