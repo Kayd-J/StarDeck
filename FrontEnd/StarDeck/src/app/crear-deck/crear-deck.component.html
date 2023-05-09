@@ -1,76 +1,132 @@
 <div class="col-sm">
   <div class="row">
-    <div class="col-md-3 offset-lg-3">
-      <label for="txtcode">Nombre de la carta</label>
-      <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"   >
- </div>
-<h4>Pare crear un deck seleccione 18 cartas</h4> 
-<h4>12 /18</h4> 
+    <div class="col justify-content-center">
+      <h2>CREAR DECK</h2>
+    </div>
+    <h4>Para crear un deck seleccione 18 cartas</h4>
+    <h5>Numero de cartas seleccionadas: {{numeroCartas}}</h5>
   </div>
-<carousel [itemsPerSlide]="itemsPerSlide"
-          [singleSlideOffset]="singleSlideOffset"
-          [startFromIndex]="6"
-          [interval]="0">
-  <slide *ngFor="let slide of slides; let index=index">
-    <div class="card" style="width: 18rem;">
-      <img src="assets/p.jpg" width="100%" height="180">
-      <div class="card-body">
-        <div class="row">
-        <div class="col-sm">
-          <h3><span class="badge bg-secondary">Raza</span></h3>
+
+  <div class="row justify-content-center ">
+    <div class="col-6 justify-content-center" style="height: 100%; background-color: inherit;">
+
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of cardList">
+            <!--empieza carta-->
+            <div class="col-sm">
+              <div class="card" style="width: 18rem;">
+                <img [src]="item.imagen" width="100%" height="180">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm">
+                      <h3><span class="badge bg-secondary">{{item.raza}}</span></h3>
+                    </div>
+                    <div class="col-sm">
+                      <h3><span class="badge bg-secondary">{{item.tipo}}</span></h3>
+                    </div>
+                    <h5 class="card-title">{{item.nombre}}</h5>
+                    <p class="card-text">{{item.descripcion}}</p>
+                    <div class="row">
+                      <div class="col-sm">
+                        <h3><span class="badge bg-secondary">{{item.costo}}</span></h3>
+                      </div>
+                      <div class="col-sm">
+                        <h3><span class="badge bg-secondary">{{item.energia}}</span></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <input type="checkbox" name="{{item.nombre}}" [(ngModel)]="item.selected" (change)="onCheckboxChange(item.nombre, item.descripcion)">
+              <label for="exampleCheckbox">. Agregar carta</label>
+            </div>
+            <!--termina carta-->
+          </li>
+        </ul>
       </div>
-      <div class="col-sm">
-          <h3><span class="badge bg-secondary">Body</span></h3>
-      </div>  
-      <h5 class="card-title">John</h5>
-      <p class="card-text">Descripcion</p>
-      <div class="row">
-        <div class="col-sm">
-            <h3><span class="badge bg-secondary">200</span></h3>
+      <!--<button type="button" id="boton" (click)="addCards()">Agregar Cartas</button>-->
+
+      
+    </div>
+
+    <div class="col-6" style="height: 100%; height:635px;">
+      <div class="col">
+        <div class="col-md-3 offset-lg-3 justify-content-center">
+          <label for="txtcode">Nombre del deck:</label>
         </div>
-        <div class="col-sm">
-            <h3><span class="badge bg-secondary">100</span></h3>
-        </div>   
-      </div>   
-    </div>
-
-      </div>
-    </div>
-  </slide>
-</carousel>
-
-<carousel [itemsPerSlide]="itemsPerSlide"
-          [singleSlideOffset]="singleSlideOffset"
-          [startFromIndex]="6"
-          [interval]="0">
-  <slide *ngFor="let slide of slides; let index=index">
-    <div class="card" style="width: 18rem;">
-      <img src="assets/p.jpg" width="100%" height="180">
-      <div class="card-body">
-        <div class="row">
-        <div class="col-sm">
-          <h3><span class="badge bg-secondary">Raza</span></h3>
-      </div>
-      <div class="col-sm">
-          <h3><span class="badge bg-secondary">Body</span></h3>
-      </div>  
-      <h5 class="card-title">John</h5>
-      <p class="card-text">Descripcion</p>
-      <div class="row">
-        <div class="col-sm">
-            <h3><span class="badge bg-secondary">200</span></h3>
+        <div class="col-md-3 offset-lg-3 justify-content-center">
+          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
         </div>
-        <div class="col-sm">
-            <h3><span class="badge bg-secondary">100</span></h3>
-        </div>   
-      </div>   
-    </div>
-
+        <ul class="list-group">
+          <!--Se crea un item con el nombre de la carta seleccionada -->
+          <li class="list-group-item" *ngFor="let item of selected">
+            <h3>{{ item }}</h3>
+          </li>
+        </ul>
       </div>
     </div>
-  </slide>
-</carousel>
-<div>
-  <button  type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
-</div>
+  </div>
+
+  <!--
+  <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [startFromIndex]="6" [interval]="0">
+    <slide *ngFor="let slide of slides; let index=index">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/p.jpg" width="100%" height="180">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm">
+              <h3><span class="badge bg-secondary">Raza</span></h3>
+            </div>
+            <div class="col-sm">
+              <h3><span class="badge bg-secondary">Body</span></h3>
+            </div>
+            <h5 class="card-title">John</h5>
+            <p class="card-text">Descripcion</p>
+            <div class="row">
+              <div class="col-sm">
+                <h3><span class="badge bg-secondary">200</span></h3>
+              </div>
+              <div class="col-sm">
+                <h3><span class="badge bg-secondary">100</span></h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </slide>
+  </carousel>
+
+  <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [startFromIndex]="6" [interval]="0">
+    <slide *ngFor="let slide of slides; let index=index">
+      <div class="card" style="width: 18rem;">
+        <img src="assets/p.jpg" width="100%" height="180">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm">
+              <h3><span class="badge bg-secondary">Raza</span></h3>
+            </div>
+            <div class="col-sm">
+              <h3><span class="badge bg-secondary">Body</span></h3>
+            </div>
+            <h5 class="card-title">John</h5>
+            <p class="card-text">Descripcion</p>
+            <div class="row">
+              <div class="col-sm">
+                <h3><span class="badge bg-secondary">200</span></h3>
+              </div>
+              <div class="col-sm">
+                <h3><span class="badge bg-secondary">100</span></h3>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </slide>
+  </carousel>-->
+  <div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!cantidad" (click)="guardarDeck()">Guardar</button>
+  </div>
 </div>

@@ -12,7 +12,7 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string='https://localhost:44339';
+  url:string='https://localhost:7257';
   isAdmin?: Boolean;
 
   constructor(private http:HttpClient) { }
@@ -70,6 +70,14 @@ export class ApiService {
 
   addPlaneta(form:any):Observable<any>{
     let direccion = this.url+'/api/Planetas/PostPlaneta';
+     console.log(JSON.stringify(form));
+     console.log(direccion)
+    return this.http.post<any>(direccion, form);
+  }
+
+
+  addDeck(form:any):Observable<any>{
+    let direccion = this.url+'/api/Deck/PostDeck';
      console.log(JSON.stringify(form));
      console.log(direccion)
     return this.http.post<any>(direccion, form);
