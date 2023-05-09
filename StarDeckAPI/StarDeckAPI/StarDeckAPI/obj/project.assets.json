@@ -11060,19 +11060,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kayd\\.nuget\\packages\\": {}
+    "C:\\Users\\ghost\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
+      "projectUniqueName": "C:\\Users\\ghost\\Desktop\\1 Sem 2023\\Espe\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
       "projectName": "StarDeckAPI",
-      "projectPath": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
-      "packagesPath": "C:\\Users\\Kayd\\.nuget\\packages\\",
-      "outputPath": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\obj\\",
+      "projectPath": "C:\\Users\\ghost\\Desktop\\1 Sem 2023\\Espe\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
+      "packagesPath": "C:\\Users\\ghost\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ghost\\Desktop\\1 Sem 2023\\Espe\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ghost\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11080,6 +11085,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -152,6 +152,25 @@ namespace StarDeckAPI.Controllers
 
         }
 
+        [HttpPost]
+        [Route("LoginAdmin/")]
+
+        public async Task<ActionResult<Login>> PostLoginAdmin(Auth auth)
+        {
+            var result = _context.Administradores.Any(e => e.Correo == auth.Usuario && e.Pass == auth.Password);
+
+            var status = new Login { Status = "Ok" };
+
+            var error = new Login { Status = "Error" };
+
+            if (!result)
+            {
+                return error;
+            }
+
+            return Ok(status);
+
+        }
         /// <summary>
         /// DELETE: api/Clientes/5
         /// </summary>
