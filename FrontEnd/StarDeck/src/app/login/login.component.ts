@@ -68,9 +68,10 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if(dataResponse.status == "Ok"){
         // Set a cookie
-        this.cookieService.set('UserCookie', this.ParseUserId().toString());
+
         this.api.isAdmin = false;
         this.router.navigate(["logged"]);
+        this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.navbar.notLogged = false;
 
       }

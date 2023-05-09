@@ -65,19 +65,6 @@ export class RegistroComponent implements OnInit {
     return this.registerForm.get('correo')
   }
 
-
-
-  
-
-
-
-  password = "password"
-  lastName = "Apellido"
-  nacionalidad = "Costarricense"
-  name = "Nombre"
-  correo = "ejemplo@gmail.com"
-  estado = false
-
   onselectImage(e: any){
     if(e.target.files){
       var reader = new FileReader();
@@ -88,7 +75,6 @@ export class RegistroComponent implements OnInit {
       }
     }
   }
-
 
   jugadorExiste = false;
 

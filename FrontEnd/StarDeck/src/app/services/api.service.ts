@@ -64,6 +64,10 @@ export class ApiService {
     return this.http.post<any>(direccion, form);
   }
 
+  getCartas():Observable<any[]>{
+    return this.http.get<any>(this.url+'/api/Cartas/Get');
+  }
+
   addPlaneta(form:any):Observable<any>{
     let direccion = this.url+'/api/Planetas/PostPlaneta';
      console.log(JSON.stringify(form));

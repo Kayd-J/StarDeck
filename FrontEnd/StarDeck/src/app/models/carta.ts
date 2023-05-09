@@ -1,5 +1,5 @@
 export class Carta{
-  idcarta!: number;
+  id!: number;
   nombre!: string;
   descripcion!: string;
   imagen!: string;
