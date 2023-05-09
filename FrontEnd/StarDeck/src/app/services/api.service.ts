@@ -12,7 +12,7 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string='https://localhost:7257';
+  url:string='https://localhost:44339';
   isAdmin?: Boolean;
 
   constructor(private http:HttpClient) { }
@@ -43,7 +43,7 @@ export class ApiService {
     return this.http.post<any>(direccion, form);
   }
   /**
-   * 
+   *
    * @returns Lista de jugadores registrados
    */
   getJugadores():Observable<any[]>{
@@ -53,7 +53,7 @@ export class ApiService {
     return this.http.get<any>(this.url+'/api/Jugadores/Jugadores/'+id);
   }
   /**
-   * 
+   *
    * @param form Cartas
    * @returns Funcion que se encarga de enviar los datos del formulario de las cartas
    */
@@ -93,6 +93,6 @@ export class ApiService {
     return this.http.get(`${this.url}/api/Jugadores/SP/GetAllDecksFromPlayer/${id}/`);
   }
 
-  
+
 }
 

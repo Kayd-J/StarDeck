@@ -19,10 +19,10 @@ export class VigilanteGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
-      const cookie = this.cookie.check('tokenCliente');
+
+      const cookie = this.cookie.check('UserCookie');
       this.redirect(cookie)
       return cookie;
   }
-  
+
 }

@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
  */
   onLogin(form:any){
     this.getUserID(this.loginForm.get('usuario')?.value);
-    
     this.api.loginByEmailCliente(form).subscribe(data =>{
       let dataResponse:StatusI = data;
       console.log(data);
@@ -71,9 +70,9 @@ export class LoginComponent implements OnInit {
         // Set a cookie
         this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.api.isAdmin = false;
-        this.router.navigate(["/crearCarta"]);
+        this.router.navigate(["logged"]);
         this.navbar.notLogged = false;
-   
+
       }
       if(dataResponse.status == "Error"){
         this.api.loginByAdmin(form).subscribe(data =>{
@@ -83,7 +82,7 @@ export class LoginComponent implements OnInit {
           if(dataResponse.status == "Ok"){
             this.navbar.notLogged = false;
             this.navbar.isAdmin = true;
-            this.router.navigate(["/crearDeck"]);
+            this.router.navigate(["logged"]);
 
           }
           if(dataResponse.status == "Error"){
@@ -95,8 +94,8 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  
 
-  
+
+
 
 }

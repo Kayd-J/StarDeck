@@ -16,6 +16,7 @@ import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CrearDeckComponent } from './crear-deck/crear-deck.component';
 import { SelecDeckComponent } from './selec-deck/selec-deck.component';
 import { VigilanteGuard } from './vigilante.guard';
+import { LoggedComponent } from './logged/logged.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VigilanteGuard } from './vigilante.guard';
     CrearPlanetaComponent,
     MatchmakingComponent,
     CrearDeckComponent,
-    SelecDeckComponent
+    SelecDeckComponent,
+    LoggedComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { VigilanteGuard } from './vigilante.guard';
       { path: "", component: MainPageComponent },
       { path: "login", component: LoginComponent },
       { path: "registro", component: RegistroComponent },
+      { path: "logged", component: LoggedComponent, canActivate: [VigilanteGuard]},
       { path: "match", component: MatchComponent, canActivate: [VigilanteGuard] },
       { path: "crear-carta", component: CrearCartaComponent, canActivate: [VigilanteGuard] },
       { path: "crear-planeta", component: CrearPlanetaComponent, canActivate: [VigilanteGuard] },

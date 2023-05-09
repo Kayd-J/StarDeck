@@ -8,21 +8,21 @@
     </a>
 
     <ng-template #logged>
-      <!-- Este es el mae que no me deja tener una funcion y un routerlink al mismo tiempo -->
-      <a class="py-2 d-none d-md-inline-block"  [routerLink]="['/Home']" (click)="logOut()">logout</a>
       <!-- Pero funciona con uno o el otro -->
       <a class="py-2 d-none d-md-inline-block" routerLink="/buscarPartida">Buscar partida</a>
       <a class="py-2 d-none d-md-inline-block"  routerLink="/crearDeck">Crear deck</a>
+      <!-- Este es el mae que no me deja tener una funcion y un routerlink al mismo tiempo -->
+      <a class="py-2 d-none d-md-inline-block"  [routerLink]="['/Home']" (click)="logOut()">Logout</a>
     </ng-template>
 
     <ng-template [ngIf]="isAdmin">
       <a class="py-2 d-none d-md-inline-block"  routerLink="/crearCarta">Crear Carta</a>
       <a class="py-2 d-none d-md-inline-block"   routerLink="/crearPlaneta">Crear Planeta</a>
+      <!-- Este es el mae que no me deja tener una funcion y un routerlink al mismo tiempo -->
+      <a class="py-2 d-none d-md-inline-block"  [routerLink]="['/Home']" (click)="logOut()">Logout</a>
     </ng-template>
-    
-    
-    
+
     </nav>
-    
+
 </header>
 <router-outlet></router-outlet>
