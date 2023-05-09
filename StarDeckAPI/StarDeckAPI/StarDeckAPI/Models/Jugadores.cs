@@ -5,7 +5,7 @@ namespace StarDeckAPI.Models;
 
 public partial class Jugadores
 {
-    public string Id { get; set; } = null!;
+    public string? Id { get; set; } = null!;
 
     public string? Usuario { get; set; }
 

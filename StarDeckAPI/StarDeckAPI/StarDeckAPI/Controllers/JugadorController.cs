@@ -55,6 +55,20 @@ namespace StarDeckAPI.Controllers
             return jugador;
         }
 
+        [HttpGet("{Usuario}")]
+        public async Task<ActionResult<Jugadores>> GetJugadorId(string Usuario)
+        {
+            var jugador = await _context.Jugadores.FindAsync(Usuario);
+
+            if (jugador == null)
+            {
+                return NotFound();
+
+            }
+
+            return jugador;
+        }
+
         /// <summary>
         /// PUT: api/Clientes/5
         /// </summary>
@@ -124,7 +138,7 @@ namespace StarDeckAPI.Controllers
         {
             var result = _context.Jugadores.Any(e => e.Usuario == auth.Usuario && e.Pass == auth.Password);
 
-            var status = new Login { Status = "Ok" };
+            var status = new Login { Status =  "Ok"};
 
             var error = new Login { Status = "Error" };
 
@@ -167,5 +181,12 @@ namespace StarDeckAPI.Controllers
         {
             return _context.Jugadores.Any(e => e.Id == id);
         }
+
+        [HttpGet("UsuarioExists/{Usuario}")]
+        public bool UsuarioExists(string usuario)
+        {
+            return _context.Jugadores.Any(e => e.Usuario == usuario);
+        }
+
     }
 }
