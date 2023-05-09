@@ -1,10 +1,11 @@
-<div class="col-sm offset-lg-4"> 
-  
+<div class="col-sm offset-lg-4">
+
     <img src="assets/p.jpg" width="20%" height="200" >
-    <h2>{{jugador}}</h2> 
-    <h3>{{rango}}</h3> 
+    <h2>{{jugador}}</h2>
+    <h3>{{rango}}</h3>
     <div>
-      <button  type="submit" class="btn btn-primary btn-lg btn-block">Buscar partida</button>
+      <button  type="submit" class="btn btn-primary btn-lg btn-block" (click)="startCountdown()">Buscar partida</button>
+      <div class="countdown">Tiempo de cola: {{ countdown }}</div>
   </div>
       <div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -17,7 +18,7 @@
     {{deck}}
   </div>
 
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -37,7 +38,7 @@
   </div>
 
 
-  
+
   </div>
-  
+
   <router-outlet></router-outlet>
