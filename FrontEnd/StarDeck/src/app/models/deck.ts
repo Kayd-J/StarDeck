@@ -1,4 +1,5 @@
 export class deck{
+    id!: string;
     nombre!: string;
-    id_jugador!: number;
+    jugadoresId!: number;
 }

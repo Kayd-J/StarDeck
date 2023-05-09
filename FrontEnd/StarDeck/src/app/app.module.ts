@@ -14,6 +14,7 @@ import { MatchComponent } from './match/match.component';
 import { CrearPlanetaComponent } from './crear-planeta/crear-planeta.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CrearDeckComponent } from './crear-deck/crear-deck.component';
+import { SelecDeckComponent } from './selec-deck/selec-deck.component';
 import { VigilanteGuard } from './vigilante.guard';
 
 @NgModule({
@@ -26,7 +27,8 @@ import { VigilanteGuard } from './vigilante.guard';
     MatchComponent,
     CrearPlanetaComponent,
     MatchmakingComponent,
-    CrearDeckComponent
+    CrearDeckComponent,
+    SelecDeckComponent
   ],
   imports: [
     BrowserModule,
