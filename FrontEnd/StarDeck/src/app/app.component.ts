@@ -10,14 +10,16 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent {
   title = 'StarDeck';
   isAdmin? = false;
+  isCliente? = false;
   notLogged?= true;
 
   constructor(private api:ApiService, private cookieService: CookieService) { }
 
   logOut(){
   this.isAdmin= false;
+  this.isCliente= false;
   this.notLogged=true;
   this.cookieService.delete('UserCookie');
-  //window.location.reload();
+  window.location.reload();
 }
 }
