@@ -22,7 +22,7 @@ export class ApiService {
    * @description Funcion que se encarga de enviar los datos del formulario al servicio
    */
   loginByEmailCliente(form:Login):Observable<StatusI>{
-    let direccion = '/api/Jugadores/Login';
+    let direccion = this.url +'/api/Jugadores/Login';
      console.log(form);
      console.log(direccion)
     return this.http.post<StatusI>(direccion, form);
@@ -79,6 +79,11 @@ export class ApiService {
   loginByEmailAdmin(form:any):Observable<any>{
     let direccion = this.url + '/Admin/Login';
     return this.http.post<any>(direccion, form);
+  }
+
+  getUsernameID(username:String):Observable<any>{
+    let direccion = this.url +'/api/Jugadores/Usuario/' + username;
+    return this.http.get<any>(direccion)
   }
 
   getDecksById(id: string):Observable<any>{

@@ -11060,19 +11060,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\spark\\.nuget\\packages\\": {}
+    "C:\\Users\\Kayd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\spark\\OneDrive\\Escritorio\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
+      "projectUniqueName": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
       "projectName": "StarDeckAPI",
-      "projectPath": "C:\\Users\\spark\\OneDrive\\Escritorio\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
-      "packagesPath": "C:\\Users\\spark\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\spark\\OneDrive\\Escritorio\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\obj\\",
+      "projectPath": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI.csproj",
+      "packagesPath": "C:\\Users\\Kayd\\.nuget\\packages\\",
+      "outputPath": "D:\\TEC\\Especificacion y Disenho\\Proyecto\\StarDeck\\StarDeckAPI\\StarDeckAPI\\StarDeckAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\spark\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

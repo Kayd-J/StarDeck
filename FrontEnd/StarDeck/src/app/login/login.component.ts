@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service'
 import { Router } from '@angular/router';
 import { StatusI } from '../models/status-i';
 import { CookieService } from 'ngx-cookie-service';
+import { Jugador } from '../models/jugador';
 
 @Component({
   selector: 'app-login',
@@ -11,30 +12,27 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  /**
+ *@description Funcion que se encarga de crear el formulario
+ * con sus respectivas validaciones
+ * @returns FormGroup
+ */
+  loginForm = new FormGroup({
+    usuario : new FormControl('', [Validators.required]),
+    password : new FormControl('', Validators.required)
+  })
+  jugadortemplate = new Jugador();
 
   constructor(private api:ApiService, private router:Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
 
-  // Set a cookie
-  //this.cookieService.set('myCookie', 'myValue');
-
 // Get a cookie
  //const myCookieValue = this.cookieService.get('myCookie');
 
 // Delete a cookie
 // this.cookieService.delete('myCookie');
- /**
- *@description Funcion que se encarga de crear el formulario
- * con sus respectivas validaciones
- * @returns FormGroup
- */
-  loginForm = new FormGroup({
-    usuario : new FormControl('', [Validators.required, Validators.email]),
-    password : new FormControl('', Validators.required)
-  })
-
 
   get usuariov(){
     return this.loginForm.get('usuario')
@@ -44,9 +42,18 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password')
   }
 
-  getLoginCredentials(username: string, password: string): void{
-
+  getUserID(username:any){
+    this.api.getUsernameID(username).subscribe(data=>{
+      this.jugadortemplate = data;
+      console.log(this.jugadortemplate.id);
+    });
+    return this.jugadortemplate.id;
   }
+
+  ParseUserId(){
+    return this.jugadortemplate.id;
+  }
+
  /**
  * @param form LoginI
  * @returns ResponseI
@@ -54,12 +61,13 @@ export class LoginComponent implements OnInit {
  * para que este los envie al backend y este los procese
  */
   onLogin(form:any){
+    this.getUserID(this.loginForm.get('usuario')?.value);
     this.api.loginByEmailCliente(form).subscribe(data =>{
       let dataResponse:StatusI = data;
       console.log(data);
       if(dataResponse.status == "Ok"){
         // Set a cookie
-        this.cookieService.set('UserCookie', "");
+        this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.router.navigate(["/crearCarta"]);
       }
       if(dataResponse.status == "Error"){/*
@@ -78,5 +86,9 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
+  
+
+  
 
 }
