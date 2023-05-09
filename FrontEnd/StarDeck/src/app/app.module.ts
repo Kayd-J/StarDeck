@@ -15,6 +15,7 @@ import { MatchComponent } from './match/match.component';
 import { CrearPlanetaComponent } from './crear-planeta/crear-planeta.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CrearDeckComponent } from './crear-deck/crear-deck.component';
+import { VigilanteGuard } from './vigilante.guard';
 
 @NgModule({
   declarations: [
