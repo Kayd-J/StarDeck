@@ -14,6 +14,7 @@ export class ApiService {
 
   url:string='https://localhost:7257';
   isAdmin?: Boolean;
+  isCliente?: Boolean;
 
   constructor(private http:HttpClient) { }
 

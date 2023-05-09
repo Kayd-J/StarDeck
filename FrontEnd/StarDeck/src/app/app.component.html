@@ -1,6 +1,6 @@
 <header class="site-header sticky-top py-1">
-  <nav class="container d-flex flex-column flex-md-row justify-content-between">
-    <a  class="py-2"  aria-label="Product" routerLink="" *ngIf="notLogged; else logged">
+  <nav class="container d-flex flex-md-row">
+    <a  class="py-2 ml-auto"  aria-label="LoginButton" routerLink="" *ngIf="notLogged; else logged">
       <svg width="24" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10"/>
         <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
@@ -8,21 +8,19 @@
     </a>
 
     <ng-template #logged>
-      <!-- Pero funciona con uno o el otro -->
-      <a class="py-2 d-none d-md-inline-block" routerLink="/buscarPartida">Buscar partida</a>
-      <a class="py-2 d-none d-md-inline-block"  routerLink="/crearDeck">Crear deck</a>
-      <!-- Este es el mae que no me deja tener una funcion y un routerlink al mismo tiempo -->
-      <a class="py-2 d-none d-md-inline-block"  [routerLink]="['/Home']" (click)="logOut()">Logout</a>
+      <ng-template [ngIf]="isAdmin">
+        <a class="stardeck py-2 ml-auto"  routerLink="/crearCarta">Crear Carta</a>
+        <a class="stardeck py-2 ml-auto"  routerLink="/crearPlaneta">Crear Planeta</a>
+        <a class="stardeck py-2 ml-auto"  [routerLink]="[logged]" (click)="logOut()">Logout</a>
+      </ng-template>
+      <ng-template [ngIf]="isCliente">
+        <a class="stardeck py-2 ml-auto" routerLink="/buscarPartida">Buscar partida</a>
+        <a class="stardeck py-2 ml-auto"  routerLink="/crearDeck">Crear deck</a>
+        <a class="stardeck py-2 ml-auto"  [routerLink]="" (click)="logOut()">Logout</a>
     </ng-template>
-
-    <ng-template [ngIf]="isAdmin">
-      <a class="py-2 d-none d-md-inline-block"  routerLink="/crearCarta">Crear Carta</a>
-      <a class="py-2 d-none d-md-inline-block"   routerLink="/crearPlaneta">Crear Planeta</a>
-      <!-- Este es el mae que no me deja tener una funcion y un routerlink al mismo tiempo -->
-      <a class="py-2 d-none d-md-inline-block"  [routerLink]="['/Home']" (click)="logOut()">Logout</a>
     </ng-template>
-
-    </nav>
+    <p class="stardeck py-2 ml-auto" >STARDECK</p>
+  </nav>
 
 </header>
 <router-outlet></router-outlet>

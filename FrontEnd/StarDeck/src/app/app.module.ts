@@ -40,7 +40,8 @@ import { LoggedComponent } from './logged/logged.component';
     ReactiveFormsModule,
     CarouselModule.forRoot(),
     RouterModule.forRoot([
-      { path: "", component: MainPageComponent },
+      { path: "", component: MainPageComponent},
+      { path: "main-page", component: MainPageComponent},
       { path: "login", component: LoginComponent },
       { path: "registro", component: RegistroComponent },
       { path: "logged", component: LoggedComponent, canActivate: [VigilanteGuard]},

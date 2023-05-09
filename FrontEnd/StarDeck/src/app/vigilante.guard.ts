@@ -12,7 +12,7 @@ export class VigilanteGuard implements CanActivate {
   }
   redirect(flag: boolean){
     if (!flag){
-      this.router.navigate(["login"]);
+      this.router.navigate([""]);
     }
   }
 

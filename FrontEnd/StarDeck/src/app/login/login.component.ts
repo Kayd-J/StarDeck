@@ -68,8 +68,10 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if(dataResponse.status == "Ok"){
         // Set a cookie
-
+        this.navbar.isAdmin = false;
+        this.navbar.isCliente = true;
         this.api.isAdmin = false;
+        this.api.isCliente = true;
         this.router.navigate(["logged"]);
         this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.navbar.notLogged = false;
@@ -81,9 +83,12 @@ export class LoginComponent implements OnInit {
           let dataResponse:StatusI = data;
           // detectar si es un Admin
           if(dataResponse.status == "Ok"){
-            this.navbar.notLogged = false;
             this.navbar.isAdmin = true;
+            this.navbar.isCliente = false;
+            this.api.isAdmin = true;
+            this.api.isCliente = false;
             this.router.navigate(["logged"]);
+            this.navbar.notLogged = false;
 
           }
           if(dataResponse.status == "Error"){
