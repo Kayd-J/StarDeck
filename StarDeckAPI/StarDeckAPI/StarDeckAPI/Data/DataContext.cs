@@ -14,7 +14,7 @@ namespace StarDeckAPI.Data
         public DbSet<Administradores> Administradores { get; set; }
 
         public DbSet<Cartas> Cartas { get; set; }
-        public void AddCard(string Id, int Energia, string Raza, int Costo, string Nombre, string Tipo, string Descripcion, bool Disponibilidad, 
+        public void AddCard(string Id, int Energia, string Raza, int Costo, string Nombre, string Tipo, string Descripcion, bool Disponibilidad,
                             string Imagen, int AdministradoresId)
         {
             var IdParameter = new SqlParameter("@Id", Id);
@@ -33,11 +33,14 @@ namespace StarDeckAPI.Data
                 TipoParameter, DescripcionParameter, DisponibilidadParameter, ImagenParameter, AdministradoresIdParameter);
         }
         public DbSet<Planetas> Planetas { get; set; }
+
         public DbSet<Decks> Decks { get; set; }
 
         public DbSet<Jugadores> Jugadores { get; set; }
 
         public DbSet<Paises> Paises { get; set; }
+
+        public DbSet<DecksCartas> Decks_Cartas { get; set; }
 
         public DbSet<Auth> Auth { get; set; }
 
@@ -49,6 +52,9 @@ namespace StarDeckAPI.Data
                 .HasNoKey();
 
             modelBuilder.Entity<Login>()
+                .HasNoKey();
+
+            modelBuilder.Entity<DecksCartas>()
                 .HasNoKey();
 
         }

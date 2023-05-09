@@ -5,7 +5,7 @@ namespace StarDeckAPI.Models;
 
 public partial class Jugadores
 {
-    public string Id { get; set; } = null!;
+    public string? Id { get; set; } = null!;
 
     public string? Usuario { get; set; }
 
@@ -19,7 +19,7 @@ public partial class Jugadores
 
     public string? Correo { get; set; }
 
-    public bool? Estadodecuenta { get; set; }
+    public bool Estadodecuenta { get; set; }
 
     public string? Avatar { get; set; }
 

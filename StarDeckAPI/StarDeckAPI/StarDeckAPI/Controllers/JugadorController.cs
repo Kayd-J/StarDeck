@@ -30,6 +30,12 @@ namespace StarDeckAPI.Controllers
             return await _context.Jugadores.ToListAsync();
         }
 
+        [HttpGet("SP/GetAllDecksFromPlayer/{JugadoresId}")]
+        public async Task<ActionResult<List<Decks>>> GetDecksFromPlayer(string JugadoresId)
+        {
+            var decks = await _context.Decks.FromSqlRaw($"GetDecksFromPlayer '{JugadoresId}'").ToListAsync();
+            return Ok(decks);
+        }
         /// <summary>
         /// GET: api/Clientes/5
         /// </summary>
@@ -39,6 +45,20 @@ namespace StarDeckAPI.Controllers
         public async Task<ActionResult<Jugadores>> GetJugador(string id)
         {
             var jugador = await _context.Jugadores.FindAsync(id);
+
+            if (jugador == null)
+            {
+                return NotFound();
+
+            }
+
+            return jugador;
+        }
+
+        [HttpGet("{Usuario}")]
+        public async Task<ActionResult<Jugadores>> GetJugadorId(string Usuario)
+        {
+            var jugador = await _context.Jugadores.FindAsync(Usuario);
 
             if (jugador == null)
             {
@@ -118,7 +138,7 @@ namespace StarDeckAPI.Controllers
         {
             var result = _context.Jugadores.Any(e => e.Usuario == auth.Usuario && e.Pass == auth.Password);
 
-            var status = new Login { Status = "Ok" };
+            var status = new Login { Status =  "Ok"};
 
             var error = new Login { Status = "Error" };
 
@@ -150,6 +170,8 @@ namespace StarDeckAPI.Controllers
 
             return NoContent();
         }
+
+
         /// <summary>
         /// Revisa si existe un cliente
         /// </summary>
@@ -159,5 +181,12 @@ namespace StarDeckAPI.Controllers
         {
             return _context.Jugadores.Any(e => e.Id == id);
         }
+
+        [HttpGet("UsuarioExists/{Usuario}")]
+        public bool UsuarioExists(string usuario)
+        {
+            return _context.Jugadores.Any(e => e.Usuario == usuario);
+        }
+
     }
 }

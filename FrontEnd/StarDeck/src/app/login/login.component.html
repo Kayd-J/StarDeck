@@ -5,12 +5,14 @@
       <div class="mb-3 mt-4">
           <label for="inputEmail" class="form-label">Username</label>
           <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"required autofocus formControlName="usuario">
-      </div>
+          <span style="color: red;" *ngIf = "usuariov && usuariov.invalid && usuariov.touched">Espacio requerido. Debe ser un email</span>
+        </div>
       <div class="mb-3">
           <label for="inputPassword" class="form-label">Password</label>
           <input type="password" class="form-control" id="inputPassword" required formControlName="password">
-      </div>
-      <button type="submit" class="btn btn-light mt-3">Login</button>
+          <span style="color: red;" *ngIf = "passwordv && passwordv.invalid && passwordv.touched">Espacio requerido</span>
+    </div>
+      <button [disabled]="loginForm.invalid"type="submit" class="btn btn-light mt-3">Login</button>
   </form>
 </div>
 

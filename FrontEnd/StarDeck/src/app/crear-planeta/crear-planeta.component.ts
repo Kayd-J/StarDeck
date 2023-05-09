@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-crear-planeta',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CrearPlanetaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api:ApiService) { }
 
   imageUrl = ""
 
@@ -16,19 +17,33 @@ export class CrearPlanetaComponent implements OnInit {
   }
 
     planetForm=new FormGroup({
-    idplaneta:new FormControl(),
-    nombre:new FormControl(),
-    descripcion:new FormControl(),
-    tipo:new FormControl(),
-    habilidad:new FormControl(),
-    disponibilidad:new FormControl(),
+      id:new FormControl(),
+      nombre:new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(30)]),
+      tipo:new FormControl('',[Validators.required]),
+      descripcion:new FormControl('',[Validators.required]),
+      estado:new FormControl(),
+      habilidad:new FormControl('',[Validators.required]),
+      administradoresId:new FormControl()
   })
 
-  nombre = "Mustafar"
+  get nombrev(){
+    return this.planetForm.get('nombre')
+  }
+  get tipov(){
+    return this.planetForm.get('tipo')
+  }
+  get descripcionv(){
+    return this.planetForm.get('descripcion')
+  }
+  get habilidadv(){
+    return this.planetForm.get('habilidad')
+  }
+
+  nombre = ""
+  tipo = ""
+  descripcion = "Esto es un planeta"
   habilidad = ""
-  tipo = "tipo 1"
-  descripcion = ""
-  disponibilidad = false
+  estado = true
 
     onselectImage(e: any){
     if(e.target.files){
@@ -40,11 +55,18 @@ export class CrearPlanetaComponent implements OnInit {
     }
   }
 
-
-
   submit(form:any){
+    form.id =  ("P-" + Math.floor(Math.random() * (900000000000 - 3 + 1) + 3)).toString(); //asignar un ID random
+    //form.imagen = this.imageUrl
+    form.administradoresId = "1";
+
     console.log(this.planetForm.value)
-    //this.service.addPlaneta(this.planetForm.value).subscribe()
+
+    this.api.addPlaneta(form).subscribe(data=>{
+      //let dataResponse:StatusI = data;
+      console.log(data)
+    });
+
   }
 
 }

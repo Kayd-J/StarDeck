@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, EventEmitter, Output  } from '@angular/core';
 import { CartaService } from '../services/carta.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Carta } from '../models/carta';
 import { StatusI } from '../models/status-i';
 import { ApiService } from '../services/api.service';
@@ -26,24 +26,48 @@ export class CrearCartaComponent implements OnInit {
 
   cartaForm=new FormGroup({
     id:new FormControl(),
-    energia:new FormControl(),
-    raza:new FormControl(),
-    costo:new FormControl(),
-    nombre:new FormControl(),
-    tipo:new FormControl(),
-    descripcion:new FormControl(),
+    energia:new FormControl('',[Validators.required]),
+    raza:new FormControl('',[Validators.required]),
+    costo:new FormControl('',[Validators.required]),
+    nombre:new FormControl('',[Validators.required]),
+    tipo:new FormControl('',[Validators.required]),
+    descripcion:new FormControl('',[Validators.required]),
     disponibilidad:new FormControl(),
     imagen:new FormControl(),
     administradoresId:new FormControl(),
   });
 
-  nombre: string = "Vulkan"
+  get energiav(){
+    return this.cartaForm.get('energia')
+  }
+
+  get razav(){
+    return this.cartaForm.get('raza')
+  }
+
+  get costov(){
+    return this.cartaForm.get('costo')
+  }
+
+  get nombrev(){
+    return this.cartaForm.get('nombre')
+  }
+
+  get tipov(){
+    return this.cartaForm.get('tipo')
+  }
+
+  get descripcionv(){
+    return this.cartaForm.get('descripcion')
+  }
+
+  nombre: string = ""
   costo: number = 0
   energia: number = 0
-  raza: string = "Humano"
-  tipo: string = "basico"
+  raza: string = ""
+  tipo: string = ""
   descripcion: string = "Esto es una carta"
-  disponibilidad: boolean = false
+  disponibilidad: boolean = true
   
   onselectImage(e: any){
     if(e.target.files){

@@ -13,7 +13,9 @@ public partial class Planetas
 
     public string? Descripcion { get; set; }
 
-    public int? Estado { get; set; }
+    public bool? Estado { get; set; }
+
+    public string? Habilidad { get; set; }
 
     public int AdministradoresId { get; set; }
 

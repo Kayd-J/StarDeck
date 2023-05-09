@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -10,11 +10,11 @@ import { CrearCartaComponent } from './crear-carta/crear-carta.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
-import { MainJugadorComponent } from './main-jugador/main-jugador.component';
 import { MatchComponent } from './match/match.component';
 import { CrearPlanetaComponent } from './crear-planeta/crear-planeta.component';
 import { MatchmakingComponent } from './matchmaking/matchmaking.component';
 import { CrearDeckComponent } from './crear-deck/crear-deck.component';
+import { VigilanteGuard } from './vigilante.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,6 @@ import { CrearDeckComponent } from './crear-deck/crear-deck.component';
     CrearCartaComponent,
     RegistroComponent,
     MainPageComponent,
-    MainJugadorComponent,
     MatchComponent,
     CrearPlanetaComponent,
     MatchmakingComponent,
@@ -35,7 +34,18 @@ import { CrearDeckComponent } from './crear-deck/crear-deck.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    RouterModule.forRoot([
+      { path: "", component: LoginComponent },
+      { path: "login", component: LoginComponent },
+      { path: "registro", component: RegistroComponent },
+      { path: "main", component: MainPageComponent, canActivate: [VigilanteGuard] },
+      { path: "match", component: MatchComponent, canActivate: [VigilanteGuard] },
+      { path: "crear-carta", component: CrearCartaComponent, canActivate: [VigilanteGuard] },
+      { path: "crear-planeta", component: CrearPlanetaComponent, canActivate: [VigilanteGuard] },
+      { path: "matchmaking", component: MatchmakingComponent, canActivate: [VigilanteGuard] },
+      { path: "crear-deck", component: CrearDeckComponent, canActivate: [VigilanteGuard] }
+    ]),
   ],
   exports:[
     LoginComponent,
@@ -43,5 +53,6 @@ import { CrearDeckComponent } from './crear-deck/crear-deck.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

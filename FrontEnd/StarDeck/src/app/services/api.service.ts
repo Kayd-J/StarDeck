@@ -61,6 +61,15 @@ export class ApiService {
      console.log(direccion)
     return this.http.post<any>(direccion, form);
   }
+
+  addPlaneta(form:any):Observable<any>{
+    let direccion = this.url+'/api/Planetas/PostPlaneta';
+     console.log(JSON.stringify(form));
+     console.log(direccion)
+    return this.http.post<any>(direccion, form);
+  }
+
+
   /**
    *
    * @param form LoginI
