@@ -78,7 +78,7 @@ export class ApiService {
 
 
   addDeck(form:any):Observable<any>{
-    let direccion = this.url+'/api/Deck/PostDeck';
+    let direccion = this.url+'/api/Decks/PostDeck';
      console.log(JSON.stringify(form));
      console.log(direccion)
     return this.http.post<any>(direccion, form);

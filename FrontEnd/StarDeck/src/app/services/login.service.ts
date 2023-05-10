@@ -9,11 +9,12 @@ export class LoginService {
   Jugador = [] // Esto va a ser un JSON
   jNombre = ''
   jAvatar = ''
+  jId = ''
 
   constructor(private api:ApiService) { }
 
   getUsr(id:string){
-    this.Jugador = JSON.parse(String(this.api.getJugador(id)));
+    this.jId = JSON.parse(String(this.api.getJugador(id)));
   }
 
   setData(){
