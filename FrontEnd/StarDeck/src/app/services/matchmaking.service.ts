@@ -45,9 +45,8 @@ export class MatchmakingService {
    * @param deck lista de cartas del deck
    * @param img imagen de perfil
    */
-  setEnemy(usuario:string, deck:string, img:string){
+  setEnemy(usuario:string, img:string){
     this.eName = usuario;
-    this.eDeck = deck;
     this.eAvatar = img
 
   }

@@ -36,7 +36,7 @@ export class SelecDeckComponent implements OnInit {
   }
 
   onSelect(deck: any){
-    this.deckvar.setCurrentDeck(deck);
+    this.deckvar.setCurrentDeck(deck.nombre);
     console.log(deck)
   }
 

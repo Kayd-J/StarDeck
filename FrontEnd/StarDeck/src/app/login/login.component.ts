@@ -6,6 +6,7 @@ import { StatusI } from '../models/status-i';
 import { CookieService } from 'ngx-cookie-service';
 import { Jugador } from '../models/jugador';
 import { AppComponent } from '../app.component';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   })
   jugadortemplate = new Jugador();
 
-  constructor(private api:ApiService, private navbar:AppComponent, private router:Router, private cookieService: CookieService) { }
+  constructor(private api:ApiService, private navbar:AppComponent, private router:Router, private cookieService: CookieService, private login:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -75,6 +76,15 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["logged"]);
         this.cookieService.set('UserCookie', this.ParseUserId().toString());
         this.navbar.notLogged = false;
+        // si es cliente, hacer un get por usrname y guardar info
+        if(this.navbar.isCliente == true){
+          this.api.getUsernameID(String(this.loginForm.get('usuario')?.value)).subscribe(data=>{
+            this.jugadortemplate = data;
+            console.log(this.jugadortemplate.id);
+            // guardar info en login service
+            this.login.setData(data)
+          });
+        }
 
       }
       if(dataResponse.status == "Error"){

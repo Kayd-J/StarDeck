@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'
 import { Router } from '@angular/router';
-import { MatchmakingService } from '../services/matchmaking.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-match',
@@ -11,11 +11,11 @@ import { MatchmakingService } from '../services/matchmaking.service';
 export class MatchComponent implements OnInit {
 
   timeLeft = 20;
-  contrincante = this.match.eName; // username de enemigo
-  imgUser = this.match.jugAvatar // imagen de perfil del jugador
+  contrincante = ''; // username de enemigo
+  imgUser = '' // imagen de perfil del jugador
   // https://drive.google.com/uc?export=download&id=
-  imgEnemy = this.match.eAvatar // imagen de perfil del enemigo
-  jugador = this.match.jugName // username de usuario
+  imgEnemy = '' // imagen de perfil del enemigo
+  jugador = '' // username de usuario
   dinero = 500; // numero de monedas del jugador
 
   // turno y temporizador
@@ -23,9 +23,9 @@ export class MatchComponent implements OnInit {
   temporizador: any;
 
   // para los planetas
-  pName1 = this.match.planetas[0];
+  pName1 = 'this.match.planetas[0]';
   pName2 = 'Planeta 2';
-  pName3 = this.match.planetas[3];
+  pName3 = 'this.match.planetas[3]';
 
   // informacion de la carta 1
   imageUrl1 = "assets/Images/R.jpeg"
@@ -93,10 +93,11 @@ export class MatchComponent implements OnInit {
 
 
 
-  constructor(private api:ApiService, private match:MatchmakingService) { }
+  constructor(private api:ApiService, private login: LoginService) { }
   ngOnInit() { 
     // primero se hace un get para obtener la informacion de los jugadores
-    this.match.ngOnInit();
+    //this.match.ngOnInit();
+    this.setEnemy();
     this.setFirst();
     this.startTimer();
   }
@@ -111,6 +112,13 @@ export class MatchComponent implements OnInit {
         this.changeTurn()
       }
     }, 1000)
+  }
+
+  setEnemy(){
+    this.contrincante = this.login.eName;
+    this.imgUser = this.login.jAvatar;
+    this.imgEnemy = this.login.eAvatar;
+    this.jugador = this.login.jNombre;
   }
   
   // funcion para cambiar el turno del los jugadores

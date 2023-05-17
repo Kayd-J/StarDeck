@@ -10,6 +10,8 @@ export class LoginService {
   jNombre = ''
   jAvatar = ''
   jId = ''
+  eName = ''
+  eAvatar = ''
 
   constructor(private api:ApiService) { }
 
@@ -17,9 +19,9 @@ export class LoginService {
     this.jId = JSON.parse(String(this.api.getJugador(id)));
   }
 
-  setData(){
-    this.jNombre = this.Jugador[0]['usuario'];
-    this.jAvatar = this.Jugador[0]['avatar'];
+  setData(player:any){
+    this.jNombre = player.usuario;
+    this.jAvatar = player.avatar;
   }
 
 }

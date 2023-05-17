@@ -1,10 +1,10 @@
 <div class="col-sm offset-lg-4">
 
-    <img src="assets/p.jpg" width="20%" height="200" >
+    <img [src]="jugadorImg" width="20%" height="200" >
     <h2>{{jugador}}</h2>
     <h3>{{rango}}</h3>
     <div>
-      <button  type="submit" class="btn btn-primary btn-lg btn-block" (click)="startCountdown()">Buscar partida</button>
+      <button  type="submit" class="btn btn-primary btn-lg btn-block" (click)="startCountdown()" style="margin-bottom: 5px;">Buscar partida</button>
       <div class="countdown">Tiempo de cola: {{ countdown }}</div>
   </div>
       <div>
@@ -14,7 +14,7 @@
   </div>
 
   <div>
-    <h4>Usaras el deck:</h4>
+    <h4>Usarás el deck:</h4>
     {{deck}}
   </div>
 
