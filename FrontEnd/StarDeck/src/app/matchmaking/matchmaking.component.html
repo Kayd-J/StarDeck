@@ -1,23 +1,30 @@
-<div class="col-sm offset-lg-4">
-
-    <img [src]="jugadorImg" width="20%" height="200" >
-    <h2>{{jugador}}</h2>
-    <h3>{{rango}}</h3>
+<!--Contenedor de todo-->
+<div class="row align-items-start" style="background-color: black; height: 670px; width:100.8%">
+  <!--Para los datos del jugador-->
+  <div class="col-sm offset-lg-2 justify-content-center" style=" margin-top: 20px">
+    <img [src]="jugadorImg" class="img-thumbnailrounded mx-auto d-block" style="border: 3px;" width="200" height="200" >
+    <h2 class="text-center" style="color:aliceblue; font-family:cursive;">{{jugador}}</h2>
+    <h3 class="text-center" style="color:aliceblue; font-family:cursive;">{{rango}}</h3>
+    <div style="margin-top: 50px;">
+      <h4 class="text-center" style="color: aliceblue; font-family:cursive; font-weight: bold;">Selecciona un deck para jugar:</h4>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-primary btn-md btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Mis decks</button>
+    </div>
     <div>
+      <h4 class="text-center" style="color:aliceblue; font-family:cursive; font-weight: bold; margin-top:15px">Usarás el deck:</h4>
+      <h5 class="text-center" style="color: aliceblue; font-family: 'Times New Roman', Times, serif;">{{deck}}</h5>
+    </div>
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
       <button  type="submit" class="btn btn-primary btn-lg btn-block" (click)="startCountdown()" style="margin-bottom: 5px;">Buscar partida</button>
-      <div class="countdown">Tiempo de cola: {{ countdown }}</div>
+    </div>
   </div>
-      <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Mis decks
-        </button>
+  <!--Para el tiempo de cola-->
+  <div class="col-sm offset-lg-2">
+    <div class="countdown">
+      <h3 class="text-center">Tiempo de cola: {{ countdown }}</h3>
+    </div>
   </div>
-
-  <div>
-    <h4>Usarás el deck:</h4>
-    {{deck}}
-  </div>
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -37,8 +44,6 @@
     </div>
   </div>
 
-
-
-  </div>
+</div>
 
   <router-outlet></router-outlet>
