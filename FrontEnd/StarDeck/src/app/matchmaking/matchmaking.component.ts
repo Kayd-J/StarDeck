@@ -3,6 +3,7 @@ import { DeckVariableService } from '../services/deck-variable.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { ApiService } from '../services/api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-matchmaking',
@@ -34,13 +35,13 @@ export class MatchmakingComponent implements OnInit {
   }
 
   startCountdown() {
-    this.countdown = 20; 
+    this.countdown = 20;
     console.log(this.deck)
     if (this.deck != 'No se ha seleccionado un deck') {
       const countdownInterval = setInterval(() => {
         this.countdown--;
         if (this.countdown > 0) {
-          this.lookForMatch()  
+          this.lookForMatch()
         }
         // si la cuenta llega a cero se debe volver a iniciar el proceso
         if (this.countdown <= 0) {
@@ -56,7 +57,7 @@ export class MatchmakingComponent implements OnInit {
   }
 
   lookForMatch(){
-    // hacer get de todos los jugadores 
+    // hacer get de todos los jugadores
     this.api.getJugadores().subscribe(data=>{
       // recorrer la lista para encontrar un jugador disponible
       for (let i = 0; i < data.length; i++) {

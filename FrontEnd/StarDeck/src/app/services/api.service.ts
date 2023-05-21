@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http'
+//import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Login } from '../models/login'
 import { IdForm } from '../models/id-form'
 import { Jugador } from '../models/jugador'
 import { StatusI } from '../models/status-i'
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,7 +14,7 @@ import { StatusI } from '../models/status-i'
 })
 export class ApiService {
 
-  url:string='https://localhost:7257';
+  url:string='https://localhost:44339';
   isAdmin?: Boolean;
   isCliente?: Boolean;
   usercookie?: string;

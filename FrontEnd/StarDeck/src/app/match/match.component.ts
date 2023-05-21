@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-match',
@@ -35,7 +36,7 @@ export class MatchComponent implements OnInit {
   descripcion1 = 'carta 1';
   costo1 = 0;
   energia1 = 0;
-  
+
   // informacion de la carta 2
   imageUrl2 = "assets/Images/R.jpeg"
   raza2 = 'uno';
@@ -94,7 +95,7 @@ export class MatchComponent implements OnInit {
 
 
   constructor(private api:ApiService, private login: LoginService) { }
-  ngOnInit() { 
+  ngOnInit() {
     // primero se hace un get para obtener la informacion de los jugadores
     //this.match.ngOnInit();
     this.setEnemy();
@@ -120,7 +121,7 @@ export class MatchComponent implements OnInit {
     this.imgEnemy = this.login.eAvatar;
     this.jugador = this.login.jNombre;
   }
-  
+
   // funcion para cambiar el turno del los jugadores
   changeTurn(){
     if (this.turno == this.jugador){
@@ -147,7 +148,7 @@ export class MatchComponent implements OnInit {
 
   // funcion para mezclar o elegir aleatoriamente las cartas del deck de los jugadores
   mixDeck(){
-    
+
   }
 
 }

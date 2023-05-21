@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { RegistroComponent } from './registro.component';
 
-describe('RegistroComponent', () => {
+describe('(3) TEST del componente "RegistroComponent"', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
 
