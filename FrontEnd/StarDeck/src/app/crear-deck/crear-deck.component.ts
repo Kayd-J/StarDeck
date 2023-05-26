@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../services/api.service';
 import { LoginService } from '../services/login.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -16,7 +17,7 @@ export class CrearDeckComponent implements OnInit {
 
   slides : any= [
   ];
-  constructor(private api: ApiService, private login:LoginService) { }
+  constructor(private http: HttpClient,private api: ApiService, private login:LoginService) { }
 
   //variables
   cardList : any = [];

@@ -50,7 +50,7 @@ describe('TEST del servicio "PlanetaService"', () => {
     habilidad: "Habilidad 1",
     administradoresId: 1
   };
-
+    // por que un subscribe en un metodo de post??
     planetaService.addPlaneta(mockPlaneta).subscribe(
       data => {
         expect(data).toContain(mockPlaneta)
@@ -83,13 +83,15 @@ describe('TEST del servicio "PlanetaService"', () => {
   // });
 
   it('Debe de hacer get de planetas', (done: DoneFn) => {
-    const mockPlaneta = { id: "P-1G2J4V5M6J7J",
-    nombre: "planet1",
-    tipo: "raro",
-    descripcion: "este es un planeta raro",
-    estado: true,
-    habilidad: "Habilidad 1",
-    administradoresId: 1};
+    const mockPlaneta = {
+      id: "P-1G2J4V5M6J7J",
+      nombre: "planet1",
+      tipo: "raro",
+      descripcion: "este es un planeta raro",
+      estado: true,
+      habilidad: "Habilidad 1",
+      administradoresId: 1
+    };
 
     planetaService.getPlaneta(mockPlaneta.id).subscribe(
       {next: data => {

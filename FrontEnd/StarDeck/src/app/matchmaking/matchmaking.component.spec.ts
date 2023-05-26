@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatchmakingComponent } from './matchmaking.component';
 
 describe('MatchmakingComponent', () => {
@@ -8,6 +8,7 @@ describe('MatchmakingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[HttpClientTestingModule],
       declarations: [ MatchmakingComponent ]
     })
     .compileComponents();

@@ -8,6 +8,7 @@ describe('(3) TEST del componente "RegistroComponent"', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ RegistroComponent ]
     })
     .compileComponents();

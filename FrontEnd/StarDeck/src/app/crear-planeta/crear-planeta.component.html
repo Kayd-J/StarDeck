@@ -3,7 +3,7 @@
     
     <div class="col-sm offset-lg-1">
         <h2>Herramienta para crear planeta</h2> 
-        <form [formGroup]="planetForm" (ngSubmit)="submit(planetForm.value)">
+        <form [formGroup]="planetaForm" (ngSubmit)="submit(planetaForm.value)">
         <div>
              <div class="col-md-3 offset-lg-1">
                   <label for="txtcode">Nombre del planeta</label>
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-3 offset-lg-1">
                 <div>
-                    <button [disabled]="planetForm.invalid"  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+                    <button [disabled]="planetaForm.invalid"  type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
                 </div>
             </div>
         </form>

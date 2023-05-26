@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class MatchmakingService {
   planetas = ''
 
 
-  constructor(private login:LoginService) { }
+  constructor(private http: HttpClient, private login:LoginService) { }
 
   ngOnInit(): void {
     // Se hace un get de la tabla de sucursales para mostrarlas una vez que se carga la pagina

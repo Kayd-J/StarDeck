@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Carta } from '../models/carta';
 import { StatusI } from '../models/status-i';
 import { ApiService } from '../services/api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-carta',
@@ -16,7 +17,7 @@ export class CrearCartaComponent implements OnInit {
 
 
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService, private http: HttpClient) { }
 
 
   imageUrl = ""

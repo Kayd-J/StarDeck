@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CrearDeckComponent } from './crear-deck.component';
 
 describe('CrearDeckComponent', () => {
@@ -8,6 +8,7 @@ describe('CrearDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[HttpClientTestingModule],
       declarations: [ CrearDeckComponent ]
     })
     .compileComponents();

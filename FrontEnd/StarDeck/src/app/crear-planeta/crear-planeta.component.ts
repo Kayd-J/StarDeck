@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-crear-planeta',
@@ -9,7 +11,7 @@ import { ApiService } from '../services/api.service';
 })
 export class CrearPlanetaComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  constructor(private api:ApiService,private http: HttpClient) { }
 
   imageUrl = ""
 

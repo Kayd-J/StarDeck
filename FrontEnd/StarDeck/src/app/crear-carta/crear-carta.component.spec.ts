@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CrearCartaComponent } from './crear-carta.component';
 
 describe('CrearCartaComponent', () => {
@@ -8,6 +8,7 @@ describe('CrearCartaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ CrearCartaComponent ]
     })
     .compileComponents();

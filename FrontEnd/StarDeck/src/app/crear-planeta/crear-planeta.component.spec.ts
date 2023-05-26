@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CrearPlanetaComponent } from './crear-planeta.component';
 
 describe('CrearPlanetaComponent', () => {
@@ -8,6 +8,7 @@ describe('CrearPlanetaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule,],
       declarations: [ CrearPlanetaComponent ]
     })
     .compileComponents();
