@@ -16,7 +16,7 @@ export class CrearPlanetaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-    planetForm=new FormGroup({
+    planetaForm=new FormGroup({
       id:new FormControl(),
       nombre:new FormControl('',[Validators.required, Validators.minLength(5),Validators.maxLength(30)]),
       tipo:new FormControl('',[Validators.required]),
@@ -27,16 +27,16 @@ export class CrearPlanetaComponent implements OnInit {
   })
 
   get nombrev(){
-    return this.planetForm.get('nombre')
+    return this.planetaForm.get('nombre')
   }
   get tipov(){
-    return this.planetForm.get('tipo')
+    return this.planetaForm.get('tipo')
   }
   get descripcionv(){
-    return this.planetForm.get('descripcion')
+    return this.planetaForm.get('descripcion')
   }
   get habilidadv(){
-    return this.planetForm.get('habilidad')
+    return this.planetaForm.get('habilidad')
   }
 
   nombre = ""
@@ -60,10 +60,9 @@ export class CrearPlanetaComponent implements OnInit {
     //form.imagen = this.imageUrl
     form.administradoresId = "1";
 
-    console.log(this.planetForm.value)
+    console.log(this.planetaForm.value)
 
     this.api.addPlaneta(form).subscribe(data=>{
-      //let dataResponse:StatusI = data;
       console.log(data)
     });
 

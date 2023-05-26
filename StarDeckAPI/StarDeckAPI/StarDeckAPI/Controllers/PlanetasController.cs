@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using StarDeckAPI.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using StarDeckAPI.Data;
 using StarDeckAPI.Models;
+using System.Numerics;
 
 namespace StarPlanetaAPI.Controllers
 {
     [Route("api/Planetas")]
     [ApiController]
-    public class PlanetasController : Controller
+    public class PlanetasController : ControllerBase
     {
         private readonly DataContext _context;
 

@@ -14,7 +14,7 @@ export class CrearCartaComponent implements OnInit {
   @Input() carta? : Carta;
   @Output() cartaActualizadas = new EventEmitter<Carta[]>();
 
- 
+
 
   constructor(private api:ApiService) { }
 
@@ -68,7 +68,7 @@ export class CrearCartaComponent implements OnInit {
   tipo: string = ""
   descripcion: string = "Esto es una carta"
   disponibilidad: boolean = true
-  
+
   onselectImage(e: any){
     if(e.target.files){
       var reader = new FileReader();
@@ -90,7 +90,7 @@ export class CrearCartaComponent implements OnInit {
 
     this.api.addCarta(form).subscribe(data=>{
       //let dataResponse:StatusI = data;
-      console.log(data)
+      console.log(data);
     });
   }
 }

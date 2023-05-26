@@ -1,11 +1,8 @@
 export class Planeta{
-    idplaneta!: number;
+    id!: string;
     nombre!: string;
     descripcion!: string;
-    imagen!: string;
-    idadmin!: number;
-    disponiblidad!: boolean;
+    estado!: boolean;
     habilidad!: string;
-    tipo!: number;
+    administradoresId!: number;
   }
-  

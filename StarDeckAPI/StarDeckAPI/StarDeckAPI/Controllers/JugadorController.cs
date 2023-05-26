@@ -20,7 +20,6 @@ namespace StarDeckAPI.Controllers
             _context = context;
         }
 
-
         /// <summary>
         /// GET: api/Clientes
         /// </summary>

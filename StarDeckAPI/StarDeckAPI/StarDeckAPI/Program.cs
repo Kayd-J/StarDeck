@@ -30,20 +30,6 @@ builder.Services.AddCors(options => options.AddPolicy(name: "StarDeckOrigins",
             errorNumbersToAdd: null);
     }));
 
-
-/* Idea de Mario
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(
-    builder =>
-    {
-        builder.AllowAnyMethod()
-               .AllowAnyHeader()
-               .SetIsOriginAllowed(_ => true)
-               .AllowCredentials();
-    });
-});*/
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
