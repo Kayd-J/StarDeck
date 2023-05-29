@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatchmakingComponent } from './matchmaking.component';
 
-describe('MatchmakingComponent', () => {
+describe('(6) TEST del componente "MatchmakingComponent"', () => {
   let component: MatchmakingComponent;
   let fixture: ComponentFixture<MatchmakingComponent>;
 
@@ -18,7 +18,12 @@ describe('MatchmakingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+  it('Debe de existir el MatchmakingComponent', () => {
+    const fixture = TestBed.createComponent(MatchmakingComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
   });
+
+
 });

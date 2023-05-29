@@ -13,6 +13,9 @@ describe('(1) TEST del componente "AppComponent"', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        AppComponent
+      ]
     }).compileComponents();
   });
 
