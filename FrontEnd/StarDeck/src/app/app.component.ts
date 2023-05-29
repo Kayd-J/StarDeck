@@ -17,10 +17,12 @@ export class AppComponent {
 
   constructor(private api:ApiService, private cookieService: CookieService) {}
 
-  logOut(){
-  this.isAdmin= false;
-  this.isCliente= false;
-  this.notLogged=true;
-  this.cookieService.delete('UserCookie');
-  window.location.reload();
-}}
+  //logOut(){
+  //  this.isAdmin= false;
+  //  this.isCliente= false;
+  //  this.notLogged=true;
+  //  this.cookieService.delete('UserCookie');
+  //  window.location.reload();
+  //}  
+
+  }

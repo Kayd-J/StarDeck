@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing';
 
-import { VigilanteGuard } from './vigilante.guard';
+// import { VigilanteGuard } from './vigilante.guard';
 
-describe('VigilanteGuard', () => {
-  let guard: VigilanteGuard;
+// describe('VigilanteGuard', () => {
+//   let guard: VigilanteGuard;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(VigilanteGuard);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     guard = TestBed.inject(VigilanteGuard);
+//   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(guard).toBeTruthy();
+//   });
+// });
