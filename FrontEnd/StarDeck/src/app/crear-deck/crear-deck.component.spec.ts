@@ -1,9 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-=======
 import { HttpClientTestingModule} from '@angular/common/http/testing';
->>>>>>> ComponentTesting
 import { CrearDeckComponent } from './crear-deck.component';
 
 describe('(5) TEST del componente "CrearDeckComponent"', () => {
@@ -12,13 +8,7 @@ describe('(5) TEST del componente "CrearDeckComponent"', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-<<<<<<< HEAD
       imports:[HttpClientTestingModule],
-=======
-      imports: [
-        HttpClientTestingModule
-      ],
->>>>>>> ComponentTesting
       declarations: [ CrearDeckComponent ]
     })
     .compileComponents();

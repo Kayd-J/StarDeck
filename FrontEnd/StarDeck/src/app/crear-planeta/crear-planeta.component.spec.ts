@@ -29,8 +29,8 @@ describe('(4) TEST del componente "CrearPlanetaComponent"', () => {
     const app = fixture.componentInstance;
     fixture.detectChanges();
 
-    const form = app.planetForm;
-    const nombre = app.planetForm.controls['nombre'];
+    const form = app.planetaForm;
+    const nombre = app.planetaForm.controls['nombre'];
     nombre.setValue('testUnitarioPlanetaNombre')
     expect(form.invalid).toBeTrue();
   });
@@ -40,11 +40,11 @@ describe('(4) TEST del componente "CrearPlanetaComponent"', () => {
     const app = fixture.componentInstance;
     fixture.detectChanges();
 
-    const form = app.planetForm;
-    const nombre = app.planetForm.controls['nombre'];
-    const tipo = app.planetForm.controls['tipo'];
-    const descripcion = app.planetForm.controls['descripcion'];
-    const habilidad = app.planetForm.controls['habilidad'];
+    const form = app.planetaForm;
+    const nombre = app.planetaForm.controls['nombre'];
+    const tipo = app.planetaForm.controls['tipo'];
+    const descripcion = app.planetaForm.controls['descripcion'];
+    const habilidad = app.planetaForm.controls['habilidad'];
 
     nombre.setValue('testUnitarioPlanetaNombre')
     tipo.setValue('testUnitarioPlanetatipo')
