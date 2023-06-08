@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-3 offset-lg-1">
                 <div>
-                    <button [disabled]="cartaForm.invalid" type="submit" class="btn btn-primary btn-lg btn-block">Crear</button>
+                    <button [disabled]="cartaForm.invalid" type="submit" class="btn btn-primary btn-lg btn-block" (click)="reloadCurrentPage()" >Crear</button>
                 </div>
             </div>
         </form>

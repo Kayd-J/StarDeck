@@ -11,12 +11,12 @@
       <ng-template [ngIf]="isAdmin">
         <a class="py-2 ml-auto"  routerLink="/crearCarta">Crear Carta</a>
         <a class="py-2 ml-auto"  routerLink="/crearPlaneta">Crear Planeta</a>
-        <a class="py-2 ml-auto"  [routerLink]="[logged]" (click)="logOut()">Logout</a>
+        <a class="py-2 ml-auto"  [routerLink]="[logged]" >Logout</a>
       </ng-template>
       <ng-template [ngIf]="isCliente">
         <a class="py-2 ml-auto" routerLink="/buscarPartida">Buscar partida</a>
         <a class="py-2 ml-auto"  routerLink="/crearDeck">Crear deck</a>
-        <a class="py-2 ml-auto"  [routerLink]="" (click)="logOut()">Logout</a>
+        <a class="py-2 ml-auto"  [routerLink]="" >Logout</a>
     </ng-template>
     </ng-template>
     <p class="stardeck py-2 ml-auto" >STARDECK</p>

@@ -21,7 +21,9 @@ export class CrearCartaComponent implements OnInit {
 
 
   imageUrl = ""
-
+  reloadCurrentPage() {
+    window.location.reload();
+   }
   ngOnInit(): void {
   }
 
